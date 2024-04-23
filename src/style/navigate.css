@@ -1,0 +1,25 @@
+.buttons{
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+.button {
+    width: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 30px;
+    background-color: white;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.labels{
+    height: 100%;
+    display: inline-block;
+    font-weight: 500;
+    width: 105px;
+}

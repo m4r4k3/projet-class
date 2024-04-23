@@ -1,0 +1,80 @@
+
+.logo {
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-size: 30px;
+  font-style: normal;
+}
+.logo-font{
+  font-style: normal;
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+}
+.burger {
+  position: relative;
+  height: 18px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25px;
+}
+.burger div {
+  height: 1px;
+  width: 100%;
+}
+.landing-page {
+  background-image: url("../image/city.jpg");
+  background-size: 100% 100%;
+  box-shadow: 0 0 10px 10px black inset;
+}
+.main-button {
+  font-size: 15px;
+  word-spacing: 5px;
+  border: 1px solid white;
+  border-radius: 50px;
+  font-weight: 300;
+  font-family: "Open Sans", sans-serif;
+  background: rgba(0, 0, 0, 0.664) ;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8.8px);
+  -webkit-backdrop-filter: blur(8.8px);
+}
+.title-footer , .title-menu{
+  font-size: 20px;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+.brand-footer > li{
+  background-color: black ;
+  border-radius: 50%;
+  color: white;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+}
+.info-footer{
+  display: flex;
+  margin-bottom:5%;
+}
+.info-footer div:first-child{
+  margin-right: 20px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: black;
+  color:white;
+}
+.menu-glass{
+  background: rgba(0, 0, 0, 0.295) ;
+  box-shadow: 0 1px 1000px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.8px);
+  -webkit-backdrop-filter: blur(8.8px);
+}

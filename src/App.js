@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import LandingPage from "./pages/landing-page";
+import Nav from "./components/main/nav";
+import Menu from "./components/main/menu";
+import Offres from "./pages/offres";
+import { Route, Routes } from "react-router-dom";
+import { useState } from "react";
+import MainFooter from "./components/main/main footer";
+import Demandes from "./pages/demandes"
+import Profile from "./pages/profile"
 
-function App() {
+
+export default function App() {
+  const [isMenu, setIsMenu] = useState();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="w-full h-screen App ">
+      <Nav setIsMenu={setIsMenu} isMenu={isMenu}/>
+      {isMenu && <Menu setIsMenu={setIsMenu}/>}
+      <Routes>
+        <Route element={<LandingPage />} path="/"></Route>
+        <Route element={<Offres />} path="/offres"></Route>
+        <Route element={<Demandes />} path="/demandes"></Route>
+        <Route element={<Profile />} path="/profile/:id"></Route>
+      </Routes>
+      <MainFooter />
     </div>
   );
 }
-
-export default App;
