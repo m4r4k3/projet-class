@@ -7,7 +7,7 @@ import { useState } from "react";
 import MainFooter from "./components/main/main footer";
 import Demandes from "./pages/demandes"
 import Profile from "./pages/profile"
-
+import SignIn from "./pages/signin";
 
 export default function App() {
   const [isMenu, setIsMenu] = useState();
@@ -20,6 +20,7 @@ export default function App() {
         <Route element={<Offres />} path="/offres"></Route>
         <Route element={<Demandes />} path="/demandes"></Route>
         <Route element={<Profile />} path="/profile/:id"></Route>
+        <Route element={<SignIn />} path="/sign-in"></Route>
       </Routes>
       <MainFooter />
     </div>
