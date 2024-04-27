@@ -8,15 +8,15 @@ export default function Demandes(){
     <button className="pl-5"><i className="fa-solid fa-chevron-right text-white"></i></button>
    </div> 
     <div className={`grid grid-cols-3 w-full justify-items-center p-[50px] gap-[50px]`}>
-        <DemandesCard />
-        <DemandesCard />
-        <DemandesCard />
-        <DemandesCard />
-        <DemandesCard />
-        <DemandesCard />
-        <DemandesCard />
-        <DemandesCard />
-        <DemandesCard />
+        <DemandesCard isDemande={true} />
+        <DemandesCard isDemande={true} />
+        <DemandesCard isDemande={true} />
+        <DemandesCard isDemande={true} />
+        <DemandesCard isDemande={true} />
+        <DemandesCard isDemande={true} />
+        <DemandesCard isDemande={true} />
+        <DemandesCard isDemande={true} />
+        <DemandesCard isDemande={true} />
     </div>
 </div>
         </>)

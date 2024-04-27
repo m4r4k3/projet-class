@@ -9,28 +9,28 @@ export default function Offres(){
     <button className="pl-5"><i className="fa-solid fa-chevron-right text-white"></i></button>
    </div> 
     <div className={`grid grid-cols-3 w-full justify-items-center p-[50px] gap-[50px]`}>
-        <OffresCard />
-        <OffresCard />
-        <OffresCard />
-        <OffresCard />
-        <OffresCard />
-        <OffresCard />
-        <OffresCard />
-        <OffresCard />
-        <OffresCard />
-        <OffresCard />
-        <OffresCard />
-        <OffresCard />
-        <OffresCard />
-        <OffresCard />
-        <OffresCard />
-        <OffresCard />
-        <OffresCard />
-        <OffresCard />
-        <OffresCard />
-        <OffresCard />
-        <OffresCard />
-        <OffresCard />
+        <OffresCard isOffer={true}/>
+        <OffresCard isOffer={true}/>
+        <OffresCard isOffer={true}/>
+        <OffresCard isOffer={true}/>
+        <OffresCard isOffer={true}/>
+        <OffresCard isOffer={true}/>
+        <OffresCard isOffer={true}/>
+        <OffresCard isOffer={true}/>
+        <OffresCard isOffer={true}/>
+        <OffresCard isOffer={true}/>
+        <OffresCard isOffer={true}/>
+        <OffresCard isOffer={true}/>
+        <OffresCard isOffer={true}/>
+        <OffresCard isOffer={true}/>
+        <OffresCard isOffer={true}/>
+        <OffresCard isOffer={true}/>
+        <OffresCard isOffer={true}/>
+        <OffresCard isOffer={true}/>
+        <OffresCard isOffer={true}/>
+        <OffresCard isOffer={true}/>
+        <OffresCard isOffer={true}/>
+        <OffresCard isOffer={true}/>
     </div>
 </div>
         </>

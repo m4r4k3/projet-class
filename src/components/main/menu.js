@@ -21,7 +21,7 @@ export default function Menu({setIsMenu}) {
           <ul className="flex flex-col justify-around h-[50%] logo-font">
             <li><Link to={"/demandes"}>Demandes</Link></li>
             <li><Link to={"/offres"}>Offers</Link></li>
-            <li><Link to={"/saves"}>Saves</Link></li>
+            <li><Link to={"/save"}>Saves</Link></li>
           </ul>
         </div>
         <div>

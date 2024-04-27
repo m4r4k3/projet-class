@@ -1,10 +1,10 @@
 import { useRef } from "react";
 import "../../style/demande.css";
-export default function DemandeCard() {
+export default function DemandeCard({isDemande}) {
   const description = useRef(null);
   return (
-    <div className="h-[350px] w-[350px] flex relative">
-      <div className="buttons absolute top-[15px] left-[-40px]">
+    <div className={` ${isDemande?"h-[350px] w-[350px] ":"h-[300px] w-[350px] "}flex relative`}>
+      <div className={`buttons absolute top-[15px] left-[-40px] ${isDemande?"":"hidden"}`}>
         <div className="button">
           <i class="fa-solid fa-bookmark"></i>
         </div>

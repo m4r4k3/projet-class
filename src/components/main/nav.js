@@ -22,9 +22,9 @@ export default function Nav({setIsMenu , isMenu}) {
         ELITE CAREERS
       </Link>
 
-      <div className="w-[30px] h-[30px] rounded-full shadow text-[15px] flex justify-center items-center shadow cursor-pointer">
+      <Link to={"/sign-in"} className="w-[30px] h-[30px] rounded-full shadow text-[15px] flex justify-center items-center shadow cursor-pointer">
         <i className={`fa-solid fa-user `} ></i>
-      </div>
+      </Link>
     </div>
   );
 }
