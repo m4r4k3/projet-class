@@ -3,7 +3,7 @@ import OffresCard from "../components/offres/offres-card";
 export default function Saves() {
   return (
     <div className="bg-[url('../image/pattern.png')] w-full pt-[70px] flex min-h-full ">
-      <div class="w-full  mx-auto  px-[10%] gap-5 flex flex-col justify-around my-5">
+      <div class="w-full mx-auto  px-[10%] gap-5 flex flex-col justify-around my-10">
         <div class=" w-full  ">
           <div className="flex w-full justify-between px-[5%]">
             <h2 class="text-2xl font-bold mb-2 text-gray-500">Demands</h2>

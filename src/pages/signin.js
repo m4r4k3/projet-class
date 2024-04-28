@@ -12,7 +12,7 @@ export default function SignIn() {
     >
       <div
         className={
-          `left-0   bg-[${isBgEntr ? "url(https://th.bing.com/th/id/R.d45dc54e7d0e057a0766ee517b5d48cd?rik=0EkDiw1isfR34g&pid=ImgRaw&r=0)":"url(../image/signBuilding.jpeg)"}] absolute  duration-300 w-[70%] top-0 h-[calc(100%/3)]   bg-cover  ${isBgEntr?" translate-x-[43%]":""}`
+          `left-0   bg-[url(${isBgEntr ? "https://th.bing.com/th/id/R.d45dc54e7d0e057a0766ee517b5d48cd?rik=0EkDiw1isfR34g&pid=ImgRaw&r=0":"../image/signBuilding.jpeg"})] absolute  duration-300 w-[70%] top-0 h-[calc(100%/3)]   bg-cover  ${isBgEntr?" translate-x-[43%]":""}`
         }
         style={{
         backgroundPosition: "0 0% ",
@@ -27,8 +27,7 @@ export default function SignIn() {
       </div>
       <div
         className={
-          `left-0 delay-100  bg-[${isBgEntr ? "url(https://th.bing.com/th/id/R.d45dc54e7d0e057a0766ee517b5d48cd?rik=0EkDiw1isfR34g&pid=ImgRaw&r=0)":"url(../image/signBuilding.jpeg)"}] absolute  duration-300 flex items-center w-[70%] top-[33.33%] h-[calc(100%/3)]  bg-cover  ${isBgEntr?" translate-x-[43%] justify-end":""}`
-
+          `left-0 delay-100  ${isBgEntr ? "bg-[url(https://th.bing.com/th/id/R.d45dc54e7d0e057a0766ee517b5d48cd?rik=0EkDiw1isfR34g&pid=ImgRaw&r=0)]":"bg-[url(../image/signBuilding.jpeg)]"} absolute  duration-300 flex items-center w-[70%] top-[33.33%] h-[calc(100%/3)]  bg-cover  ${isBgEntr?" translate-x-[43%] justify-end":""}`
         }
         style={{
         backgroundPosition: "0 50% ",
@@ -50,7 +49,7 @@ export default function SignIn() {
       </div>
       <div
         className={
-          `left-0  delay-200  flex items-center  bg-[${isBgEntr ? "url(https://th.bing.com/th/id/R.d45dc54e7d0e057a0766ee517b5d48cd?rik=0EkDiw1isfR34g&pid=ImgRaw&r=0)":"url(../image/signBuilding.jpeg)"}] absolute  duration-300 w-[70%] top-[66.66%] h-[calc(100%/3)]  bg-cover  ${isBgEntr?" translate-x-[43%]":""}`
+          `left-0  delay-200  flex items-center  bg-[url(${isBgEntr ? "https://th.bing.com/th/id/R.d45dc54e7d0e057a0766ee517b5d48cd?rik=0EkDiw1isfR34g&pid=ImgRaw&r=0":"../image/signBuilding.jpeg"})] absolute  duration-300 w-[70%] top-[66.66%] h-[calc(100%/3)]  bg-cover  ${isBgEntr?" translate-x-[43%]":""}`
 
         }
         style={
