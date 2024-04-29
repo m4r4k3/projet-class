@@ -7,7 +7,7 @@ export default function Profile() {
         <div className=" flex  justify-between items-center  flex-col bg-[#0D1117] border border-[#30363D] sticky top-[80px] rounded-[5px] w-[35vw] py-[5%]">
           <div className="w-full flex flex-col justify-between items-center gap-3">
             <div className="bg-[url(https://th.bing.com/th/id/R.3f3b68c0fde58eea7448cef9b640e299?rik=c0t2b8nVH4v%2f2g&pid=ImgRaw&r=0)] bg-center bg-contain rounded-full w-1/2 h-[calc(35vw/2)]"></div>
-            <div className="text-lg font-bold text-white">Marouane Akchar</div>
+            <div className="text-xl font-bold text-white mt-5">Marouane Akchar</div>
           </div>
           <ul className="text-white flex w-1/2  align-center mt-7 flex-col gap-2">
             <li className="flex gap-3">

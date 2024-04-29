@@ -1,6 +1,6 @@
-export default function OffresCard({isOffer}) {
+export default function OffresCard({isOffer, setOffer}) {
   return (
-    <div className={`${isOffer?"h-[350px] w-[350px]":"h-[300px] w-[350px] "} flex relative`}>
+    <div className={`${isOffer?"h-[350px] w-[350px]":"h-[300px] w-[350px] "} flex relative`} onClick={()=>setOffer(true)}>
       <div className={`buttons absolute top-[15px] left-[-40px] ${isOffer ? "" :"hidden"}`}>
         <div className="button">
           <i class="fa-solid fa-bookmark"></i>
@@ -41,7 +41,7 @@ export default function OffresCard({isOffer}) {
           </div>
         </div>
         <div className="w-full flex justify-end pr-[20px] mt-[20px]">
-        <button className={`${isOffer?"":"hidden"} border-[2px] px-10 py-1 rounded-full shadow-inner font-semibold text-[15px]`}>Apply</button>
+        <button className={`${isOffer?"":"hidden"} border-[2px] px-10 py-1 rounded-[5px] shadow-inner font-semibold text-[15px]`}>Apply</button>
         </div>
       </div>
     </div>
