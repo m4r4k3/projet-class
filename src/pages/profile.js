@@ -3,13 +3,13 @@ import Education from "../components/profile/education";
 export default function Profile() {
   return (
     <div className="bg-[url('../image/pattern.png')] w-full pt-[70px] flex min-h-full">
-      <div className="w-[40%]   flex flex-col items-end p-3">
-        <div className=" flex  justify-between items-center  flex-col bg-[#0D1117] border border-[#30363D] sticky top-[80px] rounded-[5px] w-[35vw] py-[5%]">
+      <div className="w-[40%] flex flex-col items-end p-3">
+        <div className=" flex  justify-between items-center  flex-col  bg-[#0D1117] border border-[#30363D] sticky top-[80px] rounded-[5px] w-[35vw] py-[3%]">
           <div className="w-full flex flex-col justify-between items-center gap-3">
             <div className="bg-[url(https://th.bing.com/th/id/R.3f3b68c0fde58eea7448cef9b640e299?rik=c0t2b8nVH4v%2f2g&pid=ImgRaw&r=0)] bg-center bg-contain rounded-full w-1/2 h-[calc(35vw/2)]"></div>
             <div className="text-xl font-bold text-white mt-5">Marouane Akchar</div>
           </div>
-          <ul className="text-white flex w-1/2  align-center mt-7 flex-col gap-2">
+          <ul className="text-white flex w-1/2  align-center mt-5 flex-col gap-2">
             <li className="flex gap-3">
               <span className="button bg-gray-500">
                 <i class="fa-solid fa-clock text-white"></i>
@@ -48,7 +48,7 @@ export default function Profile() {
       <div className="w-[63%]  rounded-[15px] p-2">
         <div>
           <div className="bg-[#0D1117] my-1 w-[80%] mx-auto p-5 rounded-[7px] border border-[#30363D]">
-            <div className="font-bold text-lg text-gray-500">About</div>
+            <div className="font-bold border-b mb-3 pb-3 text-lg text-gray-500 border-[#30363D]">About</div>
             <div className="text-[15px] text-white ">
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
@@ -63,7 +63,7 @@ export default function Profile() {
             </div>
           </div>
           <div className=" mt-1 w-[80%] p-5 mx-auto bg-[#0D1117] rounded-[7px] border border-[#30363D] ">
-            <p className="text-gray-400 text-lg font-bold ">Skills </p>
+            <p className="text-gray-500 border-b mb-3 pb-3 text-lg font-bold border-[#30363D]">Skills </p>
             <ul className="text-white list-disc ml-5 list-outside ">
               <li>Javascript</li>
               <li>Javascript</li>

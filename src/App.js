@@ -9,6 +9,7 @@ import Demandes from "./pages/demandes"
 import Profile from "./pages/profile"
 import SignIn from "./pages/signin";
 import Saves from "./pages/save"
+import Search from "./pages/search";
 
 export default function App() {
   const [isMenu, setIsMenu] = useState();
@@ -18,6 +19,7 @@ export default function App() {
       {isMenu && <Menu setIsMenu={setIsMenu}/>}
       <Routes>
         <Route element={<LandingPage />} path="/"></Route>
+        <Route element={<Search />} path="/search"></Route>
         <Route element={<Offres />} path="/offres"></Route>
         <Route element={<Demandes />} path="/demandes"></Route>
         <Route element={<Profile />} path="/profile/:id"></Route>
