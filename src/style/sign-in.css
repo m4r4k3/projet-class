@@ -1,0 +1,45 @@
+.signUpblack{
+    animation: signUpBlack 200ms  ;
+    background-color: #0D1117;
+}
+.signUpWhite{
+    animation: signUpWhite 200ms ;
+    background-color: #fff;
+}
+
+@keyframes signUpBlack {
+    0%{
+        background-image: radial-gradient(circle at 99%   1% , #0D1117 0% ,#fff 00%);
+    }
+    25%{
+        background-image: radial-gradient(circle at 99% 1% , #0D1117 0% ,#fff 25%);
+    }
+    50%{
+        background-image: radial-gradient(circle at 99%   1% , #0D1117 0% ,#fff 50%);
+    }
+    75%{
+        background-image: radial-gradient(circle at 99%   1% , #0D1117 0% ,#fff 75%);
+    }
+    100%{
+        background-image: radial-gradient(circle at 99%   1% ,#0D1117 0%,#fff 100%);
+        background-color:#0D1117 ;
+    } 
+}
+@keyframes signUpWhite{
+    0%{
+        background-image: radial-gradient(circle at 1% 1% ,  #fff 0% ,#0D1117  0%);
+    }
+    25%{
+        background-image: radial-gradient(circle at 1% 1% ,  #fff 0% ,#0D1117  25%);
+    }
+    50%{
+        background-image: radial-gradient(circle at 1% 1% ,  #fff 0% ,#0D1117  50%);
+    }
+    75%{
+        background-image: radial-gradient(circle at 1% 1% ,  #fff 0% ,#0D1117  75%);
+    }
+    100%{
+        background-image: radial-gradient(circle at 1% 1% , #fff 0%, #0D1117 100%);
+        background-color: #fff;
+    } 
+}

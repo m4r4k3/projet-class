@@ -12,9 +12,9 @@ export default function FullScreenOffer({setOffer}){
             <div className="cursor-pointer w-[30px] h-[30px] rounded-full flex justify-center items-center shadow-black  hover:shadow-inner" onClick={e=>{setList(prev=>!prev);e.stopPropagation()}}>
               <i class="fa-solid fa-ellipsis-vertical"></i>
             </div>
-            <ul className={`py-1 w-full border gap-1 rounded ${showList ? "" :"hidden"} mt-2 flex items-center flex-col`} >
-              <li className="">save</li>
-              <li className="text-red-500">report</li>
+            <ul className={` w-full border rounded ${showList ? "" :"hidden"} mt-2 `} >
+              <li className="text-center hover:bg-gray-200 w-full py-1 duration-300">save</li>
+              <li className="text-red-500 text-center hover:bg-gray-200 w-full py-1 duration-300">report</li>
             </ul>
             </div>
             <div className="text-[25px] mb-5">JOB TITLE</div>

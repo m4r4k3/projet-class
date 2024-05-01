@@ -1,24 +1,33 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import SignUp from "../components/sign in/sign-up";
+import "../style/sign-in.css";
 
 export default function SignIn() {
   const [isBgEntr, setBgEntr] = useState(false);
-
-  const ClickFunc = () => setBgEntr((prev) => !prev)
+  const [isSignup , setSignup]= useState(false);
+  const ClickFunc = () => setBgEntr((prev) => !prev);
   return (
     <div
       className={`bg-[url('../image/pattern.png')] w-full  flex  h-full relative overflow-hidden ${
         isBgEntr ? "justify-start" : "justify-end"
       }  `}
     >
+    {isSignup && <SignUp setSignup= {setSignup}/>}
       <div
-        className={
-          `left-0   bg-[url(${isBgEntr ? "https://th.bing.com/th/id/R.d45dc54e7d0e057a0766ee517b5d48cd?rik=0EkDiw1isfR34g&pid=ImgRaw&r=0":"../image/signBuilding.jpeg"})] absolute  duration-300 w-[70%] top-0 h-[calc(100%/3)]   bg-cover  ${isBgEntr?" translate-x-[43%]":""}`
-        }
+        className={`left-0   bg-[url(${
+          isBgEntr
+            ? "https://th.bing.com/th/id/R.d45dc54e7d0e057a0766ee517b5d48cd?rik=0EkDiw1isfR34g&pid=ImgRaw&r=0"
+            : "../image/signBuilding.jpeg"
+        })] absolute  duration-300 w-[70%] top-0 h-[calc(100%/3)]   bg-cover  ${
+          isBgEntr ? " translate-x-[43%]" : ""
+        }`}
         style={{
-        backgroundPosition: "0 0% ",
-        backgroundSize: "100% 100vh",
-        clipPath: isBgEntr ? "polygon(30% 0 ,100% 0% ,100% 100%,20% 100%)":"polygon(0 0, 100% 0%, 90% 100%, 0 100%)",
-      }}
+          backgroundPosition: "0 0% ",
+          backgroundSize: "100% 100vh",
+          clipPath: isBgEntr
+            ? "polygon(30% 0 ,100% 0% ,100% 100%,20% 100%)"
+            : "polygon(0 0, 100% 0%, 90% 100%, 0 100%)",
+        }}
       >
         <div
           className="absolute w-full h-full  z-3"
@@ -26,14 +35,20 @@ export default function SignIn() {
         ></div>
       </div>
       <div
-        className={
-          `left-0 delay-100  ${isBgEntr ? "bg-[url(https://th.bing.com/th/id/R.d45dc54e7d0e057a0766ee517b5d48cd?rik=0EkDiw1isfR34g&pid=ImgRaw&r=0)]":"bg-[url(../image/signBuilding.jpeg)]"} absolute  duration-300 flex items-center w-[70%] top-[33.33%] h-[calc(100%/3)]  bg-cover  ${isBgEntr?" translate-x-[43%] justify-end":""}`
-        }
+        className={`left-0 delay-100  ${
+          isBgEntr
+            ? "bg-[url(https://th.bing.com/th/id/R.d45dc54e7d0e057a0766ee517b5d48cd?rik=0EkDiw1isfR34g&pid=ImgRaw&r=0)]"
+            : "bg-[url(../image/signBuilding.jpeg)]"
+        } absolute  duration-300 flex items-center w-[70%] top-[33.33%] h-[calc(100%/3)]  bg-cover  ${
+          isBgEntr ? " translate-x-[43%] justify-end" : ""
+        }`}
         style={{
-        backgroundPosition: "0 50% ",
-        backgroundSize: "100% 100vh",
-        clipPath: isBgEntr ?  "polygon(20% 0px, 100% 0px, 100% 100%, 10% 100%)": "polygon(0% 0, 90% 0%, 80% 100%, 0 100%)",
-      }}
+          backgroundPosition: "0 50% ",
+          backgroundSize: "100% 100vh",
+          clipPath: isBgEntr
+            ? "polygon(20% 0px, 100% 0px, 100% 100%, 10% 100%)"
+            : "polygon(0% 0, 90% 0%, 80% 100%, 0 100%)",
+        }}
       >
         <div
           className="absolute w-full h-full  z-3"
@@ -44,21 +59,24 @@ export default function SignIn() {
           className="text-white text-[40px] font-bold  left-10 mx-10"
           style={{ zIndex: "4" }}
         >
-          Sign-in as  {isBgEntr?"a Job Seeker":"An Entreprise"}
+          Sign-in as {isBgEntr ? "a Job Seeker" : "An Entreprise"}
         </div>
       </div>
       <div
-        className={
-          `left-0  delay-200  flex items-center  bg-[url(${isBgEntr ? "https://th.bing.com/th/id/R.d45dc54e7d0e057a0766ee517b5d48cd?rik=0EkDiw1isfR34g&pid=ImgRaw&r=0":"../image/signBuilding.jpeg"})] absolute  duration-300 w-[70%] top-[66.66%] h-[calc(100%/3)]  bg-cover  ${isBgEntr?" translate-x-[43%]":""}`
-
-        }
-        style={
-          {
-        backgroundPosition: "0 100% ",
-        backgroundSize: "100% 100vh",
-        clipPath: isBgEntr ?"polygon(10% 0px, 100% 0px, 100% 100%, 00% 100%)" : "polygon(0% 0, 80% 0%, 70% 100%, 0 100%)",
-      }
-        }
+        className={`left-0  delay-200  flex items-center  bg-[url(${
+          isBgEntr
+            ? "https://th.bing.com/th/id/R.d45dc54e7d0e057a0766ee517b5d48cd?rik=0EkDiw1isfR34g&pid=ImgRaw&r=0"
+            : "../image/signBuilding.jpeg"
+        })] absolute  duration-300 w-[70%] top-[66.66%] h-[calc(100%/3)]  bg-cover  ${
+          isBgEntr ? " translate-x-[43%]" : ""
+        }`}
+        style={{
+          backgroundPosition: "0 100% ",
+          backgroundSize: "100% 100vh",
+          clipPath: isBgEntr
+            ? "polygon(10% 0px, 100% 0px, 100% 100%, 00% 100%)"
+            : "polygon(0% 0, 80% 0%, 70% 100%, 0 100%)",
+        }}
       >
         <div
           className="absolute w-full h-full  z-4 "
@@ -86,25 +104,26 @@ export default function SignIn() {
             Sign-in
           </div>
           <div className="w-full flex justify-between px-5 my-4">
-            <label className="text-white ">Email :</label>
+            <label className={`text-white `}>Email :</label>
             <input
               type="text"
               className="rounded pl-2 outline-0 shadow-black focus:shadow-inner"
             />
           </div>
           <div className="w-full flex justify-between px-5 my-4">
-            <label className="text-white ">Password :</label>
+            <label className={`text-white  `}>Password :</label>
             <input
               type="password"
               className="rounded pl-2 outline-0 shadow-black focus:shadow-inner"
             />
           </div>
 
-          <div className="w-full flex justify-center items-center my-8 ">
+          <div className="w-full flex justify-center items-center mt-8 ">
             <button className="text-white w-1/2 border border-[#30363D] rounded py-1 hover:bg-gray-700 duration-500">
               Sign-In
             </button>
           </div>
+          <div className="text-blue-500 w-full text-end my-5 px-5 cursor-pointer " onClick={()=>setSignup(true)}>Sign-up</div>
         </div>
       </form>
     </div>

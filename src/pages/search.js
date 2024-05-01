@@ -8,8 +8,19 @@ export default function Search() {
   const people = useRef(null);
   console.log(offers);
   return (
-    <div className="bg-[url('../image/pattern.png')] w-full pt-[70px] flex min-h-full ">
-      <div className="w-[30%] h-full  sticky top-[120px] ">
+    <div className="bg-[url('../image/pattern.png')] w-full pt-[70px]">
+       <div className="flex w-full justify-center items-center mt-5">
+          <input
+            type="text"
+            className="outline-0 w-[25%] h-[30px] pl-2 rounded shadow-inner"
+          />
+          <button className="pl-5">
+            <i className="fa-solid fa-chevron-right text-white"></i>
+          </button>
+        </div>
+      <div className="flex min-h-full ">
+
+      <div className="w-[30%] h-full  sticky top-[170px] ">
         <div className=" bg-[#0D1117] text-white py-3 rounded-[5px] border border-[#30363D] w-[75%] m-auto">
           <ul className="w-full flex flex-col gap-1">
             <li className="pl-5 text-lg mb-2 font-bold">On This Page</li>
@@ -21,7 +32,7 @@ export default function Search() {
                   block: "center",
                 })
               }
-            >
+              >
               Demandes
             </li>
             <li
@@ -32,7 +43,7 @@ export default function Search() {
                   block: "center",
                 })
               }
-            >
+              >
               Offers
             </li>
             <li
@@ -43,7 +54,7 @@ export default function Search() {
                   block: "center",
                 })
               }
-            >
+              >
               People
             </li>
             <li
@@ -54,7 +65,7 @@ export default function Search() {
                   block: "center",
                 })
               }
-            >
+              >
               Companies
             </li>
           </ul>
@@ -72,7 +83,7 @@ export default function Search() {
           <div
             class="border border-[#30363D] rounded-[10px] bg-[#0D1117] p-4 mb-2"
             ref={demandes}
-          >
+            >
             <DemandeCard isDemande={false} />
           </div>
         </div>
@@ -86,7 +97,7 @@ export default function Search() {
           <div
             class="border border-[#30363D] rounded-[10px] bg-[#0D1117] p-4 mb-2"
             ref={offers}
-          >
+            >
             <OffresCard isOffer={false} />
           </div>
         </div>
@@ -100,7 +111,7 @@ export default function Search() {
           <div
             class="border border-[#30363D] rounded-[10px] bg-[#0D1117] p-4 mb-2"
             ref={people}
-          >
+            >
             <DemandeCard isDemande={false} />
           </div>
         </div>
@@ -114,10 +125,11 @@ export default function Search() {
           <div
             class="border border-[#30363D] rounded-[10px] bg-[#0D1117] p-4 mb-2"
             ref={companies}
-          >
+            >
             <DemandeCard isDemande={false} />
           </div>
         </div>
+            </div>
       </div>
     </div>
   );
