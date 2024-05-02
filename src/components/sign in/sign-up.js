@@ -48,11 +48,19 @@ export default function SignUp({setSignup}){
               <input type="text" className="outline-none border pl-2 rounded" />
             </div>
           }
-      
-          <div className="flex justify-center w-full my-2">
-              <label className={`font-bold inline-block w-[120px] ${signUpEntr ? "text-white": "text-black"}`}>CIN :</label>
+          { !signUpEntr &&
+            <div className="flex justify-center w-full my-2">
+              <label className={`font-bold inline-block w-[120px] ${signUpEntr ? "text-white": "text-black"}`}>
+                Name :
+              </label>
               <input type="text" className="outline-none border pl-2 rounded" />
             </div>
+          }
+          {signUpEntr && <div className="flex justify-center w-full my-2">
+              <label className={`font-bold inline-block w-[120px] ${signUpEntr ? "text-white": "text-black"}`}>CIN :</label>
+              <input type="text" className="outline-none border pl-2 rounded" />
+            </div> }
+
           <div className="flex justify-center w-full my-2">
             <label className={`font-bold inline-block w-[120px] ${signUpEntr ? "text-white": "text-black"}`}>Email :</label>
             <input type="text" className="outline-none border pl-2 rounded" />

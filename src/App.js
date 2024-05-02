@@ -10,6 +10,7 @@ import Profile from "./pages/profile"
 import SignIn from "./pages/signin";
 import Saves from "./pages/save"
 import Search from "./pages/search";
+import MyProfile from "./pages/my Profile";
 
 export default function App() {
   const [isMenu, setIsMenu] = useState();
@@ -25,6 +26,7 @@ export default function App() {
         <Route element={<Profile />} path="/profile/:id"></Route>
         <Route element={<SignIn />} path="/sign-in"></Route>
         <Route element={<Saves />}  path="/save"></Route>
+      <Route element={<MyProfile />}  path="/myProfile"></Route>
       </Routes>
       <MainFooter />
     </div>
