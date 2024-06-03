@@ -1,8 +1,18 @@
-export default function Companies({name , starting , ending , description , post }) {
+import { Axios } from "../../axios";
+
+export default function Companies({ id, name , starting , ending , description , post , setIsSet , resetData}) {
+  const deleteExp = async(e)=>{
+    resetData()
+    await Axios.get("/sanctum/csrf-cookie");
+    await Axios.delete(`/api/experience/${e.target.id}`).then(res=>res).then(data=>console.log(data)).catch((error)=>console.log(error))
+    setIsSet(prev=>!prev)
+
+}
   return (
-    <div className="px-[5%] my-5">
-      <div className=" border-[#30363D] w-full  px-5 py-2  border-t flex ">
-       
+    <div className="px-[10%] my-5 relative">
+        <button className="button active:bg-green-500 absolute bg-black border border-[#30363D] top-5 left-0">
+        <i class="fa-solid fa-minus text-red-500" id={id} onClick={e=>deleteExp(e)}></i>
+        </button>
         <div className="w-full">
           <div className="flex justify-between pr-8 text-white">
             <label className="font-semibold text-lg "> {name}</label>
@@ -18,7 +28,8 @@ export default function Companies({name , starting , ending , description , post
             </span>
           </div>
         </div>
-      </div>
     </div>
   );
 }
+
+

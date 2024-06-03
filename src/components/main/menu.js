@@ -4,7 +4,7 @@ import { useEffect } from "react";
 export default function Menu({setIsMenu}) {
   
   return (
-    <div className="fixed z-[3] h-screen top-[70px] w-screen glass menu-glass  " onClick={(e)=>{e.stopPropagation() ;setIsMenu(prev=>!prev);}}  >
+    <div className="fixed z-[3] h-screen top-[70px] w-screen glass menu-glass modal-open " onClick={(e)=>{e.stopPropagation() ;setIsMenu(prev=>!prev);}}  >
 
     <div className=" w-screen h-[calc(50%-70px)] shadow  bg-white ">
       <div className="flex w-full justify-between px-[10%] h-full pt-[3%]">
@@ -29,7 +29,7 @@ export default function Menu({setIsMenu}) {
           <ul className="flex flex-col justify-around h-[50%] logo-font">
             <li>Messages</li>
             <li>Network</li>
-            <li>My Profil</li>
+            <li>My space</li>
           </ul>
         </div>
       </div>

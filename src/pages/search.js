@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import DemandeCard from "../components/demandes/demandeCard";
 import OffresCard from "../components/offres/offres-card";
+import Person from "../components/main/person";
 export default function Search() {
   const companies = useRef(null);
   const demandes = useRef(null);
@@ -81,9 +82,10 @@ export default function Search() {
             </a>
           </div>
           <div
-            class="border border-[#30363D] rounded-[10px] bg-[#0D1117] p-4 mb-2"
+        class="border border-[#30363D] rounded-[10px] bg-[#0D1117] p-4 mb-2 flex justify-around"
             ref={demandes}
             >
+            <DemandeCard isDemande={false} />
             <DemandeCard isDemande={false} />
           </div>
         </div>
@@ -95,9 +97,10 @@ export default function Search() {
             </a>
           </div>
           <div
-            class="border border-[#30363D] rounded-[10px] bg-[#0D1117] p-4 mb-2"
+            class="border border-[#30363D] rounded-[10px] bg-[#0D1117] p-4 mb-2 flex justify-around"
             ref={offers}
             >
+            <OffresCard isOffer={false} />
             <OffresCard isOffer={false} />
           </div>
         </div>
@@ -109,10 +112,11 @@ export default function Search() {
             </a>
           </div>
           <div
-            class="border border-[#30363D] rounded-[10px] bg-[#0D1117] p-4 mb-2"
+            class="border border-[#30363D] rounded-[10px] bg-[#0D1117] p-4 mb-2 flex justify-around"
             ref={people}
             >
-            <DemandeCard isDemande={false} />
+             <Person /> 
+             <Person /> 
           </div>
         </div>
         <div class=" w-full  ">
@@ -123,10 +127,11 @@ export default function Search() {
             </a>
           </div>
           <div
-            class="border border-[#30363D] rounded-[10px] bg-[#0D1117] p-4 mb-2"
+            class="border border-[#30363D] rounded-[10px] bg-[#0D1117] p-4 mb-2 flex justify-around"
             ref={companies}
             >
-            <DemandeCard isDemande={false} />
+           <Person /> 
+           <Person /> 
           </div>
         </div>
             </div>
