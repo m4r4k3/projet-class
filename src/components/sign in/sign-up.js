@@ -19,11 +19,9 @@ export default function SignUp({ setSignup }) {
     await Axios.post("api/signup", form)
       .then(async (res) => {
         const data = await res.data;
-        if(res.status == 200){
+        if (res.status == 200) {
           navigate("/");
-
-        }else{
-          
+        } else {
         }
       })
       .catch((error) => {

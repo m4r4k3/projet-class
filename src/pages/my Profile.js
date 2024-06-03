@@ -7,6 +7,7 @@ import { Axios } from "../axios";
 import LoadingScreen from "../loading";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
+import "../style/myprofile.css";
 
 export default function MyProfile() {
   const id = useSelector((s) => s.store.id);
@@ -17,30 +18,36 @@ export default function MyProfile() {
   const [education, setEducation] = useState(false);
   const [edit, setEdit] = useState(false);
   const [info, setInfo] = useState({});
-  const navigate = useNavigate();
+  
   const resetData = () => setData(false);
   const skillInput = useRef();
 
   const setFormFunc = (e) =>
     setInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
-  const editInfo = async(e)=>{
-    resetData();
-    const value = skillInput.current.value;
-    await Axios.get("/sanctum/csrf-cookie");
-    await Axios.put("/api/individuel/update", info)
-    .then((res) => res)
-    .then((res) => console.log(res))
-    .catch(() => console.log("error"));
-    setIsSet((prev) => !prev);
+  const setImage = (e)=>{
+    setEdit(true)
+    setInfo(prev=>({...prev , "image" :e.target.files[0]}))
   }
+  const editInfo = async () => {
+    const formData = new FormData();
+    formData.append("image", info.image)
+    console.log(formData)
+    resetData(); 
+    await Axios.get("/sanctum/csrf-cookie");
+    await Axios.put(`/api/individuel/${id}`, formData)
+    .then(res=>console.log(res)) 
+    .catch(() =>
+      console.log("error")
+    );
+    setIsSet((prev) => !prev);
+  };
   const addSkill = async () => {
     resetData();
     const value = skillInput.current.value;
     await Axios.get("/sanctum/csrf-cookie");
     await Axios.post("/api/skill", { title: value })
       .then((res) => res)
-      .then((res) => console.log(res))
       .catch(() => console.log("error"));
     setIsSet((prev) => !prev);
   };
@@ -51,17 +58,15 @@ export default function MyProfile() {
     await Axios.get("/sanctum/csrf-cookie");
     await Axios.delete(`/api/skill/${e.target.id}`)
       .then((res) => res)
-      .then((data) => console.log(data))
       .catch(() => console.log("error"));
     setIsSet((prev) => !prev);
   };
 
   useEffect(() => {
-    console.log("edited");
     document.body.classList.remove("modal-open");
     Axios.get(`/api/individuel/${id}/edit`)
       .then((res) => res.data)
-      .then((data) => setData(data))
+      .then((data) => setData(data));
   }, [isSet]);
 
   useEffect(() => {
@@ -96,12 +101,17 @@ export default function MyProfile() {
       <div className="w-[40%] flex flex-col items-end p-3">
         <div className=" flex relative justify-between items-center  flex-col  bg-[#0D1117] border border-[#30363D] sticky top-[80px] rounded-[5px] w-[35vw] py-[3%]">
           {edit && (
-            <button onClick={editInfo} className="button active:bg-green-500 absolute bg-black border border-[#30363D] top-2 right-2">
+            <button
+              onClick={editInfo}
+              className="button active:bg-green-500 absolute bg-black border border-[#30363D] top-2 right-2"
+            >
               <i class={`fa-solid fa-pen text-white`}></i>
             </button>
           )}
           <div className="w-full flex flex-col justify-between items-center gap-3">
-            <div className="bg-[url(https://th.bing.com/th/id/R.3f3b68c0fde58eea7448cef9b640e299?rik=c0t2b8nVH4v%2f2g&pid=ImgRaw&r=0)] bg-center bg-contain rounded-full w-1/2 h-[calc(35vw/2)]"></div>
+            <div className="bg-[url(https://th.bing.com/th/id/R.3f3b68c0fde58eea7448cef9b640e299?rik=c0t2b8nVH4v%2f2g&pid=ImgRaw&r=0)] edit-image relative bg-center bg-contain rounded-full w-1/2 h-[calc(35vw/2)]">
+              <input onChange={setImage} type="file" className="absolute bg-white h-full w-full rounded-full opacity-0 cursor-pointer input" accept="image/png, image/gif, image/jpeg" />
+            </div>
             <div className="text-xl font-bold text-white mt-5">
               {data.ind[0].nom} {data.ind[0].prenom}
             </div>
@@ -182,7 +192,6 @@ export default function MyProfile() {
                   }`}
                 >
                   <input
-
                     className={`outline-none border-[#30363D]  border pl-2 text-black font-thin  text-base rounded w-[220px] `}
                     ref={skillInput}
                   />
@@ -202,19 +211,19 @@ export default function MyProfile() {
             </div>
             <ul className="text-white">
               {data.skill.map((e) => (
-                <li id={e.id} className="mb-2">
-                  <i
+                <li id={e.id} className="mb-2 flex">
+                  <span
                     onClick={(e) => deleteSkill(e)}
                     id={e.id}
-                    class="fa-solid fa-minus text-red-600 mr-5 cursor-pointer bg-white p-1 rounded-full"
-                  ></i>
-                  <span>{e.title}</span>
+                    class="fa-solid fa-minus w-[25px] h-[25px] text-red-600 cursor-pointer border-[#30363D]  border mr-3 flex justify-center items-center rounded-full"
+                  ></span>
+                  <div>{e.title}</div>
                 </li>
               ))}
             </ul>
           </div>
           <div className="flex flex-col border border-[#30363D]  my-1 bg-[#0D1117] w-[80%] mx-auto rounded-[7px] p-5">
-            <div className="text-gray-500 text-lg font-bold pr-5   w-full flex justify-between">
+            <div className="text-gray-500 border-b border-[#30363D] pb-3  text-gray-500 text-lg font-bold pr-5   w-full flex justify-between">
               <div>Experience</div>{" "}
               <div onClick={() => setExperience(true)}>
                 {" "}
@@ -235,7 +244,7 @@ export default function MyProfile() {
             ))}
           </div>
           <div className="flex flex-col border border-[#30363D] bg-[#0D1117] w-[80%] mx-auto rounded-[7px] p-5 my-1">
-            <div className="text-gray-500 text-lg font-bold pr-5 w-full flex justify-between">
+            <div className="text-gray-500 text-lg border-b border-[#30363D] pb-3  font-bold pr-5 w-full flex justify-between">
               <div>Education</div>{" "}
               <div onClick={() => setEducation(true)}>
                 <i class="fa-solid fa-plus cursor-pointer"></i>

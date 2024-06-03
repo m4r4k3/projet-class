@@ -34,8 +34,8 @@ export default function SignIn() {
           setError("not authorized");
           setIsLoading(false);
         } else {
-          console.log(data)
-          dispatch(actions.login({id:data.user.id , token:data.token}))
+          console.log(data);
+          dispatch(actions.login({ id: data.user.id, token: data.token }));
           navigate("/");
         }
       })

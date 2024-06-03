@@ -5,30 +5,30 @@ import {
 } from "@reduxjs/toolkit";
 import { Axios } from "../axios";
 
-const res = createAsyncThunk("user/inintiate", async function () {
-  console.log("dd");
-  return Axios.get("/api/islogged").then((res) =>  res.data );
-});
+export const fetchLogginDetails = createAsyncThunk(
+  "user/inintiate",
+  async function (state) {
+    const res = await Axios.get("/api/islogged");
+    return res;
+  }
+);
 
 const slice = createSlice({
   name: "user",
-  initialState: {},
+  initialState: {
+    loggedIn: false,
+    id: null,
+  },
   reducers: {
     login(state, action) {
       state.loggedIn = true;
       state.id = action.payload.id;
-      state.token = action.payload.token;
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(res.fulfilled, (state, action) => {
-      state.id = action.payload.id;
-      state.loggedIn = action.payload.loggedIn;
-    });
-    builder.addCase(res.pending, (state, action) => {
-      console.log("ddddddddddddd")
-      state.id = action.payload.id;
-      state.loggedIn = action.payload.loggedIn;
+    builder.addCase(fetchLogginDetails.fulfilled, (state, action) => {
+      state.id = action.payload.data.id;
+      state.loggedIn = action.payload.data.loggedIn;
     });
   },
 });

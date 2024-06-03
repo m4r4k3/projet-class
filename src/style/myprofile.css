@@ -1,0 +1,13 @@
+.edit-image:hover::after{
+    content: "Change picture";
+    width: 100%;
+    cursor: pointer;
+    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%    ;
+    color: white;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.486);
+}
