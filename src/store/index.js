@@ -18,6 +18,7 @@ const slice = createSlice({
   initialState: {
     loggedIn: false,
     id: null,
+    type: null
   },
   reducers: {
     login(state, action) {
@@ -29,6 +30,7 @@ const slice = createSlice({
     builder.addCase(fetchLogginDetails.fulfilled, (state, action) => {
       state.id = action.payload.data.id;
       state.loggedIn = action.payload.data.loggedIn;
+      state.type = action.payload.data.type
     });
   },
 });

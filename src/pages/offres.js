@@ -5,6 +5,7 @@ import FullScreenOffer from "../components/offres/fullscreen-card"
 import LoadingScreen from "../loading"
 import "../style/navigate.css";
 import { useState } from "react";
+import SearchBar from "../components/main/search";
 export default function Offres() {
     const [fullScreen , setFullScreen] = useState(null)
     const [data , setData]=  useState(false);
@@ -17,18 +18,7 @@ export default function Offres() {
   return (
     <>
       <div className="bg-[url('../image/pattern.png')] w-full  pt-[70px]">
-        <div className="flex w-full justify-center items-center mt-5">
-          <div className="pr-5 cursor-pointer">
-          <i class="fa-light fa-bars-filter text-white text-2xl"></i>
-          </div>
-          <input
-            type="text"
-            className="outline-0 w-[25%] h-[30px] pl-2 rounded shadow-inner"
-          />
-          <button className="pl-5">
-            <i className="fa-solid fa-chevron-right text-white"></i>
-          </button>
-        </div>
+      <SearchBar type={2}/>
        {fullScreen && <FullScreenOffer setOffer={setFullScreen} offre ={fullScreen}/>}
         <div
           className={`grid grid-cols-3 w-full justify-items-center p-[50px] gap-[50px]`}

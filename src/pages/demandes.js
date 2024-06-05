@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import DemandesCard from "../components/demandes/demandeCard";
 import { Axios } from "../axios";
 import LoadingScreen from "../loading";
+import SearchBar from "../components/main/search";
 
 export default function Demandes() {
   const [data, setData] = useState(false);
@@ -16,15 +17,7 @@ export default function Demandes() {
   return (
     <>
       <div className="bg-[url('../image/pattern.png')] w-full  pt-[70px]">
-        <div className="flex w-full justify-center items-center mt-5">
-          <input
-            type="text"
-            className="outline-0 w-[25%] h-[30px] pl-2 rounded shadow-inner"
-          />
-          <button className="pl-5">
-            <i className="fa-solid fa-chevron-right text-white"></i>
-          </button>
-        </div>
+    <SearchBar type={1}/>
         <div
           className={`grid grid-cols-3 w-full justify-items-center p-[50px] gap-[50px]`}
         >
