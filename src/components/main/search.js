@@ -1,7 +1,6 @@
 import {useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 
-export default function SearchBar({type}){
+export default function SearchBar({type , addMethod}){
     const isLoggedIn = useSelector((s) => s.store.loggedIn);
     const typeUser = useSelector((s) => (s.store.type));
    
@@ -18,9 +17,9 @@ export default function SearchBar({type}){
     <button className="pl-5">
       <i className="fa-solid fa-chevron-right text-white"></i>
     </button>
-    {isLoggedIn && typeUser == type&& <Link className="absolute right-20 text-center h-full" to={typeUser != 1 ?"/offres/create" :"/demandes/create"}>
+    {isLoggedIn && typeUser == type&& <div className="absolute right-20 text-center h-full cursor-pointer" onClick={()=>addMethod(true)}>
       <i className="fa-solid fa-plus text-xl text-white"></i>
-    </Link>}
+    </div>}
   </div>
       </>
 }

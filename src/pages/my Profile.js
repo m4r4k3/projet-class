@@ -18,7 +18,10 @@ export default function MyProfile() {
   const [education, setEducation] = useState(false);
   const [edit, setEdit] = useState(false);
   const [info, setInfo] = useState({});
+  const [cities , setCities] = useState();
 
+
+   
   const resetData = () => setData(false);
   const skillInput = useRef();
 
@@ -58,7 +61,6 @@ export default function MyProfile() {
 
   const deleteSkill = async (e) => {
     resetData();
-
     await Axios.get("/sanctum/csrf-cookie");
     await Axios.delete(`/api/skill/${e.target.id}`)
       .then((res) => res)
@@ -68,6 +70,10 @@ export default function MyProfile() {
 
   useEffect(() => {
     document.body.classList.remove("modal-open");
+    Axios.get("api/city")
+    .then(res=>res.data)
+    .then(res=>setCities(res))
+
     Axios.get(`/api/individuel/${id}/edit`)
       .then((res) => res.data)
       .then((data) => setData(data));
@@ -82,7 +88,7 @@ export default function MyProfile() {
   }, [education, experience]);
 
   if (!data) {
-    document.body.classList.add("modal-open");
+    document.body.classList.remove("modal-open");
     return <LoadingScreen />;
   }
   return (
@@ -135,20 +141,16 @@ export default function MyProfile() {
                 onChange={(e) => setFormFunc(e)}
                 onInput={() => setEdit(true)}
                 defaultValue={data.ind[0].entreprise}
-                className="bg-transparent outline-0"
+                className="bg-transparent outline-0 border-gray-500 border w-[200px] rounded pl-1"
               />
             </li>
             <li className="flex gap-3">
               <span className="button bg-black border border-[#30363D]">
                 <i class={`fa-solid fa-location-dot text-white`}></i>
               </span>
-              <input
-                name="city"
-                onChange={(e) => setFormFunc(e)}
-                onInput={() => setEdit(true)}
-                defaultValue={data.ind[0].city}
-                className="bg-transparent outline-0"
-              />
+              <select  className="text-white bg-transparent outline-0 rounded border-gray-500 border w-[200px] rounded pl-1">
+            {cities.map(e=><option className="text-white cursor-pointer bg-[#0D1117] border-gray-500 border " value={e.id}>{e.name}</option>)}
+        </select>
             </li>
             <li className="flex gap-3">
               <span className="button bg-black border border-[#30363D]">
@@ -159,7 +161,7 @@ export default function MyProfile() {
                 onChange={(e) => setFormFunc(e)}
                 onInput={() => setEdit(true)}
                 defaultValue={data.ind[0].post}
-                className="bg-transparent outline-0"
+                className="bg-transparent outline-0 border-gray-500 border w-[200px] rounded pl-1"
               />
             </li>
             <li className="flex gap-3">
@@ -171,7 +173,7 @@ export default function MyProfile() {
                 onChange={(e) => setFormFunc(e)}
                 onInput={() => setEdit(true)}
                 defaultValue={data.ind[0].phone}
-                className="bg-transparent outline-0"
+                className="bg-transparent outline-0 border-gray-500 border w-[200px] rounded pl-1"
               />
             </li>
           </ul>

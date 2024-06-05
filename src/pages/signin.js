@@ -28,14 +28,13 @@ export default function SignIn() {
     setIsLoading(true);
     document.body.classList.add("modal-open");
     await Axios.post("/api/login", form)
-      .then(async (res) => {
-        const data = await res.data;
+      .then((res) =>res)
+      .then(data=>{
         if (data.status == 401) {
-          setError("not authorized");
+          setError("Email or Password not correct.");
           setIsLoading(false);
         } else {
-          console.log(data);
-          dispatch(actions.login({ id: data.user.id, token: data.token }));
+          dispatch(actions.login({ id: data.id , type :data.type}));
           navigate("/");
         }
       })

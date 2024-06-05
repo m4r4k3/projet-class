@@ -28,7 +28,7 @@ export function Footer() {
         </div>
 
         <div className=" logo-font">
-          <img src={steve} className="h-[500px] w-[400px]" style={{transform:`translatex(${pos  /5 }px)`}}/>
+          <img src={steve} className="h-[500px] w-[400px]" style={{transform:`translatex(${(pos <50? 50: pos)  /5 }px)`}}/>
         </div>
       </div>
     </div>

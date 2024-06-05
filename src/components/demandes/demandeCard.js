@@ -14,7 +14,6 @@ export default function DemandeCard({isDemande  ,
   role,
 }) {
   const description = useRef(null);
-  console.log(nom)
   return (
     <div className={` ${isDemande?"h-[350px] w-[350px] ":"h-[300px] w-[350px] "}flex relative `}>
       

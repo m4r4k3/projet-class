@@ -3,9 +3,12 @@ import DemandesCard from "../components/demandes/demandeCard";
 import { Axios } from "../axios";
 import LoadingScreen from "../loading";
 import SearchBar from "../components/main/search";
+import AddDemande from "../components/demandes/addDemande";
 
 export default function Demandes() {
+
   const [data, setData] = useState(false);
+  const [isAddDemande, setsAddDemande] = useState(false);
   useEffect(() => {
     Axios.get("/api/demandes")
       .then((res) => res.data)
@@ -17,7 +20,8 @@ export default function Demandes() {
   return (
     <>
       <div className="bg-[url('../image/pattern.png')] w-full  pt-[70px]">
-    <SearchBar type={1}/>
+   { isAddDemande && <AddDemande addMethod = {setsAddDemande}/>}
+    <SearchBar type={1} addMethod = {setsAddDemande}/>
         <div
           className={`grid grid-cols-3 w-full justify-items-center p-[50px] gap-[50px]`}
         >

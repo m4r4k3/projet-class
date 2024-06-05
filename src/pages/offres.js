@@ -6,8 +6,10 @@ import LoadingScreen from "../loading"
 import "../style/navigate.css";
 import { useState } from "react";
 import SearchBar from "../components/main/search";
+import AddOffre from "../components/offres/add-offre";
 export default function Offres() {
     const [fullScreen , setFullScreen] = useState(null)
+    const [isAddOffre , setAddOffre] = useState(false);
     const [data , setData]=  useState(false);
     useEffect(()=>{
     Axios.get("/api/offres").then((res)=>res.data).then(data=>setData(data))
@@ -18,8 +20,9 @@ export default function Offres() {
   return (
     <>
       <div className="bg-[url('../image/pattern.png')] w-full  pt-[70px]">
-      <SearchBar type={2}/>
-       {fullScreen && <FullScreenOffer setOffer={setFullScreen} offre ={fullScreen}/>}
+      <SearchBar type={2} addMethod = {setAddOffre}/>
+      {isAddOffre && <AddOffre addMethod = {setAddOffre}/>}
+       {fullScreen && <FullScreenOffer setOffer={setFullScreen} offre={fullScreen}/>}
         <div
           className={`grid grid-cols-3 w-full justify-items-center p-[50px] gap-[50px]`}
         >

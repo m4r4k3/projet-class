@@ -9,7 +9,8 @@ export const fetchLogginDetails = createAsyncThunk(
   "user/inintiate",
   async function (state) {
     const res = await Axios.get("/api/islogged");
-    return res;
+    const data= await res.data ;
+    return data;
   }
 );
 
@@ -24,13 +25,14 @@ const slice = createSlice({
     login(state, action) {
       state.loggedIn = true;
       state.id = action.payload.id;
+      state.type = action.payload.type
     },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchLogginDetails.fulfilled, (state, action) => {
-      state.id = action.payload.data.id;
-      state.loggedIn = action.payload.data.loggedIn;
-      state.type = action.payload.data.type
+      state.id = action.payload.id;
+      state.loggedIn = action.payload.loggedIn;
+      state.type = action.payload.type
     });
   },
 });

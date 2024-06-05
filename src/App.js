@@ -16,13 +16,15 @@ import Applicants from "./pages/postules";
 import NotFound from "./pages/notfound"
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLogginDetails } from "./store";
+import MyEntreprise from "./pages/my Entreprise";
 
 export default function App() {
   const [isMenu, setIsMenu] = useState();
   const isLoggedIn = useSelector((s) => s.store.loggedIn);
+  const type = useSelector((s) => s.store.type);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   
+      document.body.classList.remove("modal-open");
   useEffect(() => {
     dispatch(fetchLogginDetails());
     if (isMenu) {
@@ -50,7 +52,7 @@ export default function App() {
           </>
           :
           <>
-          <Route element={<MyProfile />} path="/myProfile"></Route>
+          <Route element={type == 1 ? <MyProfile /> :<MyEntreprise /> } path="/myProfile"></Route>
           </>
           }
           <Route element={<Saves />} path="/save"></Route>
