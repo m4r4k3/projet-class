@@ -18,28 +18,32 @@ export default function MyProfile() {
   const [education, setEducation] = useState(false);
   const [edit, setEdit] = useState(false);
   const [info, setInfo] = useState({});
-  
+
   const resetData = () => setData(false);
   const skillInput = useRef();
 
   const setFormFunc = (e) =>
     setInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
-  const setImage = (e)=>{
-    setEdit(true)
-    setInfo(prev=>({...prev , "image" :e.target.files[0]}))
-  }
+  const setImage = (e) => {
+    setEdit(true);
+    setInfo((prev) => ({ ...prev, image: e.target.files[0] }));
+  };
   const editInfo = async () => {
-    const formData = new FormData();
-    formData.append("image", info.image)
-    console.log(formData)
-    resetData(); 
+    const formData = new FormData ();
+    formData.append("image", info["image"])  ;
+    formData.append("description", "ddddddddddddd")  ;
+    console.log(info["image"])
+    console.log(formData);
+    resetData();
     await Axios.get("/sanctum/csrf-cookie");
-    await Axios.put(`/api/individuel/${id}`, formData)
-    .then(res=>console.log(res)) 
-    .catch(() =>
-      console.log("error")
-    );
+    await Axios.put(`/api/individuel/${id}`, info, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    })
+      .then((res) => console.log(res))
+      .catch(() => console.log("error"));
     setIsSet((prev) => !prev);
   };
   const addSkill = async () => {
@@ -110,7 +114,12 @@ export default function MyProfile() {
           )}
           <div className="w-full flex flex-col justify-between items-center gap-3">
             <div className="bg-[url(https://th.bing.com/th/id/R.3f3b68c0fde58eea7448cef9b640e299?rik=c0t2b8nVH4v%2f2g&pid=ImgRaw&r=0)] edit-image relative bg-center bg-contain rounded-full w-1/2 h-[calc(35vw/2)]">
-              <input onChange={setImage} type="file" className="absolute bg-white h-full w-full rounded-full opacity-0 cursor-pointer input" accept="image/png, image/gif, image/jpeg" />
+              <input
+                onChange={setImage}
+                type="file"
+                className="absolute bg-white h-full w-full rounded-full opacity-0 cursor-pointer input"
+                accept="image/png, image/gif, image/jpeg"
+              />
             </div>
             <div className="text-xl font-bold text-white mt-5">
               {data.ind[0].nom} {data.ind[0].prenom}
