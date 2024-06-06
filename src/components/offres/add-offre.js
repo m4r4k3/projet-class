@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Axios } from "../../axios";
 import LoadingScreen from "../../loading";
 
-export default function AddOffre({ addMethod }) {
+export default function AddOffre({ addMethod , setEdit }) {
   const [form, setForm] = useState();
 
   const [cities, setCities] = useState();
@@ -33,7 +33,8 @@ export default function AddOffre({ addMethod }) {
       await Axios.post("/api/offres", form ) 
       .then(res=>res)
       .then(data=>console.log(data));
-    addMethod(false);
+      addMethod(false);
+      setEdit(prev=>!prev)
     }
   if (!cities || !contrat || !domain) {
     return <LoadingScreen />;

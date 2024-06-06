@@ -14,7 +14,9 @@ export default function Demandes() {
     Axios.get("/api/demandes")
       .then((res) => res.data)
       .then((data) => setData(data));
+     
   }, [edit]);
+  console.log(data)
   if (!data) {
     return <LoadingScreen />;
   }

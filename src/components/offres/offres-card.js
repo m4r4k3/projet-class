@@ -1,3 +1,6 @@
+import { combineSlices } from "@reduxjs/toolkit";
+import { Axios } from "../../axios";
+import { useSelector } from "react-redux";
 export default function OffresCard({isOffer, setOffer ,
   id,
   salary ,
@@ -9,6 +12,14 @@ export default function OffresCard({isOffer, setOffer ,
   starting ,
   post,contrat
 }) {
+  const idUser = useSelector((s) => console.log(s.store));   
+  const apply = ()=>{
+    console.log(idUser)
+    Axios.post("/api/applicant", {"offre_id":id})
+    .then(res=>res.data)
+    .then(res=>console.log(res))
+    .catch(()=>console.error("error"))
+  }
   return (
     <div className={`${isOffer?"h-[350px] w-[350px]":"h-[300px] w-[350px] "} flex relative cursor-pointer`} onClick={()=>setOffer({
       salary  : salary ,
@@ -51,8 +62,8 @@ export default function OffresCard({isOffer, setOffer ,
             </span>
           </div>
         </div>
-        <div className="w-full flex justify-end pr-[20px] mt-[20px]">
-        <button className={`${isOffer?"":"hidden"} border-[2px] px-10 py-1 rounded-[5px] shadow-inner font-semibold text-[15px]`}>Apply</button>
+        <div className="w-full flex justify-end pr-[20px] mt-[20px]" >
+        <button className={`${isOffer?"":"hidden"} border-[2px] px-10 py-1 rounded-[5px] shadow-inner font-semibold text-[15px]`} onClick={apply} >Apply</button>
         </div>
       </div>
     </div>
