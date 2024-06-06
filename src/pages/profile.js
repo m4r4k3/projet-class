@@ -56,9 +56,9 @@ export default function Profile() {
             </li>{" "}
             <li className="flex gap-3">
               <span className="button bg-black border border-[#30363D]">
-                <i class="fa-solid fa-envelope text-white"></i>
+                <i class="fa-solid fa-phone text-white"></i>
               </span>
-              <label>Email Me</label>
+              <label>{data.ind.phone}</label>
             </li>
           </ul>
         </div>

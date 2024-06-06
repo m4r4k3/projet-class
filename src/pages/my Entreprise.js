@@ -7,20 +7,25 @@ import { useSelector } from "react-redux";
 export default function MyEntreprise() {
   const [data, setData] = useState();
   const [edit, setEdit] = useState(false);
+  const [isSet, setIsSet] = useState(false);
   const id = useSelector((s) => s.store.id);
-  console.log(id);
+
   useEffect(() => {
-    document.body.classList.remove("modal-open");
     Axios.get(`/api/entreprise/${id}`)
-      .then((res) => res.data)
-      .then((data) => setData(data[0]))
-      .catch((error) => console.log(error));
-  }, []);
+    .then((res) => res.data)
+    .then((data) => setData(data[0]))
+    .catch((error) => console.log(error));
+    document.body.classList.remove("modal-open");
+  }, [isSet]);
+
   const editSubmit = () => {
-    Axios.put(`api/entreprise/${id}`)
+    setData(false)
+    Axios.put(`api/entreprise/${id}` , {"description": edit})
       .then((res) => res)
       .then((res) => console.log(res));
+    setIsSet(prev=>!prev)
   };
+
   if (!data) {
     document.body.classList.add("modal-open");
     return <LoadingScreen />;
@@ -52,7 +57,7 @@ export default function MyEntreprise() {
           <textarea
             name="description"
             type="text"
-            onInput={() => setEdit(true)}
+            onInput={(e) => setEdit(e.currentTarget.value)}
             defaultValue={data.description}
             className="text-white outline-0 w-full bg-transparent border border-[#30363D] rounded pl-1 h-[200px] resize-none"
           ></textarea>
