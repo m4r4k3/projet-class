@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import "../../style/demande.css";
+import { Axios } from "../../axios";
 export default function DemandeCard({isDemande  ,
   id,
   salaire,
@@ -13,11 +14,23 @@ export default function DemandeCard({isDemande  ,
   description,
   domain ,
   role,
+  reload
 }) {
   const descriptionVar = useRef(null);
+  const deleteDemande = async()=>{
+    await Axios.get("/sanctum/csrf-cookie");
+    Axios.delete(`/api/demandes/${id}`)
+    .then(res=>res)
+    .then(res=>console.log(res))
+    reload()
+  }
   return (
-    <Link to={"/profile/"+id} className={` ${isDemande?"h-[350px] w-[350px] ":"h-[300px] w-[350px] "}flex relative `}>
+    <div  className={` ${isDemande?"h-[350px] w-[350px] ":"h-[300px] w-[350px] "}flex relative `}>
       
+      { !isDemande && <div className="absolute top-1 left-[-35px] flex-text-[#888888] text-xl z-[1]">
+          <button onClick={deleteDemande} className="buttons bg-red-500 w-[30px]  text-white h-[30px] flex justify-center items-center mb-1 rounded-full"> <i className="fa-solid fa-trash"></i></button>
+          <Link to={"/applicants/"+id} className="buttons bg-blue-500 w-[30px] text-black  h-[30px] flex justify-center items-center mb-1 rounded-full"><i className="fa-solid fa-user"></i></Link>
+        </div>}
       <div
         className="w-full h-full bg-white rounded-[15px] relative text-[18px]  shadow-inner overflow-hidden"
         onMouseOut={() => descriptionVar.current.classList.remove("descriptionUP")}
@@ -69,6 +82,6 @@ export default function DemandeCard({isDemande  ,
           </div>
         </div>
       </div>
-    </Link>
+    </div>
   );
 }
