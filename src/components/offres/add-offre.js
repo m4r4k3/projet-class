@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Axios } from "../../axios";
 import LoadingScreen from "../../loading";
 
-export default function AddOffre({ addMethod , setEdit }) {
+export default function AddOffre({ addMethod, setEdit }) {
   const [form, setForm] = useState();
 
   const [cities, setCities] = useState();
@@ -28,14 +28,14 @@ export default function AddOffre({ addMethod , setEdit }) {
       .then((res) => setContrat(res));
   }, []);
 
-    const submit = async ()=>{
-      await Axios.get("/sanctum/csrf-cookie");
-      await Axios.post("/api/offres", form ) 
-      .then(res=>res)
-      .then(data=>console.log(data));
-      addMethod(false);
-      setEdit(prev=>!prev)
-    }
+  const submit = async () => {
+    await Axios.get("/sanctum/csrf-cookie");
+    await Axios.post("/api/offres", form)
+      .then((res) => res)
+      .then((data) => console.log(data));
+    addMethod(false);
+    setEdit((prev) => !prev);
+  };
   if (!cities || !contrat || !domain) {
     return <LoadingScreen />;
   }
@@ -85,8 +85,14 @@ export default function AddOffre({ addMethod , setEdit }) {
             </div>
             <div className="text-white w-full flex justify-center mb-5 ">
               <label className="w-[100px] inline-block pr-1">City</label>
-              <select className="text-black outline-0 w-[50%] rounded" name="city"     onChange={(e) => setFormFunc(e)}>
-              <option key={0} selected="true" >-</option>
+              <select
+                className="text-black outline-0 w-[50%] rounded"
+                name="city"
+                onChange={(e) => setFormFunc(e)}
+              >
+                <option key={0} selected="true">
+                  -
+                </option>
                 {cities.map((e) => (
                   <option
                     key={e.id}
@@ -100,8 +106,14 @@ export default function AddOffre({ addMethod , setEdit }) {
             </div>
             <div className="text-white w-full flex justify-center mb-5 ">
               <label className="w-[100px] inline-block pr-1">Domain</label>
-              <select className="text-black outline-0 w-[50%] rounded" name="domain_id"     onChange={(e) => setFormFunc(e)}>
-              <option key={0} selected="true">-</option>
+              <select
+                className="text-black outline-0 w-[50%] rounded"
+                name="domain_id"
+                onChange={(e) => setFormFunc(e)}
+              >
+                <option key={0} selected="true">
+                  -
+                </option>
                 {domain.map((e) => (
                   <option
                     key={e.id}
@@ -117,8 +129,14 @@ export default function AddOffre({ addMethod , setEdit }) {
           <div className="w-1/2">
             <div className="text-white w-full flex justify-center mb-5 ">
               <label className="w-[100px] inline-block pr-1">Contrat</label>
-              <select className="text-black outline-0 w-[50%] rounded" name="type_contrat"     onChange={(e) => setFormFunc(e)}>
-                <option key={0} selected="true">-</option>
+              <select
+                className="text-black outline-0 w-[50%] rounded"
+                name="type_contrat"
+                onChange={(e) => setFormFunc(e)}
+              >
+                <option key={0} selected="true">
+                  -
+                </option>
                 {contrat.map((e) => (
                   <option
                     key={e.id}
@@ -154,7 +172,8 @@ export default function AddOffre({ addMethod , setEdit }) {
         </div>
         <div className="mb-5">
           <button
-            className="text-white rounded border px-8 py-2 border-[#30363D] duration-300 hover:bg-gray-800" onClick={submit} 
+            className="text-white rounded border px-8 py-2 border-[#30363D] duration-300 hover:bg-gray-800"
+            onClick={submit}
           >
             Ajouter
           </button>

@@ -35,7 +35,6 @@ export default function App() {
       document.body.classList.remove("modal-open");
     }
   }, [isMenu]);
-  console.log(type)
   return (
     <>
       <div className="w-full h-screen App ">
@@ -47,9 +46,26 @@ export default function App() {
           <Route element={<Demandes />} path="/demandes"></Route>
           <Route element={<Profile />} path="/profile/:id"></Route>
           <Route element={<Search />} path="/search"></Route>
-          {!isLoggedIn ?<Route element={<SignIn />} path="/sign-in"></Route>:<Route element={type == 1 ? <MyProfile /> : <MyEntreprise />} path="/myProfile" ></Route>}
-          {isLoggedIn &&  <Route element={type == 1 ? <MyDemandes /> : <MyOffres />} path="/my-posts" ></Route>}
-          {isLoggedIn && ( <> <Route element={<Applicants />} path="/applicants/:id" /></>)}
+          {!isLoggedIn ? (
+            <Route element={<SignIn />} path="/sign-in"></Route>
+          ) : (
+            <Route
+              element={type == 1 ? <MyProfile /> : <MyEntreprise />}
+              path="/myProfile"
+            ></Route>
+          )}
+          {isLoggedIn && (
+            <Route
+              element={type == 1 ? <MyDemandes /> : <MyOffres />}
+              path="/my-posts"
+            ></Route>
+          )}
+          {isLoggedIn && (
+            <>
+              {" "}
+              <Route element={<Applicants />} path="/applicants/:id" />
+            </>
+          )}
           <Route element={<Saves />} path="/save"></Route>
           <Route element={<Entreprise />} path="/entreprise/:id"></Route>
           <Route path="*" element={<NotFound />}></Route>

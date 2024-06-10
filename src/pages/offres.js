@@ -20,9 +20,10 @@ export default function Offres() {
   if (!data) {
     return <LoadingScreen />;
   }
+  document.body.classList.remove("modal-open");
   const apply = (id) => {
-    setData(false)
-    setEdit(prev=>!prev)
+    setData(false);
+    setEdit((prev) => !prev);
     Axios.post("/api/applicant", { offre_id: id })
       .then((res) => res.data)
       .then((res) => console.log(res))
@@ -34,7 +35,11 @@ export default function Offres() {
         <SearchBar type={2} addMethod={setAddOffre} />
         {isAddOffre && <AddOffre addMethod={setAddOffre} setEdit={setEdit} />}
         {fullScreen && (
-          <FullScreenOffer  setOffer={setFullScreen} offre={fullScreen} apply={apply}/>
+          <FullScreenOffer
+            setOffer={setFullScreen}
+            offre={fullScreen}
+            apply={apply}
+          />
         )}
         <div
           className={`grid grid-cols-3 w-full justify-items-center p-[50px] gap-[50px]`}

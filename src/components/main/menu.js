@@ -5,9 +5,9 @@ import { useSelector } from "react-redux";
 export default function Menu({setIsMenu}) {
   const type = useSelector((s) => s.store.type); 
   return (
-    <div className="fixed z-[3] h-screen top-[70px] w-screen glass menu-glass modal-open " onClick={(e)=>{e.stopPropagation() ;setIsMenu(prev=>!prev);}}  >
+    <div className="fixed h-screen top-[70px] w-screen glass menu-glass modal-open " style={{zIndex:99}} onClick={(e)=>{e.stopPropagation() ;  document.body.classList.remove("modal-open");;setIsMenu(prev=>!prev);}}  >
 
-    <div className=" w-screen h-[calc(50%-70px)] shadow  bg-white ">
+    <div className=" w-screen h-[calc(50%-70px)]   bg-[#F4F4F4] ">
       <div className="flex w-full justify-between px-[10%] h-full pt-[3%]">
         <div>
           <div className="title-menu">listing</div>

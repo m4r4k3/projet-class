@@ -6,7 +6,6 @@ import SearchBar from "../components/main/search";
 import AddDemande from "../components/demandes/addDemande";
 
 export default function Demandes() {
-
   const [data, setData] = useState(false);
   const [edit, setEdit] = useState(false);
   const [isAddDemande, setsAddDemande] = useState(false);
@@ -14,17 +13,19 @@ export default function Demandes() {
     Axios.get("/api/demandes")
       .then((res) => res.data)
       .then((data) => setData(data));
-     
   }, [edit]);
-  console.log(data)
   if (!data) {
     return <LoadingScreen />;
   }
+  document.body.classList.remove("modal-open");
+
   return (
     <>
-      <div className="bg-[url('../image/pattern.png')] w-full  pt-[70px]">
-   { isAddDemande && <AddDemande addMethod = {setsAddDemande} setEdit={setEdit}  />}
-    <SearchBar type={1} addMethod = {setsAddDemande}/>
+      <div className="bg-[url('../image/pattern.png')] w-full  pt-[70px] h-screen">
+        {isAddDemande && (
+          <AddDemande addMethod={setsAddDemande} setEdit={setEdit} />
+        )}
+        <SearchBar type={1} addMethod={setsAddDemande} />
         <div
           className={`grid grid-cols-3 w-full justify-items-center p-[50px] gap-[50px]`}
         >

@@ -85,8 +85,22 @@ export default function Search() {
         class="border border-[#30363D] rounded-[10px] bg-[#0D1117] p-4 mb-2 flex justify-around"
             ref={demandes}
             >
-            <DemandeCard isDemande={false} />
-            <DemandeCard isDemande={false} />
+              {data.map((e) => (
+            <DemandesCard
+              isDemande={true}
+              id={e.id}
+              salaire={e.salaire}
+              location={e.location}
+              role={e.role}
+              nom={e.nom}
+              prenom={e.prenom}
+              experience={e.experience}
+              niveau={e.niveau}
+              description={e.description}
+              domain={e.domain}
+              created_at={e.created_at}
+            />
+          ))}
           </div>
         </div>
         <div class=" w-full  ">
@@ -100,8 +114,24 @@ export default function Search() {
             class="border border-[#30363D] rounded-[10px] bg-[#0D1117] p-4 mb-2 flex justify-around"
             ref={offers}
             >
-            <OffresCard isOffer={false} />
-            <OffresCard isOffer={false} />
+            {data.map((e, i) => (
+            <OffresCard
+              setOffer={setFullScreen}
+              isOffer={true}
+              id={e.id}
+              characteristic={e.characteristic}
+              salary={e.salary}
+              starting={e.starting}
+              name={e.name}
+              domain={e.domain}
+              city={e.city}
+              created_at={e.created_at}
+              description={e.description}
+              post={e.post}
+              contrat={e.contrat}
+              apply={apply}
+            />
+          ))}
           </div>
         </div>
         <div class=" w-full  ">
