@@ -8,7 +8,7 @@ export default function Education({school , certificate ,end , start , descripti
             <div>{certificate}</div>
           </div>
           <div className="flex w-[200px] justify-between">
-          <div className="text-gray-400 text-sm">{(new Date(start)).getFullYear} - {(new Date(end)).getFullYear}</div>
+          <div className="text-gray-400 text-sm">{start} - {end}</div>
           </div>
           <div>
             <div className="font-semibold text-sm text-gray-400">

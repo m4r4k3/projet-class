@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { useSelector } from "react-redux";
 export default function FullScreenOffer({ setOffer, offre, apply }) {
   const [showList, setList] = useState(false);
   const {
@@ -12,8 +12,10 @@ export default function FullScreenOffer({ setOffer, offre, apply }) {
     description,
     starting,
     contrat,
+    isApplied,
     post,
   } = offre;
+  const type = useSelector((s) => s.store.type);
   return (
     <div
       className="w-screen h-screen fixed top-0 menu-glass flex justify-center items-center "
@@ -28,7 +30,7 @@ export default function FullScreenOffer({ setOffer, offre, apply }) {
         }}
       >
         <div className="flex w-full justify-around">
-          <div>
+          <div className=" flex flex-col gap-1">
             <div>
               <label className="font-bold w-[130px]   inline-block">
                 Entreprise :
@@ -48,8 +50,14 @@ export default function FullScreenOffer({ setOffer, offre, apply }) {
               </label>
               <span>{city}</span>
             </div>
+            <div>
+              <label className="font-bold w-[130px]   inline-block">
+                description :
+              </label>
+              <span>{description}</span>
+            </div>
           </div>
-          <div>
+          <div className=" flex flex-col gap-1">
             <div>
               <label className="font-bold w-[130px]   inline-block">
                 Salaire :
@@ -68,23 +76,34 @@ export default function FullScreenOffer({ setOffer, offre, apply }) {
               </label>
               <span> {contrat}</span>
             </div>
+            <div>
+              <label className="font-bold w-[130px]  inline-block">
+                Post :
+              </label>
+              <span> {post}</span>
+            </div>
           </div>
         </div>
-        <div className="mt-10 mx-5">
+        <div className="mt-5 px-[5%]">
           <div className="font-bold"> Caractéristiques du poste :</div>
           <div className="px-5 py-2">{characteristic}</div>
         </div>
-        <div className="mt-5 w-full flex justify-end  ">
-          <button
-            className=" border px-10 py-1 rounded shadow shadow-inner duration-300 hover:scale-[1.05]"
-            onClick={() => {
-              apply(id);
-              setOffer(false);
-            }}
-          >
-            Apply
-          </button>
-        </div>
+        {type == 1 && (
+          <div className="mt-3 w-full flex justify-end  ">
+            <button
+              className={`border-[2px] px-10 py-1 rounded-[5px] shadow-inner font-semibold text-[15px] ${
+                isApplied ? "bg-green-500 text-white" : ""
+              }`}
+              onClick={(e) => {
+                e.stopPropagation();
+                apply(id);
+              }}
+              disabled={isApplied}
+            >
+              {isApplied ? "Applied" : "Apply"}
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

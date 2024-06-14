@@ -12,22 +12,27 @@ import Saves from "./pages/save";
 import Search from "./pages/search";
 import MyProfile from "./pages/my Profile";
 import Entreprise from "./pages/entreprise";
-import Applicants from "./pages/postules";
+import Applicants from "./pages/applicants";
+import Entreprises from "./pages/Entreprises.js";
 import MyDemandes from "./pages/myDemandes";
 import MyOffres from "./pages/myOffres.js";
 import NotFound from "./pages/notfound";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLogginDetails } from "./store";
 import MyEntreprise from "./pages/my Entreprise";
+import People from "./pages/people.js";
+import LoadingScreen from "./loading";
 
 export default function App() {
   const [isMenu, setIsMenu] = useState();
   const isLoggedIn = useSelector((s) => s.store.loggedIn);
   const type = useSelector((s) => s.store.type);
+  const isLoaded = useSelector((s) => s.store.isLoaded);
   const dispatch = useDispatch();
+  const [load , setLoad]= useState()
 
-  document.body.classList.remove("modal-open");
   useEffect(() => {
+    setLoad(false)
     dispatch(fetchLogginDetails());
     if (isMenu) {
       document.body.classList.add("modal-open");
@@ -35,17 +40,23 @@ export default function App() {
       document.body.classList.remove("modal-open");
     }
   }, [isMenu]);
+
+  document.body.classList.remove("modal-open");
+  if (load || !isLoaded) {
+    return <LoadingScreen />;
+  }
   return (
     <>
       <div className="w-full h-screen App ">
         <Nav setIsMenu={setIsMenu} isMenu={isMenu} />
-        {isMenu && <Menu setIsMenu={setIsMenu} />}
+        {isMenu && <Menu setIsMenu={setIsMenu} setLoad={setLoad} />}
         <Routes>
           <Route element={<LandingPage />} path="/"></Route>
           <Route element={<Offres />} path="/offres"></Route>
           <Route element={<Demandes />} path="/demandes"></Route>
           <Route element={<Profile />} path="/profile/:id"></Route>
           <Route element={<Search />} path="/search"></Route>
+          <Route element={<People />} path="/people"></Route>
           {!isLoggedIn ? (
             <Route element={<SignIn />} path="/sign-in"></Route>
           ) : (
@@ -66,8 +77,8 @@ export default function App() {
               <Route element={<Applicants />} path="/applicants/:id" />
             </>
           )}
-          <Route element={<Saves />} path="/save"></Route>
           <Route element={<Entreprise />} path="/entreprise/:id"></Route>
+          <Route element={<Entreprises />} path="/entreprises"></Route>
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
         <MainFooter />

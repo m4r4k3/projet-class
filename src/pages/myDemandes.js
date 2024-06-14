@@ -7,6 +7,7 @@ export default function MyDemandes() {
   const [data, setData] = useState(false);
   const [edit, setEdit] = useState(false);
   const reload = ()=>{
+    console.log("reloading")
     setData(false)
     setEdit(prev=>!prev)
   }
@@ -41,7 +42,8 @@ export default function MyDemandes() {
               description={e.description}
               domain={e.domain}
               created_at={e.created_at}
-                reload={reload}
+              setEdit ={setEdit} 
+              setData ={setData}  
             />
           ))}
         </div>

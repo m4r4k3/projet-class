@@ -35,7 +35,7 @@ export default function Education({
         </div>
         <div className="flex w-[200px] justify-between">
           <div className="text-gray-400 text-sm">
-            {new Date(start).getFullYear} - {new Date(end).getFullYear}
+            {start} - {end}
           </div>
         </div>
         <div>

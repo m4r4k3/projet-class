@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Axios } from "../../axios";
 import LoadingScreen from "../../loading";
 
-export default function AddOffre({ addMethod, setEdit }) {
+export default function AddOffre({ addMethod, setEdit , setData}) {
   const [form, setForm] = useState();
 
   const [cities, setCities] = useState();
@@ -29,6 +29,7 @@ export default function AddOffre({ addMethod, setEdit }) {
   }, []);
 
   const submit = async () => {
+    setData(false)
     await Axios.get("/sanctum/csrf-cookie");
     await Axios.post("/api/offres", form)
       .then((res) => res)

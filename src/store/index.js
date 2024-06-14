@@ -17,6 +17,7 @@ export const fetchLogginDetails = createAsyncThunk(
 const slice = createSlice({
   name: "user",
   initialState: {
+    isLoaded:false ,
     loggedIn: false,
     id: null,
     type: null
@@ -27,9 +28,15 @@ const slice = createSlice({
       state.id = action.payload.id;
       state.type = action.payload.type
     },
+    logout(state  ){
+      state.loggedIn = false;
+      state.id = null;
+      state.type = null ;
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(fetchLogginDetails.fulfilled, (state, action) => {
+      state.isLoaded = true
       state.id = action.payload.id;
       state.loggedIn = action.payload.loggedIn;
       state.type = action.payload.type

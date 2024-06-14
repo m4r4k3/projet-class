@@ -9,21 +9,27 @@ export default function Demandes() {
   const [data, setData] = useState(false);
   const [edit, setEdit] = useState(false);
   const [isAddDemande, setsAddDemande] = useState(false);
+
+  const searchParams = new URLSearchParams(document.location.search)
+  const q =  searchParams.get("q") ;
+  const salary = searchParams.get("salary")
+  const city = searchParams.get("city")
+  
   useEffect(() => {
-    Axios.get("/api/demandes")
+    Axios.get(`/api/demandes?city=${city ?city :""}&salary=${salary ? salary :""}&q=${q ? q :""}` )
       .then((res) => res.data)
       .then((data) => setData(data));
   }, [edit]);
+
+  document.body.classList.remove("modal-open");
   if (!data) {
     return <LoadingScreen />;
   }
-  document.body.classList.remove("modal-open");
-
   return (
     <>
-      <div className="bg-[url('../image/pattern.png')] w-full  pt-[70px] h-screen">
+      <div className="bg-[url('../image/pattern.png')] w-full  pt-[70px] min-h-screen">
         {isAddDemande && (
-          <AddDemande addMethod={setsAddDemande} setEdit={setEdit} />
+          <AddDemande addMethod={setsAddDemande} setEdit={setEdit} setData={setData} />
         )}
         <SearchBar type={1} addMethod={setsAddDemande} />
         <div
@@ -43,6 +49,7 @@ export default function Demandes() {
               description={e.description}
               domain={e.domain}
               created_at={e.created_at}
+              user_id={e.user_id}
             />
           ))}
         </div>

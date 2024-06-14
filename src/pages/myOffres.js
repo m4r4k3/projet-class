@@ -7,17 +7,20 @@ import "../style/navigate.css";
 import { useState } from "react";
 
 export default function Offres() {
+  const [fullScreen, setFullScreen] = useState(null);
   const [edit, setEdit] = useState(false);
   const [data, setData] = useState(false);
     const reload = ()=>{
     setData(false)
     setEdit(prev=>!prev)
   }
+
   useEffect(() => {
     Axios.get("/api/myoffres")
       .then((res) => res.data)
       .then((data) => setData(data));
   }, [edit]);
+  
   if (!data) {
     return <LoadingScreen />;
   }
@@ -25,11 +28,19 @@ export default function Offres() {
   return (
     <>
       <div className="bg-[url('../image/pattern.png')] w-full  pt-[70px] min-h-screen">
+      {fullScreen && (
+          <FullScreenOffer
+            setOffer={setFullScreen}
+            offre={fullScreen}
+            apply={()=>{}}
+          />
+        )}
         <div
           className={`grid grid-cols-3 w-full justify-items-center p-[50px] gap-[50px]`}
         >
           {data.map((e, i) => (
             <OffresCard
+            setOffer={setFullScreen}
               isOffer={false}
               id={e.id}
               characteristic={e.characteristic}
@@ -43,7 +54,8 @@ export default function Offres() {
               post={e.post}
               contrat={e.contrat}
               apply={()=>{}}
-              reload={reload}
+              setData={setData}
+              setEdit={setEdit}
             />
           ))}
         </div>

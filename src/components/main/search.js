@@ -11,6 +11,8 @@ export default function SearchBar({ type, addMethod }) {
   const [contrat, setContrat] = useState();
   const [domain, setDomains] = useState();
   const [filter, setFilter] = useState();
+
+
   useEffect(() => {
     document.body.classList.add("modal-open");
 
@@ -31,9 +33,9 @@ export default function SearchBar({ type, addMethod }) {
   }
   return (
     <>
-      <div
+      <form
         className="flex w-full justify-center items-center mt-5 relative"
-        style={{ zIndex: 10 }}
+        style={{ zIndex: 2 }}
       >
         <div className="pr-10 cursor-pointer">
           <div className="flex flex-col  items-center relative">
@@ -52,7 +54,7 @@ export default function SearchBar({ type, addMethod }) {
                   className="text-white outline-0 w-full rounded  bg-[#0D1117] border-gray-500 border  "
                   name="city"
                 >
-                  <option key={0} selected="true">
+                  <option key={0} value="" selected="true">
                     City
                   </option>
                   {cities.map((e) => (
@@ -80,7 +82,7 @@ export default function SearchBar({ type, addMethod }) {
                     className="text-white outline-0 w-full rounded  bg-[#0D1117] border-gray-500 border  "
                     name="type_contrat"
                   >
-                    <option key={0} selected="true">
+                    <option key={0} value="" selected="true">
                       Contrat
                     </option>
                     {contrat.map((e) => (
@@ -100,9 +102,10 @@ export default function SearchBar({ type, addMethod }) {
         </div>
         <input
           type="text"
+          name="q"
           className="outline-0 w-[25%] h-[30px] pl-2 rounded shadow-inner"
         />
-        <button className="pl-5">
+        <button className="pl-5" type="submit">
           <i className="fa-solid fa-chevron-right text-white"></i>
         </button>
         {isLoggedIn && typeUser == type && (
@@ -113,7 +116,7 @@ export default function SearchBar({ type, addMethod }) {
             <i className="fa-solid fa-plus text-xl text-white"></i>
           </div>
         )}
-      </div>
+      </form>
     </>
   );
 }

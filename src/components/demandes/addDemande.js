@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { Axios } from "../../axios";
 import LoadingScreen from "../../loading";
 
-export default function AddDemande({ addMethod , setEdit}) {
+export default function AddDemande({ addMethod, setEdit , setData}) {
   const [form, setForm] = useState();
   const [cities, setCities] = useState();
+  const [domain, setDomain] = useState();
   const setFormFunc = (e) =>
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   useEffect(() => {
@@ -12,17 +13,21 @@ export default function AddDemande({ addMethod , setEdit}) {
     Axios.get("api/city")
       .then((res) => res.data)
       .then((res) => setCities(res));
+    Axios.get("api/domain")
+      .then((res) => res.data)
+      .then((res) => setDomain(res));
   }, []);
 
-    const submit = async ()=>{
-      await Axios.get("/sanctum/csrf-cookie");
-      await Axios.post("/api/demandes", form ) 
-      .then(res=>res)
-      .then(data=>console.log(data));
-      addMethod(false)
-      setEdit(prev=>!prev)
-    }
-  if (!cities) {
+  const submit = async () => {
+    setData(false)
+    await Axios.get("/sanctum/csrf-cookie");
+    await Axios.post("/api/demandes", form)
+      .then((res) => res)
+      .then((data) => console.log(data));
+    addMethod(false);
+    setEdit((prev) => !prev);
+  };
+  if (!cities || !domain) {
     return <LoadingScreen />;
   }
   return (
@@ -31,10 +36,10 @@ export default function AddDemande({ addMethod , setEdit}) {
       onClick={() => addMethod(false)}
     >
       <div
-        className="w-[500px] h-[480px] bg-[#0D1117] rounded border-[#30363D]  border flex flex-col items-center"
+        className="w-[500px] h-[500px] bg-[#0D1117] rounded border-[#30363D]  border flex flex-col items-center"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="w-full mb-10 text-xl font-bold p-5  flex justify-center text-white">
+        <div className="w-full mb-3 text-xl font-bold p-5  flex justify-center text-white">
           <p>Ajouter Demande</p>
         </div>
         <div className="text-white w-full flex justify-center mb-5">
@@ -45,7 +50,7 @@ export default function AddDemande({ addMethod , setEdit}) {
             name="salaire"
             className="text-black outline-0 w-[40%] rounded pl-1"
           />
-                 <span className="w-[10%] pl-[5%]">DH</span>
+          <span className="w-[10%] pl-[5%]">DH</span>
         </div>
         <div className="text-white w-full flex justify-center mb-5">
           <label className="w-[100px] inline-block">City</label>
@@ -55,7 +60,7 @@ export default function AddDemande({ addMethod , setEdit}) {
             defaultValue={0}
             onChange={(e) => setFormFunc(e)}
           >
-            <option key={0} value={"0"}>
+            <option key={0} value={null}>
               -
             </option>
             {cities.map((e) => (
@@ -68,6 +73,7 @@ export default function AddDemande({ addMethod , setEdit}) {
             ))}
           </select>
         </div>
+       
         <div className="text-white w-full flex justify-center mb-5">
           <label className="w-[100px] inline-block">Degree</label>
           <input
@@ -106,9 +112,10 @@ export default function AddDemande({ addMethod , setEdit}) {
             className="text-black outline-0 w-[50%] rounded pl-1 h-[80px]"
           ></textarea>
         </div>
-        <div className="mb-5">
+        <div className="my-5">
           <button
-            className="text-white rounded border px-8 py-2 border-[#30363D] duration-300 hover:bg-gray-800"  onClick={submit} 
+            className="text-white rounded border px-8 py-2 border-[#30363D] duration-300 hover:bg-gray-800"
+            onClick={submit}
           >
             Ajouter
           </button>

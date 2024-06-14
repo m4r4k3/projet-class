@@ -1,4 +1,4 @@
-import { useReducer, useRef, useState } from "react";
+import {  useState } from "react";
 import SignUp from "../components/sign in/sign-up";
 import "../style/sign-in.css";
 import { Axios } from "../axios";
@@ -14,31 +14,28 @@ export default function SignIn() {
   const [isloading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const [isSignup, setSignup] = useState(false);
+  
+  const [form, setForm] = useState({type:2});
+  const setFormFunc = (e) =>
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value , type: isBgEntr ? 1 : 2 }));
   const ClickFunc = () => {
     setBgEntr((prev) => !prev);
-    setForm((prev) => ({ ...prev, type: isBgEntr ? 2 : 1 }));
-  };
-
-  const [form, setForm] = useState();
-  const setFormFunc = (e) =>
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  const signInFunc = async () => {
+    };
+    const signInFunc = async () => {
+      setIsLoading(true);
     await Axios.get("/sanctum/csrf-cookie");
-    setForm((prev) => ({ ...prev, type: isBgEntr ? 2 : 1 }));
-    setIsLoading(true);
     document.body.classList.add("modal-open");
     await Axios.post("/api/login", form)
-      .then((res) =>res)
+      .then((res) =>res.data)
       .then(data=>{
-        if (data.status == 401) {
-          setError("Email or Password not correct.");
-          setIsLoading(false);
-        } else {
+          console.log(data) 
           dispatch(actions.login({ id: data.id , type :data.type}));
-          navigate("/");
-        }
+          navigate("/")
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        setIsLoading(false);
+        setError("Email or Password not correct.");
+      });
   };
 
   return (
@@ -137,8 +134,8 @@ export default function SignIn() {
 
         <div className="w-[30%] flex justify-center  items-center ">
           <div className="flex flex-col border h-[350px] bg-[#0D1117] border border-[#30363D] rounded-[10px] w-[80%]">
-            <div className="text-red-500 mx-5 ">{error && error}</div>
-            <div className="text-2xl text-gray-500 font-bold text-center w-full my-8">
+            <div className="text-red-500  my-3 pl-2">{error && error}</div>
+            <div className="text-2xl text-gray-500 font-bold text-center w-full mb-8">
               Sign-in
             </div>
             <div className="w-full flex justify-between px-5 my-4">

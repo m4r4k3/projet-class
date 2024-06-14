@@ -12,11 +12,19 @@ export default function Offres() {
   const [isAddOffre, setAddOffre] = useState(false);
   const [edit, setEdit] = useState(false);
   const [data, setData] = useState(false);
+
+  const searchParams = new URLSearchParams(document.location.search)
+  const q =  searchParams.get("q") ;
+  const type_contrat =  searchParams.get("type_contrat")
+  const salary = searchParams.get("salary")
+  const city = searchParams.get("city")
+
   useEffect(() => {
-    Axios.get("/api/offres")
+    Axios.get(`/api/offres?city=${city? city :""}&salary=${salary? salary :""}&type_contrat=${type_contrat? type_contrat :""}&q=${q? q :""}`)
       .then((res) => res.data)
       .then((data) => setData(data));
   }, [edit]);
+  
   if (!data) {
     return <LoadingScreen />;
   }
@@ -31,9 +39,9 @@ export default function Offres() {
   };
   return (
     <>
-      <div className="bg-[url('../image/pattern.png')] w-full  pt-[70px]">
+      <div className="bg-[url('../image/pattern.png')] min-h-screen w-full  pt-[70px]">
         <SearchBar type={2} addMethod={setAddOffre} />
-        {isAddOffre && <AddOffre addMethod={setAddOffre} setEdit={setEdit} />}
+        {isAddOffre && <AddOffre addMethod={setAddOffre} setEdit={setEdit} setData={setData} />}
         {fullScreen && (
           <FullScreenOffer
             setOffer={setFullScreen}
@@ -59,6 +67,7 @@ export default function Offres() {
               description={e.description}
               post={e.post}
               contrat={e.contrat}
+              isApplied= {e.isApplied}
               apply={apply}
             />
           ))}

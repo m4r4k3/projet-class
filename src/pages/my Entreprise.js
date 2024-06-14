@@ -9,7 +9,8 @@ export default function MyEntreprise() {
   const [edit, setEdit] = useState(false);
   const [isSet, setIsSet] = useState(false);
   const id = useSelector((s) => s.store.id);
-
+  console.log(id)
+  
   useEffect(() => {
     Axios.get(`/api/entreprise/${id}`)
     .then((res) => res.data)
@@ -18,9 +19,10 @@ export default function MyEntreprise() {
     document.body.classList.remove("modal-open");
   }, [isSet]);
 
-  const editSubmit = () => {
+  const editSubmit =async () => {
     setData(false)
-    Axios.put(`api/entreprise/${id}` , {"description": edit})
+    await Axios.get("/sanctum/csrf-cookie");
+    await Axios.put(`api/entreprise/${id}` , {"description": edit})
       .then((res) => res)
       .then((res) => console.log(res));
     setIsSet(prev=>!prev)
@@ -44,7 +46,7 @@ export default function MyEntreprise() {
             </button>
           )}
           <div className="w-full flex flex-col justify-between items-center gap-3">
-            <div className="bg-[url(https://logos-world.net/wp-content/uploads/2020/04/Apple-Emblem.png)] bg-center bg-cover bg-no-repeat rounded-full w-1/2 h-[calc(35vw/2)]"></div>
+            <div className="bg-[url(https://th.bing.com/th/id/OIP.mvDgxxXg6kr3mhytvcawiQHaHa?rs=1&pid=ImgDetMain)] bg-center bg-cover bg-no-repeat rounded-full w-1/2 h-[calc(35vw/2)]"></div>
             <div className="text-xl font-bold text-white mt-5">{data.name}</div>
           </div>
         </div>

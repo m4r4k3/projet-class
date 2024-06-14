@@ -5,15 +5,17 @@ import { Axios } from "../axios";
 import { useState } from "react";
 import { useParams } from "react-router";
 import LoadingScreen from "../loading";
-
+import { useNavigate  } from "react-router";
 export default function Profile() {
+  const Navigate = useNavigate();
   const id = useParams().id;
   const [data, setData] = useState();
   useEffect(() => {
     document.body.classList.remove("modal-open");
     Axios.get(`/api/individuel/${id}`)
       .then((res) => (res.data))
-      .then((data) => setData(data));
+      .then((data) => setData(data))
+      .catch(error=>Navigate("/"))
   }, []);
   if (!data) {
     document.body.classList.add("modal-open");
@@ -24,18 +26,13 @@ export default function Profile() {
       <div className="w-[40%] flex flex-col items-end p-3">
         <div className=" flex  justify-between items-center  flex-col  bg-[#0D1117] border border-[#30363D] sticky top-[80px] rounded-[5px] w-[35vw] py-[3%]">
           <div className="w-full flex flex-col justify-between items-center gap-3">
-            <div className="bg-[url(https://th.bing.com/th/id/R.3f3b68c0fde58eea7448cef9b640e299?rik=c0t2b8nVH4v%2f2g&pid=ImgRaw&r=0)] bg-center bg-contain rounded-full w-1/2 h-[calc(35vw/2)]"></div>
+            <div className="bg-[url(https://th.bing.com/th/id/OIP.PJB4lxw88QRaADN8UWxV4AHaHa?rs=1&pid=ImgDetMain)] bg-center bg-contain rounded-full w-1/2 h-[calc(35vw/2)]"></div>
             <div className="text-xl font-bold text-white mt-5">
               {data.ind.nom} {data.ind.prenom}
             </div>
           </div>
           <ul className="text-white flex w-1/2  align-center mt-5 flex-col gap-2">
-            <li className="flex gap-3">
-              <span className="button bg-black border border-[#30363D]  ">
-                <i class="fa-solid fa-clock text-white"></i>
-              </span>
-              <label>{data.ind.time}</label>
-            </li>
+         
             <li className="flex gap-3">
               <span className="button bg-black border border-[#30363D]  ">
                 <i class="fa-solid fa-building text-white"></i>
@@ -46,7 +43,7 @@ export default function Profile() {
               <span className="button bg-black border border-[#30363D]  ">
                 <i class="fa-solid fa-location-dot text-white"></i>
               </span>
-              <label>{data.ind.city}</label>
+              <label>{data.ind.name}</label>
             </li>
             <li className="flex gap-3">
               <span className="button bg-black border border-[#30363D]  ">

@@ -23,7 +23,7 @@ export default function Entreprise() {
       <div className="w-[40%] flex flex-col items-end p-3">
         <div className=" flex  justify-between items-center  flex-col  bg-[#0D1117] border border-[#30363D] sticky top-[80px] rounded-[5px] w-[35vw] py-[3%]">
           <div className="w-full flex flex-col justify-between items-center gap-3">
-            <div className="bg-[url(https://logos-world.net/wp-content/uploads/2020/04/Apple-Emblem.png)] bg-center bg-cover bg-no-repeat rounded-full w-1/2 h-[calc(35vw/2)]"></div>
+            <div className="bg-[url(https://th.bing.com/th/id/OIP.mvDgxxXg6kr3mhytvcawiQHaHa?rs=1&pid=ImgDetMain)] bg-center bg-cover bg-no-repeat rounded-full w-1/2 h-[calc(35vw/2)]"></div>
             <div className="text-xl font-bold text-white mt-5">{data.name}</div>
           </div>
         </div>

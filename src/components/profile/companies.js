@@ -9,7 +9,7 @@ export default function Companies({name , starting , ending , description , post
             <div>{post}</div>
           </div>
           <div className="flex w-[200px] justify-between">
-            <div className="text-gray-400 text-sm">{(new Date(starting)).getFullYear} - {(new Date(ending)).getFullYear}</div>
+            <div className="text-gray-400 text-sm">{starting} - {ending}</div>
           </div>
           <div>
             <div className="font-semibold text-[15px] text-gray-400">Description :</div>

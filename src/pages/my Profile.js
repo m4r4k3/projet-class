@@ -6,7 +6,6 @@ import EducationAdd from "../components/my profile/education-add";
 import { Axios } from "../axios";
 import LoadingScreen from "../loading";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router";
 import "../style/myprofile.css";
 
 export default function MyProfile() {
@@ -18,10 +17,7 @@ export default function MyProfile() {
   const [education, setEducation] = useState(false);
   const [edit, setEdit] = useState(false);
   const [info, setInfo] = useState({});
-  const [cities , setCities] = useState();
-
-
-   
+  const [cities, setCities] = useState();
   const resetData = () => setData(false);
   const skillInput = useRef();
 
@@ -33,18 +29,9 @@ export default function MyProfile() {
     setInfo((prev) => ({ ...prev, image: e.target.files[0] }));
   };
   const editInfo = async () => {
-    const formData = new FormData ();
-    formData.append("image", info["image"])  ;
-    formData.append("description", "ddddddddddddd")  ;
-    console.log(info["image"])
-    console.log(formData);
     resetData();
     await Axios.get("/sanctum/csrf-cookie");
-    await Axios.put(`/api/individuel/${id}`, info, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    })
+    await Axios.put(`/api/individuel/${id}`, info)
       .then((res) => console.log(res))
       .catch(() => console.log("error"));
     setIsSet((prev) => !prev);
@@ -71,8 +58,8 @@ export default function MyProfile() {
   useEffect(() => {
     document.body.classList.remove("modal-open");
     Axios.get("api/city")
-    .then(res=>res.data)
-    .then(res=>setCities(res))
+      .then((res) => res.data)
+      .then((res) => setCities(res));
 
     Axios.get(`/api/individuel/${id}/edit`)
       .then((res) => res.data)
@@ -91,6 +78,7 @@ export default function MyProfile() {
     document.body.classList.remove("modal-open");
     return <LoadingScreen />;
   }
+  
   return (
     <div className="bg-[url('../image/pattern.png')] w-full pt-[70px] flex min-h-full">
       {!data && <LoadingScreen />}
@@ -119,14 +107,7 @@ export default function MyProfile() {
             </button>
           )}
           <div className="w-full flex flex-col justify-between items-center gap-3">
-            <div className="bg-[url(https://th.bing.com/th/id/R.3f3b68c0fde58eea7448cef9b640e299?rik=c0t2b8nVH4v%2f2g&pid=ImgRaw&r=0)] edit-image relative bg-center bg-contain rounded-full w-1/2 h-[calc(35vw/2)]">
-              <input
-                onChange={setImage}
-                type="file"
-                className="absolute bg-white h-full w-full rounded-full opacity-0 cursor-pointer input"
-                accept="image/png, image/gif, image/jpeg"
-              />
-            </div>
+            <div className="bg-[url(https://th.bing.com/th/id/OIP.PJB4lxw88QRaADN8UWxV4AHaHa?rs=1&pid=ImgDetMain)] relative bg-center bg-contain rounded-full w-1/2 h-[calc(35vw/2)]"></div>
             <div className="text-xl font-bold text-white mt-5">
               {data.ind[0].nom} {data.ind[0].prenom}
             </div>
@@ -148,9 +129,24 @@ export default function MyProfile() {
               <span className="button bg-black border border-[#30363D]">
                 <i class={`fa-solid fa-location-dot text-white`}></i>
               </span>
-              <select  className="text-white bg-transparent outline-0 rounded border-gray-500 border w-[200px] rounded pl-1">
-            {cities.map(e=><option className="text-white cursor-pointer bg-[#0D1117] border-gray-500 border " value={e.id}>{e.name}</option>)}
-        </select>
+              <select name="city" onChange={(e) => setFormFunc(e)} onInput={()=> setEdit(true)} className="text-white bg-transparent outline-0 rounded border-gray-500 border w-[200px] rounded pl-1">
+              <option
+                    className="text-white cursor-pointer bg-[#0D1117] border-gray-500 border "
+                    value={null}
+                     selected = {data.ind[0].city == null}
+                  >
+                  -
+                  </option> 
+                                  {cities.map((e) => (
+                  <option
+                    className="text-white cursor-pointer bg-[#0D1117] border-gray-500 border "
+                    value={e.id}
+                     selected = {data.ind[0].city == e.id}
+                  >
+                    {e.name}
+                  </option>
+                ))}
+              </select>
             </li>
             <li className="flex gap-3">
               <span className="button bg-black border border-[#30363D]">
