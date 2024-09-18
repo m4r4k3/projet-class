@@ -13,13 +13,13 @@ export default function Offres() {
   const [edit, setEdit] = useState(false);
   const [data, setData] = useState(false);
 
-  const searchParams = new URLSearchParams(document.location.search)
-  const q =  searchParams.get("q") ;
-  const type_contrat =  searchParams.get("type_contrat")
-  const salary = searchParams.get("salary")
-  const city = searchParams.get("city")
-
+  
   useEffect(() => {
+    const searchParams = new URLSearchParams(document.location.search)
+    const q =  searchParams.get("q") ;
+    const type_contrat =  searchParams.get("type_contrat")
+    const salary = searchParams.get("salary")
+    const city = searchParams.get("city")
     Axios.get(`/api/offres?city=${city? city :""}&salary=${salary? salary :""}&type_contrat=${type_contrat? type_contrat :""}&q=${q? q :""}`)
       .then((res) => res.data)
       .then((data) => setData(data));
@@ -50,7 +50,7 @@ export default function Offres() {
           />
         )}
         <div
-          className={`grid grid-cols-3 w-full justify-items-center p-[50px] gap-[50px]`}
+          className={`grid grid-cols-1  sm:grid-cols-3 w-full justify-items-center p-[50px] gap-[50px]`}
         >
           {data.map((e, i) => (
             <OffresCard

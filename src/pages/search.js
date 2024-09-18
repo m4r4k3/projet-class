@@ -26,6 +26,7 @@ export default function Search() {
   if (!data) {
     return <LoadingScreen />;
   }
+
   const apply = (id) => {
     setData(false);
     setEdit((prev) => !prev);
@@ -34,6 +35,7 @@ export default function Search() {
       .then((res) => console.log(res))
       .catch(() => console.error("error"));
   };
+
   return (
     <div className="bg-[url('../image/pattern.png')] w-full pt-[70px]">
       {fullScreen && (
@@ -47,7 +49,7 @@ export default function Search() {
         <input
           type="text"
           name="q"
-          className="outline-0 w-[25%] h-[30px] pl-2 rounded shadow-inner"
+          className="outline-0 w-[60%] sm:w-[20%]  h-[30px] pl-2 rounded shadow-inner"
         />
         <button className="pl-5" type="submit">
           <i className="fa-solid fa-chevron-right text-white"></i>
@@ -55,7 +57,7 @@ export default function Search() {
       </form>
       <div className="flex min-h-full ">
         <div className="w-[30%] h-full  sticky top-[170px] ">
-          <div className=" bg-[#0D1117] text-white py-3 rounded-[5px] border border-[#30363D] w-[75%] m-auto">
+          <div className=" bg-[#0D1117] text-white py-3 rounded-[5px] border border-[#30363D] w-[75%] m-auto hidden sm:block">
             <ul className="w-full flex flex-col gap-1">
               <li className="pl-5 text-lg mb-2 font-bold">On This Page</li>
               <li
@@ -115,7 +117,7 @@ export default function Search() {
               </Link>
             </div>
             <div
-              class="border border-[#30363D] rounded-[10px] bg-[#0D1117] p-4 mb-2 flex justify-around"
+              class="border border-[#30363D] rounded-[10px] bg-[#0D1117] p-4 mb-2 flex justify-around [&>*]:hidden sm:[&>*]:flex [&>*:first-child]:block "
               ref={demandes}
             >
               {data.demandes.map((e) => (
@@ -138,14 +140,14 @@ export default function Search() {
             </div>
           </div>
           <div class=" w-full  ">
-            <div className="flex w-full justify-between px-[5%]">
+            <div className="flex w-full justify-between px-[5%] ">
               <h2 class="text-2xl font-bold mb-2 text-gray-500">Offers</h2>
               <Link to={`/offres?q=${q ? q : ""}`} class="text-blue-500">
                 see more
               </Link>
             </div>
             <div
-              class="border border-[#30363D] rounded-[10px] bg-[#0D1117] p-4 mb-2 flex justify-around"
+              class="border border-[#30363D] rounded-[10px] bg-[#0D1117] p-4 mb-2 flex justify-around [&>*]:hidden sm:[&>*]:flex [&>*:first-child]:block"
               ref={offers}
             >
               {data.offres.map((e, i) => (
@@ -176,7 +178,7 @@ export default function Search() {
               </Link>
             </div>
             <div
-              class="border border-[#30363D] rounded-[10px] bg-[#0D1117] p-4 mb-2 flex justify-around"
+              class="border border-[#30363D] rounded-[10px] bg-[#0D1117] p-4 mb-2 flex justify-around sm:[&>*]:flex [&>*]:hidden [&>*:first-child]:flex"
               ref={people}
             >
               {data.individuel.map((e) => (
@@ -192,7 +194,7 @@ export default function Search() {
               </Link>
             </div>
             <div
-              class="border border-[#30363D] rounded-[10px] bg-[#0D1117] p-4 mb-2 flex justify-around"
+              class="border border-[#30363D] rounded-[10px] bg-[#0D1117] p-4 mb-2 flex justify-around sm:[&>*]:flex [&>*]:hidden [&>*:first-child]:flex"
               ref={companies}
             >
               {data.entreprises.map((e) => (

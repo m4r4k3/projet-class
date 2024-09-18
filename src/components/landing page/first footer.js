@@ -15,7 +15,8 @@ export function Footer() {
     } , []
   )
   return (
-    <div className="w-full px-[5%] shadow-black shadow-inner p-5" ref={fFooter} >
+    <div className="bg-[url('../image/pattern.png')] hidden sm:block">
+    <div className="w-full px-[5%] shadow-black shadow-inner p-5 " ref={fFooter} >
       <div  className="h-[500px] overflow-hidden w-full  bg-[#0D1117] border-[#30363D] rounded-[5px] flex p-[2%] border pr-[20px] justify-between" >
         <div className="text-[40px] w-[60%] font-black text-white logo-font ">
           <i className="fa-solid fa-quote-left"></i>Your work is going to fill a
@@ -31,6 +32,7 @@ export function Footer() {
           <img src={steve} className="h-[500px] w-[400px]" style={{transform:`translatex(${(pos <50? 50: pos)  /5 }px)`}}/>
         </div>
       </div>
+    </div>
     </div>
   );
 }

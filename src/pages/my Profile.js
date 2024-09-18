@@ -24,10 +24,10 @@ export default function MyProfile() {
   const setFormFunc = (e) =>
     setInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
-  const setImage = (e) => {
-    setEdit(true);
-    setInfo((prev) => ({ ...prev, image: e.target.files[0] }));
-  };
+  // const setImage = (e) => {
+  //   setEdit(true);
+  //   setInfo((prev) => ({ ...prev, image: e.target.files[0] }));
+  // };
   const editInfo = async () => {
     resetData();
     await Axios.get("/sanctum/csrf-cookie");

@@ -19,7 +19,6 @@ export default function DemandeCard({isDemande  ,
   setData ,
   user_id
 }) {
-  console.log(id)
   const descriptionVar = useRef(null);
   const type = useSelector((s) => s.store.type); 
   const deleteDemande = async()=>{

@@ -1,4 +1,3 @@
-import { useParams } from "react-router";
 import { Axios } from "../axios";
 import { useEffect, useState } from "react";
 import LoadingScreen from "../loading";

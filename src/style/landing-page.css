@@ -26,9 +26,7 @@
   width: 100%;
 }
 .landing-page {
-  background-image: url("../image/city.jpg");
   background-size: 100% 100%;
-  box-shadow: 0 0 10px 10px black inset;
 }
 .main-button {
   font-size: 15px;

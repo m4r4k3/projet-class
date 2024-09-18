@@ -1,6 +1,7 @@
 .signUpblack{
     animation: signUpBlack 200ms  ;
     background-color: #0D1117;
+    shadow: 0 0 1px inset #30363D ;
 }
 .signUpWhite{
     animation: signUpWhite 200ms ;

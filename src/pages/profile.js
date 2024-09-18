@@ -22,11 +22,11 @@ export default function Profile() {
     return <LoadingScreen />;
   }
   return (
-    <div className="bg-[url('../image/pattern.png')] w-full pt-[70px] flex min-h-full">
-      <div className="w-[40%] flex flex-col items-end p-3">
-        <div className=" flex  justify-between items-center  flex-col  bg-[#0D1117] border border-[#30363D] sticky top-[80px] rounded-[5px] w-[35vw] py-[3%]">
+    <div className="bg-[url('../image/pattern.png')] w-full pt-[70px] flex sm:flex-row flex-col min-h-full">
+      <div className="sm:w-[40%] w-full flex flex-col jusitfy-center items-center items-end p-3">
+        <div className=" flex  justify-between items-center  flex-col  bg-[#0D1117] border border-[#30363D] sm:sticky top-[80px] rounded-[5px] sm:w-[35vw] w-[90vw] py-[3%]">
           <div className="w-full flex flex-col justify-between items-center gap-3">
-            <div className="bg-[url(https://th.bing.com/th/id/OIP.PJB4lxw88QRaADN8UWxV4AHaHa?rs=1&pid=ImgDetMain)] bg-center bg-contain rounded-full w-1/2 h-[calc(35vw/2)]"></div>
+            <div className="bg-[url(https://th.bing.com/th/id/OIP.PJB4lxw88QRaADN8UWxV4AHaHa?rs=1&pid=ImgDetMain)] bg-center bg-contain rounded-full w-1/2 sm-h-[calc(35vw/2)] h-[calc(90vw/2)]  "></div>
             <div className="text-xl font-bold text-white mt-5">
               {data.ind.nom} {data.ind.prenom}
             </div>
@@ -60,9 +60,9 @@ export default function Profile() {
           </ul>
         </div>
       </div>
-      <div className="w-[63%]  rounded-[15px] p-2">
+      <div className="sm:w-[63%]  rounded-[15px] p-2">
         <div>
-          <div className="bg-[#0D1117] my-1 w-[80%] mx-auto p-5 rounded-[7px] border border-[#30363D]">
+          <div className="bg-[#0D1117] my-1 w-[90vw] sm:w-[80%] mx-auto p-5 rounded-[7px] border border-[#30363D]">
             <div className="font-bold border-b mb-3 pb-3 text-lg text-gray-500 border-[#30363D]">
               About
             </div>
@@ -70,7 +70,7 @@ export default function Profile() {
               {data.ind.description}
             </div>
           </div>
-          <div className=" mt-1 w-[80%] p-5 mx-auto bg-[#0D1117] rounded-[7px] border border-[#30363D] ">
+          <div className=" mt-1 w-[90vw] sm:w-[80%] p-5 mx-auto bg-[#0D1117] rounded-[7px] border border-[#30363D] ">
             <p className="text-gray-500 border-b mb-3 pb-3 text-lg font-bold border-[#30363D]">
               Skills{" "}
             </p>
@@ -80,7 +80,7 @@ export default function Profile() {
               ))}
             </ul>
           </div>
-          <div className="flex flex-col border border-[#30363D]  my-1 bg-[#0D1117] w-[80%] mx-auto rounded-[7px] p-5">
+          <div className="flex flex-col border border-[#30363D]  my-1 bg-[#0D1117] w-[90vw] sm:w-[80%]  mx-auto rounded-[7px] p-5">
             <div className="font-bold  text-lg text-gray-500">Experience</div>
             {data.experience.map((e) => (
               <Companies
@@ -92,7 +92,7 @@ export default function Profile() {
               />
             ))}
           </div>
-          <div className="flex flex-col border border-[#30363D] bg-[#0D1117] w-[80%] mx-auto rounded-[7px] p-5 my-1">
+          <div className="flex flex-col border border-[#30363D] bg-[#0D1117] w-[90vw] sm:w-[80%]  mx-auto rounded-[7px] p-5 my-1">
             <div className="font-bold my-3 text-lg text-gray-500">
               Education
             </div>

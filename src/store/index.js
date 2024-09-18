@@ -7,7 +7,7 @@ import { Axios } from "../axios";
 
 export const fetchLogginDetails = createAsyncThunk(
   "user/inintiate",
-  async function (state) {
+  async function (_ , {getState}) {
     const res = await Axios.get("/api/islogged");
     const data= await res.data ;
     return data;

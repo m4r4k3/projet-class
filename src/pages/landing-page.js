@@ -3,14 +3,21 @@ import { Footer } from "../components/landing page/first footer";
 import Main from "../components/landing page/main";
 
 function LandingPage() {
-
   return (
-    <div className="bg-[url('../image/pattern.png')]">
-      <div className="landing-page w-full h-screen bg-[#121212]" >
+    <>
+      <div
+        className="landing-page 
+      bg-opacity-0
+       w-full
+       bg-[url('../image/city-phone.jpeg')] 
+      sm:bg-[url('../image/city.jpg')] 
+      h-screen
+      "
+      >
         <Main />
       </div>
       <Footer />
-    </div>
+</>
   );
 }
 

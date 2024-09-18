@@ -28,7 +28,6 @@ export default function SignIn() {
     await Axios.post("/api/login", form)
       .then((res) =>res.data)
       .then(data=>{
-          console.log(data) 
           dispatch(actions.login({ id: data.id , type :data.type}));
           navigate("/")
       })
@@ -48,7 +47,7 @@ export default function SignIn() {
       >
         {isSignup && <SignUp setSignup={setSignup} />}
         <div
-          className={`left-0   bg-[url(${
+          className={`left-0 hidden sm:block   bg-[url(${
             isBgEntr
               ? "https://th.bing.com/th/id/R.d45dc54e7d0e057a0766ee517b5d48cd?rik=0EkDiw1isfR34g&pid=ImgRaw&r=0"
               : "../image/signBuilding.jpeg"
@@ -69,7 +68,7 @@ export default function SignIn() {
           ></div>
         </div>
         <div
-          className={`left-0 delay-100  ${
+          className={`left-0 delay-100 hidden sm:block  ${
             isBgEntr
               ? "bg-[url(https://th.bing.com/th/id/R.d45dc54e7d0e057a0766ee517b5d48cd?rik=0EkDiw1isfR34g&pid=ImgRaw&r=0)]"
               : "bg-[url(../image/signBuilding.jpeg)]"
@@ -97,7 +96,7 @@ export default function SignIn() {
           </div>
         </div>
         <div
-          className={`left-0  delay-200  flex items-center  bg-[url(${
+          className={`left-0  delay-200 hidden sm:block  flex items-center  bg-[url(${
             isBgEntr
               ? "https://th.bing.com/th/id/R.d45dc54e7d0e057a0766ee517b5d48cd?rik=0EkDiw1isfR34g&pid=ImgRaw&r=0"
               : "../image/signBuilding.jpeg"
@@ -132,8 +131,8 @@ export default function SignIn() {
           </div>
         </div>
 
-        <div className="w-[30%] flex justify-center  items-center ">
-          <div className="flex flex-col border h-[350px] bg-[#0D1117] border border-[#30363D] rounded-[10px] w-[80%]">
+        <div className="w-full sm:w-[30%] flex justify-center  items-center ">
+          <div className="flex flex-col border h-[350px] bg-[#0D1117] border border-[#30363D] rounded-[10px] w-[90%] sm:w-[80%]">
             <div className="text-red-500  my-3 pl-2">{error && error}</div>
             <div className="text-2xl text-gray-500 font-bold text-center w-full mb-8">
               Sign-in

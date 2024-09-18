@@ -40,11 +40,11 @@ export default function SearchBar({ type, addMethod }) {
         <div className="pr-10 cursor-pointer">
           <div className="flex flex-col  items-center relative">
             <i
-              class="fa-light fa-bars-filter text-white text-2xl "
+              class="fa-light fa-bars-filter text-white text-2xl"
               onClick={() => setFilter((prev) => !prev)}
             ></i>
             <ul
-              className={`w-[125px] h-[100px] bg-[#30363D] flex-col flex justify-around p-1 rounded absolute top-[-150px] duration-500 ${
+              className={`w-[100px]  sm:w-[125px] h-[100px] bg-[#30363D] flex-col flex justify-around p-1 rounded absolute top-[-150px] duration-500 ${
                 filter ? "translate-y-[200px]" :"hidden"
               } `}
             >
@@ -103,7 +103,7 @@ export default function SearchBar({ type, addMethod }) {
         <input
           type="text"
           name="q"
-          className="outline-0 w-[25%] h-[30px] pl-2 rounded shadow-inner"
+          className="outline-0 w-[60%] sm:w-[25%] h-[30px] pl-2 rounded shadow-inner"
         />
         <button className="pl-5" type="submit">
           <i className="fa-solid fa-chevron-right text-white"></i>

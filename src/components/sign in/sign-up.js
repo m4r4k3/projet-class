@@ -44,7 +44,7 @@ export default function SignUp({ setSignup }) {
         onClick={() => setSignup(false)}
       >
         <div
-          className="h-[350px] w-[400px] signUpWhite rounded-[8px]"
+          className="h-[350px] w-[90%] sm:w-[400px] menu-glass signUpWhite rounded-[8px]"
           ref={signUP}
           onClick={(e) => e.stopPropagation()}
           >
@@ -78,7 +78,7 @@ export default function SignUp({ setSignup }) {
               signUpEntr ? "text-white" : "text-black"
             } w-full text-center text-2xl font-bold mb-6 `}
           >
-            Registration
+           Sign-up 
           </div>
           <div className="flex flex-col w-[80%]  m-auto gap-3 mb-5">
             {signUpEntr && (
@@ -123,7 +123,7 @@ export default function SignUp({ setSignup }) {
                     signUpEntr ? "text-white" : "text-black"
                   }`}
                 >
-                  N-Registration
+                  N-Reg
                 </label>
                 <input
                   onChange={(e) => setFormFunc(e)}

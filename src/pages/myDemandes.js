@@ -6,13 +6,7 @@ import LoadingScreen from "../loading";
 export default function MyDemandes() {
   const [data, setData] = useState(false);
   const [edit, setEdit] = useState(false);
-  const reload = ()=>{
-    console.log("reloading")
-    setData(false)
-    setEdit(prev=>!prev)
-  }
-
-  useEffect(() => {
+   useEffect(() => {
     Axios.get("/api/mydemandes")
       .then((res) => res.data)
       .then((data) => setData(data));

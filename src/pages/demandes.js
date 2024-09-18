@@ -33,7 +33,7 @@ export default function Demandes() {
         )}
         <SearchBar type={1} addMethod={setsAddDemande} />
         <div
-          className={`grid grid-cols-3 w-full justify-items-center p-[50px] gap-[50px]`}
+          className={`grid grid-cols-1  sm:grid-cols-3 w-full justify-items-center p-[50px] gap-[50px]`}
         >
           {data.map((e) => (
             <DemandesCard

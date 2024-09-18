@@ -47,7 +47,7 @@ export default function MainFooter() {
         </ul>
       </div>
       <div className="w-full h-[15%] flex items-center justify-between bg-black px-10">
-        <div className=" text-white w-[270px]">© 2024 Copyright</div>
+          <div className=" text-white w-[270px]">© 2024 Copyright</div>
         <div
           className={`logo text-bold cursor-default tracking-wide select-none text-white`}
         >
