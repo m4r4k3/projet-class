@@ -13,12 +13,12 @@ export default function EducationAdd ({setEducation, setIsSet ,resetData}){
     setIsSet(prev=>!prev)
   }
     return (
-    <div className="fixed z-[3] h-screen top-[70px] w-screen glass menu-glass flex justify-center items-center" onClick={()=>setEducation(false)}>
+    <div className="fixed z-[3] h-screen top-[30px] w-screen glass menu-glass flex justify-center items-center" onClick={()=>setEducation(false)}>
       <div className="w-[500px] h-[350px] bg-[#0D1117] rounded border-[#30363D]  border flex flex-col items-center" onClick={e=>e.stopPropagation()}>
-        <div className="w-full mb-10 text-xl font-bold p-5 flex justify-center text-white">
+        <div className="w-full mb-8 text-2xl font-bold p-5 flex justify-center text-white">
           <p>Ajouter education</p>
         </div>
-        <div className="text-white w-full flex justify-center mb-5">
+        <div className="text-white w-[90%] max-w-[350px] flex justify-between mb-5">
           <label className="w-[100px] inline-block">École</label>
           <input
             type="text"
@@ -27,7 +27,7 @@ export default function EducationAdd ({setEducation, setIsSet ,resetData}){
             className="text-black outline-0 w-[50%] rounded pl-1"
           />
         </div>
-        <div className="text-white w-[350px] flex justify-between mb-5">
+        <div className="text-white  w-[90%] max-w-[350px] flex justify-between mb-5">
           <div className="">
             <label className="w-[100px] inline-block">Commencé </label>
             <input
@@ -50,7 +50,7 @@ export default function EducationAdd ({setEducation, setIsSet ,resetData}){
             />
           </div>
         </div>
-        <div className="text-white w-full flex justify-center mb-5">
+        <div className="text-white  flex justify-between mb-5  w-[90%] max-w-[350px]">
           <label className="w-[100px] inline-block">Diplome</label>
           <input
           name="description"
@@ -59,7 +59,7 @@ export default function EducationAdd ({setEducation, setIsSet ,resetData}){
             className="text-black outline-0 w-[50%] rounded pl-1"
           />
         </div>
-        <div className="text-white w-full flex justify-center mb-5">
+        <div className="text-white  w-[90%] max-w-[350px] flex justify-between mb-5">
           <label className="w-[100px] inline-block">niveau</label>
           <input
             name="certificate"
@@ -69,7 +69,7 @@ export default function EducationAdd ({setEducation, setIsSet ,resetData}){
           />
         </div>
         <div className="mb-5">
-            <button className="text-white rounded border px-8 py-2 border-[#30363D] duration-300 hover:bg-gray-800" onClick={submit}>
+            <button className="text-white rounded-[5px] border px-8 py-2 border-[#30363D] duration-300 hover:bg-gray-800" onClick={submit}>
                 Ajouter
             </button>
         </div>

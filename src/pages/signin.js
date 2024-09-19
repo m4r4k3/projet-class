@@ -1,4 +1,4 @@
-import {  useState } from "react";
+import { useState } from "react";
 import SignUp from "../components/sign in/sign-up";
 import "../style/sign-in.css";
 import { Axios } from "../axios";
@@ -14,22 +14,26 @@ export default function SignIn() {
   const [isloading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const [isSignup, setSignup] = useState(false);
-  
-  const [form, setForm] = useState({type:2});
+
+  const [form, setForm] = useState({ type: 2 });
   const setFormFunc = (e) =>
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value , type: isBgEntr ? 1 : 2 }));
+    setForm((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+      type: isBgEntr ? 1 : 2,
+    }));
   const ClickFunc = () => {
     setBgEntr((prev) => !prev);
-    };
-    const signInFunc = async () => {
-      setIsLoading(true);
+  };
+  const signInFunc = async () => {
+    setIsLoading(true);
     await Axios.get("/sanctum/csrf-cookie");
     document.body.classList.add("modal-open");
     await Axios.post("/api/login", form)
-      .then((res) =>res.data)
-      .then(data=>{
-          dispatch(actions.login({ id: data.id , type :data.type}));
-          navigate("/")
+      .then((res) => res.data)
+      .then((data) => {
+        dispatch(actions.login({ id: data.id, type: data.type }));
+        navigate("/");
       })
       .catch((error) => {
         setIsLoading(false);
@@ -47,7 +51,7 @@ export default function SignIn() {
       >
         {isSignup && <SignUp setSignup={setSignup} />}
         <div
-          className={`left-0 hidden sm:block   bg-[url(${
+          className={`left-0 hidden sm:flex   bg-[url(${
             isBgEntr
               ? "https://th.bing.com/th/id/R.d45dc54e7d0e057a0766ee517b5d48cd?rik=0EkDiw1isfR34g&pid=ImgRaw&r=0"
               : "../image/signBuilding.jpeg"
@@ -68,11 +72,11 @@ export default function SignIn() {
           ></div>
         </div>
         <div
-          className={`left-0 delay-100 hidden sm:block  ${
+          className={`left-0 delay-100 hidden sm:flex  ${
             isBgEntr
               ? "bg-[url(https://th.bing.com/th/id/R.d45dc54e7d0e057a0766ee517b5d48cd?rik=0EkDiw1isfR34g&pid=ImgRaw&r=0)]"
               : "bg-[url(../image/signBuilding.jpeg)]"
-          } absolute  duration-300 flex items-center w-[70%] top-[33.33%] h-[calc(100%/3)]  bg-cover  ${
+          } absolute  duration-300 flex items-center w-[70%] top-[33.2%] h-[calc(100%/3)]  bg-cover  ${
             isBgEntr ? " translate-x-[43%] justify-end" : ""
           }`}
           style={{
@@ -96,11 +100,11 @@ export default function SignIn() {
           </div>
         </div>
         <div
-          className={`left-0  delay-200 hidden sm:block  flex items-center  bg-[url(${
+          className={`left-0  delay-200 hidden sm:flex  flex items-center  bg-[url(${
             isBgEntr
               ? "https://th.bing.com/th/id/R.d45dc54e7d0e057a0766ee517b5d48cd?rik=0EkDiw1isfR34g&pid=ImgRaw&r=0"
               : "../image/signBuilding.jpeg"
-          })] absolute  duration-300 w-[70%] top-[66.66%] h-[calc(100%/3)]  bg-cover  ${
+          })] absolute  duration-300 w-[70%] top-[66.45%] h-[calc(100%/3)]  bg-cover  ${
             isBgEntr ? " translate-x-[43%]" : ""
           }`}
           style={{
@@ -132,9 +136,9 @@ export default function SignIn() {
         </div>
 
         <div className="w-full sm:w-[30%] flex justify-center  items-center ">
-          <div className="flex flex-col border h-[350px] bg-[#0D1117] border border-[#30363D] rounded-[10px] w-[90%] sm:w-[80%]">
-            <div className="text-red-500  my-3 pl-2">{error && error}</div>
-            <div className="text-2xl text-gray-500 font-bold text-center w-full mb-8">
+          <div className="flex flex-col border h-[350px] bg-[#0D1117] border border-[#30363D] rounded-[10px] w-[90%] sm:w-[80%] relative">
+            <div className="text-red-500  absolute bottom-[-30px] right-2">{error && error}</div>
+            <div className="text-2xl text-gray-500 font-bold text-center w-full my-5">
               Sign-in
             </div>
             <div className="w-full flex justify-between px-5 my-4">
@@ -156,6 +160,14 @@ export default function SignIn() {
               />
             </div>
 
+            <div className="w-full flex px-5 mt-2 items-center sm:hidden">
+              <div class="relative " onClick={ClickFunc}>
+                <input id="switch" type="checkbox" class="sr-only" />
+                <div class={`block w-8 h-5 rounded-full duration-[350ms] ${isBgEntr ? "bg-[#1F1F1F]" : "bg-gray-300"}`}></div>
+                <div class={`dot absolute  top-1 bg-white w-3  h-3  outline-black rounded-full duration-300 transition-transform ${isBgEntr ? "translate-x-4" : "left-1"}`}></div>
+              </div>
+              <label className={`text-white mx-5`}>Sign in as job seeker</label>
+            </div>
             <div className="w-full flex justify-center items-center mt-8 ">
               <button
                 onClick={signInFunc}

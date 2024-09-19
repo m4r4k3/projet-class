@@ -26,7 +26,7 @@ export default function Profile() {
       <div className="sm:w-[40%] w-full flex flex-col jusitfy-center items-center items-end p-3">
         <div className=" flex  justify-between items-center  flex-col  bg-[#0D1117] border border-[#30363D] sm:sticky top-[80px] rounded-[5px] sm:w-[35vw] w-[90vw] py-[3%]">
           <div className="w-full flex flex-col justify-between items-center gap-3">
-            <div className="bg-[url(https://th.bing.com/th/id/OIP.PJB4lxw88QRaADN8UWxV4AHaHa?rs=1&pid=ImgDetMain)] bg-center bg-contain rounded-full w-1/2 sm-h-[calc(35vw/2)] h-[calc(90vw/2)]  "></div>
+            <div className="bg-[url(https://th.bing.com/th/id/OIP.PJB4lxw88QRaADN8UWxV4AHaHa?rs=1&pid=ImgDetMain)] bg-center bg-contain rounded-full w-1/2 sm:h-[calc(35vw/2)] h-[calc(90vw/2)]  "></div>
             <div className="text-xl font-bold text-white mt-5">
               {data.ind.nom} {data.ind.prenom}
             </div>

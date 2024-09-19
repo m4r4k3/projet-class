@@ -20,14 +20,16 @@ export default function Education({
     setIsSet((prev) => !prev);
   };
   return (
-    <div className="py-5 relative flex justify-end  w-full pr-[10%] ">
-      <button className="button active:bg-green-500 absolute bg-black border border-[#30363D] top-8 left-0">
+    <div className=" my-5 relative  flex justify-end  w-full px-[10%]  sm:px-[10%]">
+             <div className="absolute left-0 flex items-center h-full">
+      <button className="button active:bg-green-500 bg-black border border-[#30363D] ">
         <i
-          class="fa-solid fa-minus text-red-500"
+          class="fa-solid fa-xmark text-red-500"
           onClick={deleteExp}
           id={id}
         ></i>
       </button>
+      </div>
       <div className="w-[90%]  ">
         <div className="flex justify-between pr-5 text-white">
           <label className="font-semibold text-lg ">{school}</label>

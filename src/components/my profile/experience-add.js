@@ -16,17 +16,17 @@ export default function ExperienceAdd({ setExperience, setIsSet, resetData }) {
   };
   return (
     <div
-      className="fixed z-[3] h-screen top-[70px] w-screen glass menu-glass flex justify-center items-center"
+      className="fixed z-[3] h-screen top-[30px] w-screen glass menu-glass flex justify-center items-center"
       onClick={() => setExperience(false)}
     >
       <div
         className="w-[500px] h-[450px] bg-[#0D1117] rounded border-[#30363D]  border flex flex-col items-center"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="w-full mb-10 text-xl font-bold p-5 flex justify-center text-white">
+        <div className="w-full mb-10 text-2xl font-bold p-5 flex justify-center text-white">
           <p>Ajouter experience</p>
         </div>
-        <div className="text-white w-full flex justify-center mb-5">
+        <div className="text-white  flex w-[90%] max-w-[350px]  justify-between mb-5">
           <label className="w-[100px] inline-block">Entreprise</label>
           <input
             onChange={(e) => setFormFunc(e)}
@@ -35,7 +35,7 @@ export default function ExperienceAdd({ setExperience, setIsSet, resetData }) {
             className="text-black outline-0 w-[50%] rounded pl-1"
           />
         </div>
-        <div className="text-white w-[350px] flex justify-between mb-5">
+        <div className="text-white w-[90%] max-w-[350px]  flex justify-between mb-5">
           <div className="">
             <label className="w-[100px] inline-block">Commencé </label>
             <input
@@ -48,7 +48,7 @@ export default function ExperienceAdd({ setExperience, setIsSet, resetData }) {
             />
           </div>
           <div className="">
-            <label className="w-[100px] inline-block">terminé</label>
+            <label className="w-[70px] inline-block">terminé</label>
             <input
               onChange={(e) => setFormFunc(e)}
               type="number"
@@ -58,7 +58,7 @@ export default function ExperienceAdd({ setExperience, setIsSet, resetData }) {
             />
           </div>
         </div>
-        <div className="text-white w-full flex justify-center mb-5">
+        <div className="text-white w-[90%] max-w-[350px]  flex justify-between mb-5">
           <label className="w-[100px] inline-block">Post</label>
           <input
             onChange={(e) => setFormFunc(e)}
@@ -67,7 +67,7 @@ export default function ExperienceAdd({ setExperience, setIsSet, resetData }) {
             className="text-black outline-0 w-[50%] rounded pl-1"
           />
         </div>
-        <div className="text-white w-full flex justify-center mb-5">
+        <div className="text-white w-[90%] max-w-[350px]  flex justify-center mb-5">
           <label className="w-[100px] inline-block">Description</label>
           <textarea
             name="description"
@@ -77,7 +77,7 @@ export default function ExperienceAdd({ setExperience, setIsSet, resetData }) {
         </div>
         <div className="mt-5">
           <button
-            className="text-white rounded border px-8 py-2 border-[#30363D] duration-300 hover:bg-gray-800"
+            className="text-white rounded-[5px]  border px-8 py-2 border-[#30363D] duration-300 hover:bg-gray-800"
             onClick={submit}
           >
             Ajouter

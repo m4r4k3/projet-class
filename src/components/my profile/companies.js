@@ -9,12 +9,14 @@ export default function Companies({ id, name , starting , ending , description ,
 
 }
   return (
-    <div className="px-[10%] my-5 relative">
-        <button className="button active:bg-green-500 absolute bg-black border border-[#30363D] top-5 left-0">
-        <i class="fa-solid fa-minus text-red-500" id={id} onClick={e=>deleteExp(e)}></i>
+    <div className="px-[10%]  sm:px-[10%] my-5 relative ">
+        <div className="absolute left-0 flex items-center h-full">
+          <button className="button active:bg-green-500  bg-black border border-[#30363D] ">
+        <i class="fa-solid fa-xmark  text-red-500" id={id} onClick={e=>deleteExp(e)}></i>
         </button>
-        <div className="w-full">
-          <div className="flex justify-between pr-8 text-white">
+        </div>
+        <div className="w-full ">
+          <div className="flex justify-between sm:pr-8 text-white">
             <label className="font-semibold text-lg "> {name}</label>
             <div>{post}</div>
           </div>
