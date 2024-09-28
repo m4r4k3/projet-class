@@ -33,7 +33,6 @@ export default function AddOffre({ addMethod, setEdit , setData}) {
     await Axios.get("/sanctum/csrf-cookie");
     await Axios.post("/api/offres", form)
       .then((res) => res)
-      .then((data) => console.log(data));
     addMethod(false);
     setEdit((prev) => !prev);
   };
@@ -160,15 +159,7 @@ export default function AddOffre({ addMethod, setEdit , setData}) {
                 className="text-black outline-0 w-[50%] rounded pl-1 h-[80px] resize-none"
               ></textarea>
             </div>
-            <div className="text-white w-full flex justify-center mb-5 ">
-              <label className="w-[100px] inline-block pr-1">description</label>
-              <textarea
-                name="description"
-                type="text"
-                onChange={(e) => setFormFunc(e)}
-                className="text-black outline-0 w-[50%] rounded pl-1 h-[80px] resize-none"
-              ></textarea>
-            </div>
+        
           </div>
         </div>
         <div className="mb-5">

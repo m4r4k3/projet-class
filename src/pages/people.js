@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import Person from "../components/main/person";
 import { Axios } from "../axios";
-import LoadingScreen from "../loading";
 import { useState } from "react";
+import ProfileSk from "../components/loading/profile-sk"
 
 export default function People() {
   const [data, setData] = useState();
@@ -15,10 +15,7 @@ export default function People() {
       .then((res) => res.data)
       .then((data) => setData(data));
   }, []);
-  console.log(data);
-  if (!data) {
-    return <LoadingScreen />;
-  }
+
   return (
     <>
       <div className="bg-[url('../image/pattern.png')] w-full  pt-[70px] min-h-screen">
@@ -26,6 +23,7 @@ export default function People() {
         className="flex w-full justify-center items-center mt-5 relative"
         style={{ zIndex: 10 }}
       >
+
 
 
         <input
@@ -42,9 +40,9 @@ export default function People() {
         <div
           className={`grid grid-cols-1 sm:grid-cols-3 w-full justify-items-center p-[50px] gap-[50px]`}
         >
-          {data.map((e, i) => (
+          {data ? data.map((e, i) => (
             <Person id = {e.id} nom={e.nom} prenom={e.prenom}/>
-          ))}
+          )) :[...Array(6)].map(()=> <ProfileSk />)}
         </div>
       </div>
     </>

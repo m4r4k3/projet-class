@@ -2,20 +2,22 @@ import OffresCard from "../components/offres/offres-card";
 import { useEffect } from "react";
 import { Axios } from "../axios";
 import FullScreenOffer from "../components/offres/fullscreen-card";
-import LoadingScreen from "../loading";
 import "../style/navigate.css";
 import { useState } from "react";
+import OffresSk from "../components/loading/offres-sk"
 import SearchBar from "../components/main/search";
 import AddOffre from "../components/offres/add-offre";
+import { useLocation } from "react-router";
 export default function Offres() {
   const [fullScreen, setFullScreen] = useState(null);
   const [isAddOffre, setAddOffre] = useState(false);
   const [edit, setEdit] = useState(false);
   const [data, setData] = useState(false);
+  const location = useLocation() ;
 
   
   useEffect(() => {
-    const searchParams = new URLSearchParams(document.location.search)
+    const searchParams = new URLSearchParams(location.search)
     const q =  searchParams.get("q") ;
     const type_contrat =  searchParams.get("type_contrat")
     const salary = searchParams.get("salary")
@@ -25,21 +27,18 @@ export default function Offres() {
       .then((data) => setData(data));
   }, [edit]);
   
-  if (!data) {
-    return <LoadingScreen />;
-  }
-  document.body.classList.remove("modal-open");
+
   const apply = (id) => {
     setData(false);
     setEdit((prev) => !prev);
     Axios.post("/api/applicant", { offre_id: id })
       .then((res) => res.data)
-      .then((res) => console.log(res))
       .catch(() => console.error("error"));
   };
   return (
     <>
-      <div className="bg-[url('../image/pattern.png')] min-h-screen w-full  pt-[70px]">
+          <div className="bg-[url('../image/pattern.png')] min-h-screen w-full  pt-[70px]">
+ 
         <SearchBar type={2} addMethod={setAddOffre} />
         {isAddOffre && <AddOffre addMethod={setAddOffre} setEdit={setEdit} setData={setData} />}
         {fullScreen && (
@@ -52,7 +51,7 @@ export default function Offres() {
         <div
           className={`grid grid-cols-1  sm:grid-cols-3 w-full justify-items-center p-[50px] gap-[50px]`}
         >
-          {data.map((e, i) => (
+          {data ? data.map((e, i) => (
             <OffresCard
               setOffer={setFullScreen}
               isOffer={true}
@@ -70,9 +69,12 @@ export default function Offres() {
               isApplied= {e.isApplied}
               apply={apply}
             />
-          ))}
+          )) :
+         [...Array(6)].map(e=><OffresSk />)
+          }
         </div>
-      </div>
+        </div>
+
     </>
   );
 }

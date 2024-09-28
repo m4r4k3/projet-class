@@ -8,37 +8,39 @@ import { actions } from "../store";
 import { useDispatch } from "react-redux";
 
 export default function SignIn() {
-  const [isBgEntr, setBgEntr] = useState(false);
   const [error, setError] = useState(false);
   const navigate = useNavigate();
   const [isloading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const [isSignup, setSignup] = useState(false);
-
-  const [form, setForm] = useState({ type: 2 });
+  
+  const [form, setForm] = useState({ type:2  , email:"", password:""});
   const setFormFunc = (e) =>
     setForm((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value,
-      type: isBgEntr ? 1 : 2,
+      [e.target.name]: e.target.value
     }));
+    
+      const signInFunc = async () => {
+        setIsLoading(true);
+        await Axios.get("/sanctum/csrf-cookie");
+        await Axios.post("/api/login", form)
+          .then((res) => res.data)
+          .then((data) => {
+            dispatch(actions.login({ id: data.id, type: data.type }));
+            navigate("/");
+          })
+          .catch((error) => {
+            setIsLoading(false);
+            setError("Email or Password not correct.");
+          });
+      };
   const ClickFunc = () => {
-    setBgEntr((prev) => !prev);
-  };
-  const signInFunc = async () => {
-    setIsLoading(true);
-    await Axios.get("/sanctum/csrf-cookie");
-    document.body.classList.add("modal-open");
-    await Axios.post("/api/login", form)
-      .then((res) => res.data)
-      .then((data) => {
-        dispatch(actions.login({ id: data.id, type: data.type }));
-        navigate("/");
-      })
-      .catch((error) => {
-        setIsLoading(false);
-        setError("Email or Password not correct.");
-      });
+     setForm((prev) => {
+      return ({
+      ...prev,
+      type: prev.type == 2 ? 1 : 2,
+    })});
   };
 
   return (
@@ -46,22 +48,22 @@ export default function SignIn() {
       {isloading && <LoadingScreen />}
       <div
         className={`bg-[url('../image/pattern.png')] w-full  flex  h-full relative overflow-hidden ${
-          isBgEntr ? "justify-start" : "justify-end"
+           form.type ==1 ? "justify-start" : "justify-end"
         }  `}
       >
         {isSignup && <SignUp setSignup={setSignup} />}
         <div
-          className={`left-0 hidden sm:flex   bg-[url(${
-            isBgEntr
+          className={`left-0 hidden lg:flex   bg-[url(${
+            form.type ==1 
               ? "https://th.bing.com/th/id/R.d45dc54e7d0e057a0766ee517b5d48cd?rik=0EkDiw1isfR34g&pid=ImgRaw&r=0"
               : "../image/signBuilding.jpeg"
           })] absolute  duration-300 w-[70%] top-0 h-[calc(100%/3)]   bg-cover  ${
-            isBgEntr ? " translate-x-[43%]" : ""
+             form.type ==1 ? " translate-x-[43%]" : ""
           }`}
           style={{
             backgroundPosition: "0 0% ",
             backgroundSize: "100% 100vh",
-            clipPath: isBgEntr
+            clipPath: form.type ==1 
               ? "polygon(30% 0 ,100% 0% ,100% 100%,20% 100%)"
               : "polygon(0 0, 100% 0%, 90% 100%, 0 100%)",
           }}
@@ -72,17 +74,17 @@ export default function SignIn() {
           ></div>
         </div>
         <div
-          className={`left-0 delay-100 hidden sm:flex  ${
-            isBgEntr
+          className={`left-0 delay-100 hidden lg:flex  ${
+            form.type ==1 
               ? "bg-[url(https://th.bing.com/th/id/R.d45dc54e7d0e057a0766ee517b5d48cd?rik=0EkDiw1isfR34g&pid=ImgRaw&r=0)]"
               : "bg-[url(../image/signBuilding.jpeg)]"
           } absolute  duration-300 flex items-center w-[70%] top-[33.2%] h-[calc(100%/3)]  bg-cover  ${
-            isBgEntr ? " translate-x-[43%] justify-end" : ""
+             form.type ==1 ? " translate-x-[43%] justify-end" : ""
           }`}
           style={{
             backgroundPosition: "0 50% ",
             backgroundSize: "100% 100vh",
-            clipPath: isBgEntr
+            clipPath: form.type ==1 
               ? "polygon(20% 0px, 100% 0px, 100% 100%, 10% 100%)"
               : "polygon(0% 0, 90% 0%, 80% 100%, 0 100%)",
           }}
@@ -96,21 +98,21 @@ export default function SignIn() {
             className="text-white text-[40px] font-bold  left-10 mx-10"
             style={{ zIndex: "4" }}
           >
-            Sign-in as {isBgEntr ? "a Job Seeker" : "An Entreprise"}
+            Sign-in as { form.type ==1 ? "a Job Seeker" : "An Entreprise"}
           </div>
         </div>
         <div
-          className={`left-0  delay-200 hidden sm:flex  flex items-center  bg-[url(${
-            isBgEntr
+          className={`left-0  delay-200 hidden lg:flex  flex items-center  bg-[url(${
+            form.type ==1 
               ? "https://th.bing.com/th/id/R.d45dc54e7d0e057a0766ee517b5d48cd?rik=0EkDiw1isfR34g&pid=ImgRaw&r=0"
               : "../image/signBuilding.jpeg"
           })] absolute  duration-300 w-[70%] top-[66.45%] h-[calc(100%/3)]  bg-cover  ${
-            isBgEntr ? " translate-x-[43%]" : ""
+             form.type ==1 ? " translate-x-[43%]" : ""
           }`}
           style={{
             backgroundPosition: "0 100% ",
             backgroundSize: "100% 100vh",
-            clipPath: isBgEntr
+            clipPath: form.type ==1 
               ? "polygon(10% 0px, 100% 0px, 100% 100%, 00% 100%)"
               : "polygon(0% 0, 80% 0%, 70% 100%, 0 100%)",
           }}
@@ -122,51 +124,53 @@ export default function SignIn() {
 
           <div
             className={`w-[50px] h-[50px] ${
-              isBgEntr ? "ml-[20%]" : "ml-[60%]"
+               form.type ==1 ? "ml-[20%]" : "ml-[60%]"
             } bg-white rounded-full grid place-content-center  block  cursor-pointer hover:scale-110`}
             style={{ zIndex: "4" }}
             onClick={ClickFunc}
           >
             <i
               className={`fa-solid fa-chevron-${
-                isBgEntr ? "right" : "left"
+                 form.type ==1 ? "right" : "left"
               } text-black  font-bold text-2xl `}
             ></i>
           </div>
         </div>
 
-        <div className="w-full sm:w-[30%] flex justify-center  items-center ">
-          <div className="flex flex-col border h-[350px] bg-[#0D1117] border border-[#30363D] rounded-[10px] w-[90%] sm:w-[80%] relative">
+        <div className="w-full lg:w-[33%] flex justify-center  items-center lg:px-0 px-2 ">
+          <div className="flex flex-col border h-[350px] bg-[#0D1117]  border-[#30363D] rounded-[10px] w-[380px] lg:w-[80%] relative">
             <div className="text-red-500  absolute bottom-[-30px] right-2">{error && error}</div>
-            <div className="text-2xl text-gray-500 font-bold text-center w-full my-5">
+            <div className="text-2xl text-gray-200 font-bold text-center w-full my-5">
               Sign-in
             </div>
-            <div className="w-full flex justify-between px-5 my-4">
-              <label className={`text-white `}>Email :</label>
+            <div className="w-full flex justify-between my-4 px-4">
+              <label className={`text-white w-[150px] `}>Email :</label>
               <input
                 name="email"
                 onChange={(e) => setFormFunc(e)}
+                value={form.email}
                 type="text"
-                className="rounded pl-2 outline-0 shadow-black focus:shadow-inner"
+                className="rounded pl-2 outline-0 w-[160px] shadow-black focus:shadow-inner"
               />
             </div>
-            <div className="w-full flex justify-between px-5 my-4">
-              <label className={`text-white  `}>Password :</label>
+            <div className="w-full flex justify-between  my-4  px-4">
+              <label className={`text-white  w-[150px]  `}>Password :</label>
               <input
                 name="password"
                 onChange={(e) => setFormFunc(e)}
                 type="password"
-                className="rounded pl-2 outline-0 shadow-black focus:shadow-inner"
+                value={form.password}
+                className="rounded pl-2 outline-0 w-[160px] shadow-black focus:shadow-inner"
               />
             </div>
 
-            <div className="w-full flex px-5 mt-2 items-center sm:hidden">
+            <div className="w-full flex px-5 mt-2 items-center lg:hidden">
               <div class="relative " onClick={ClickFunc}>
                 <input id="switch" type="checkbox" class="sr-only" />
-                <div class={`block w-8 h-5 rounded-full duration-[350ms] ${isBgEntr ? "bg-[#1F1F1F]" : "bg-gray-300"}`}></div>
-                <div class={`dot absolute  top-1 bg-white w-3  h-3  outline-black rounded-full duration-300 transition-transform ${isBgEntr ? "translate-x-4" : "left-1"}`}></div>
+                <div class={`block w-8 h-5 rounded-full duration-[350ms] border border-xs ${ form.type ==1 ? "bg-[#4f688d] border-black": "bg[#3b82f6] border-white  " }`}></div>
+                <div class={`dot absolute  top-1 bg-white w-3  h-3  outline-black rounded-full duration-300 transition-transform ${ form.type ==1 ? "translate-x-4" : "left-1"}`}></div>
               </div>
-              <label className={`text-white mx-5`}>Sign in as job seeker</label>
+              <label className={`text-white mx-5`} for={"switch"}>Sign in as job seeker</label>
             </div>
             <div className="w-full flex justify-center items-center mt-8 ">
               <button

@@ -24,7 +24,6 @@ export default function SignUp({ setSignup }) {
     await Axios.post("api/signup", form)
       .then(async (res) => {
         const data = await res.data;
-        console.log(data.user)
           dispatch(actions.login({ id: data.id, type: data.type }));
           navigate("/");
       })

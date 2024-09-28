@@ -15,7 +15,6 @@ export default function Education({
     await Axios.get("/sanctum/csrf-cookie");
     await Axios.delete(`/api/education/${e.target.id}`)
       .then((res) => res)
-      .then((data) => console.log(data))
       .catch((error) => console.log(error));
     setIsSet((prev) => !prev);
   };
@@ -30,8 +29,8 @@ export default function Education({
         ></i>
       </button>
       </div>
-      <div className="w-[90%]  ">
-        <div className="flex justify-between pr-5 text-white">
+      <div className="w-full pl-[5%] sm:w-[90%]  ">
+        <div className="flex justify-between sm:pr-5 text-white">
           <label className="font-semibold text-lg ">{school}</label>
           <div>{certificate}</div>
         </div>

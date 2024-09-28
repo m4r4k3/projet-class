@@ -23,7 +23,6 @@ export default function AddDemande({ addMethod, setEdit , setData}) {
     await Axios.get("/sanctum/csrf-cookie");
     await Axios.post("/api/demandes", form)
       .then((res) => res)
-      .then((data) => console.log(data));
     addMethod(false);
     setEdit((prev) => !prev);
   };

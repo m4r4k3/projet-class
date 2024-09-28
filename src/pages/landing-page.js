@@ -9,8 +9,9 @@ function LandingPage() {
         className="landing-page 
       bg-opacity-0
        w-full
+       pt-[-70px]
        bg-[url('../image/city-phone.jpeg')] 
-      sm:bg-[url('../image/city.jpg')] 
+      md:bg-[url('../image/city.jpg')] 
       h-screen
       "
       >

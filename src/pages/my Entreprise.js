@@ -8,7 +8,6 @@ export default function MyEntreprise() {
   const [edit, setEdit] = useState(false);
   const [isSet, setIsSet] = useState(false);
   const id = useSelector((s) => s.store.id);
-  console.log(id)
   
   useEffect(() => {
     Axios.get(`/api/entreprise/${id}`)
@@ -23,7 +22,6 @@ export default function MyEntreprise() {
     await Axios.get("/sanctum/csrf-cookie");
     await Axios.put(`api/entreprise/${id}` , {"description": edit})
       .then((res) => res)
-      .then((res) => console.log(res));
     setIsSet(prev=>!prev)
   };
 

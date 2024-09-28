@@ -9,7 +9,7 @@ export default function EducationAdd ({setEducation, setIsSet ,resetData}){
     setEducation(false)
     resetData()
     await Axios.get("/sanctum/csrf-cookie");
-    await Axios.post("/api/education", form ).then(res=>res).then(data=>console.log(data));
+    await Axios.post("/api/education", form ).then(res=>res);
     setIsSet(prev=>!prev)
   }
     return (

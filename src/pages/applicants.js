@@ -13,7 +13,6 @@ export default function Applicant() {
     Axios.get("/api/applicant/" + id)
     .then((res) => res.data)
     .then((res) => setData(res))
-    console.log(data)
   }, []);
 
   if (!data) {

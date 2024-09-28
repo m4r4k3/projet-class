@@ -12,7 +12,6 @@ export default function MyDemandes() {
       .then((data) => setData(data));
   }, [edit]);
 
-  console.log(data)
   if (!data) {
     return <LoadingScreen />;
   }

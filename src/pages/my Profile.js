@@ -32,7 +32,6 @@ export default function MyProfile() {
     resetData();
     await Axios.get("/sanctum/csrf-cookie");
     await Axios.put(`/api/individuel/${id}`, info)
-      .then((res) => console.log(res))
       .catch(() => console.log("error"));
     setIsSet((prev) => !prev);
   };

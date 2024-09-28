@@ -23,14 +23,14 @@ export default function FullScreenOffer({ setOffer, offre, apply }) {
       style={{ zIndex: 10 }}
     >
       <div
-        className="w-[800px] h-[300px] rounded bg-white py-[3%] px-[5%] relative"
+        className="md:w-[800px] w-full sm:h-[400px] h-[80%] rounded bg-white pt-[7%] sm:py-[3%] px-[4%] relative"
         onClick={(e) => {
           setList(false);
           e.stopPropagation();
         }}
       >
-        <div className="flex w-full justify-around">
-          <div className=" flex flex-col gap-1">
+        <div className="flex sm:flex-row flex-col  sm:gap-0 w-full gap-3 justify-around">
+          <div className=" flex flex-col gap-3 sm:gap-1">
             <div>
               <label className="font-bold w-[130px]   inline-block">
                 Entreprise :
@@ -50,14 +50,9 @@ export default function FullScreenOffer({ setOffer, offre, apply }) {
               </label>
               <span>{city}</span>
             </div>
-            <div>
-              <label className="font-bold w-[130px]   inline-block">
-                description :
-              </label>
-              <span>{description}</span>
-            </div>
+          
           </div>
-          <div className=" flex flex-col gap-1">
+          <div className=" flex flex-col sm:gap-1 gap-3">
             <div>
               <label className="font-bold w-[130px]   inline-block">
                 Salaire :
@@ -84,12 +79,12 @@ export default function FullScreenOffer({ setOffer, offre, apply }) {
             </div>
           </div>
         </div>
-        <div className="mt-5 px-[5%]">
+        <div className="mt-2 mt-5 sm:px-[5%]">
           <div className="font-bold"> Caractéristiques du poste :</div>
-          <div className="px-5 py-2">{characteristic}</div>
+          <p className="px-5 py-2 w-full overflow-y-scroll h-[100px] mt-2  break-words	">dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</p>
         </div>
         {type == 1 && (
-          <div className="mt-3 w-full flex justify-end  ">
+          <div className=" w-full flex justify-end mt-2 mt-5 ">
             <button
               className={`border-[2px] px-10 py-1 rounded-[5px] shadow-inner font-semibold text-[15px] ${
                 isApplied ? "bg-green-500 text-white" : ""

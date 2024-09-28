@@ -11,7 +11,6 @@ export default function ExperienceAdd({ setExperience, setIsSet, resetData }) {
     await Axios.get("/sanctum/csrf-cookie");
     await Axios.post("/api/experience", form)
       .then((res) => res)
-      .then((data) => console.log(data));
     setIsSet((prev) => !prev);
   };
   return (

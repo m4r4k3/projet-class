@@ -12,7 +12,7 @@ export default function PhoneFooter() {
             <div className="title-footer flex w-full justify-between px-2">
               <div>Know Us</div>
               <div>
-                <i class={`fa-regular fa-plus duration-500 ${exp[0]? "rotate-45":""}`}></i>
+                <i class={`fa-regular fa-chevron-down duration-500 ${exp[0]? "rotate-180":""}`}></i>
               </div>
             </div>
             <p
@@ -30,7 +30,7 @@ export default function PhoneFooter() {
             <div className="title-footer flex w-full justify-between px-2">
               <div>Contact</div>
               <div>
-              <i class={`fa-regular fa-plus duration-500 ${exp[1]? "rotate-45":""}`} ></i>
+              <i class={`fa-regular fa-chevron-down duration-500 ${exp[1]? "rotate-180":""}`} ></i>
               </div>
             </div>
 
@@ -69,7 +69,7 @@ export default function PhoneFooter() {
             <div className="title-footer flex w-full justify-between px-2">
               <div>Follow US</div>
               <div>
-              <i class={`fa-regular fa-plus duration-500 ${exp[2]? "rotate-45":""}`} ></i>
+              <i class={`fa-regular fa-chevron-down duration-500 ${exp[2]? "rotate-180":""}`} ></i>
               </div>
             </div>
             <div
@@ -77,24 +77,19 @@ export default function PhoneFooter() {
                 !exp[2] ? "hidden" : ""
               } px-5 py-3 flex flex-col justify-around`}
             >
-              <ul className=" grid grid-cols-3 justify-items-center  gap-[10px] w-[80%] brand-footer w-full">
+              <ul className=" flex flex-col  gap-[20px] w-[80%] brand-footer w-full [&>li]:flex">
                 <li>
-                  <i class="fa-brands fa-facebook"></i>
+                  <i class="fa-brands fa-facebook"></i><span className="ml-3 flex items-center font-bold">EliteCareers</span>
                 </li>
                 <li>
-                  <i class="fa-brands fa-linkedin"></i>
+                  <i class="fa-brands fa-linkedin"></i><span className="ml-3 flex items-center font-bold">EliteCareers</span>
                 </li>
                 <li>
-                  <i class="fa-brands fa-instagram"></i>
+                  <i class="fa-brands fa-instagram"></i><span className="ml-3 flex items-center font-bold">@EliteCareers</span>
                 </li>
+               
                 <li>
-                  <i class="fa-brands fa-github"></i>{" "}
-                </li>
-                <li>
-                  <i class="fa-brands fa-google"></i>
-                </li>
-                <li>
-                  <i class="fa-brands fa-twitter"></i>
+                  <i class="fa-brands fa-twitter"></i><span className="ml-3 flex items-center font-bold">@EliteCareers</span>
                 </li>
               </ul>
             </div>
@@ -105,7 +100,7 @@ export default function PhoneFooter() {
             <div className="title-footer flex w-full justify-between px-2">
               <div>Usefull Links</div>
               <div>
-              <i class={`fa-regular fa-plus duration-500 ${exp[3]? "rotate-45":""}`} ></i>
+              <i class={`fa-regular fa-chevron-down duration-500 ${exp[3]? "rotate-180":""}`} ></i>
               </div>
             </div>
             <ul

@@ -26,7 +26,6 @@ export default function DemandeCard({isDemande  ,
     await Axios.get("/sanctum/csrf-cookie");
     Axios.delete(`/api/demandes/${id}`)
     .then(res=>res)
-    .then(res=>console.log(res))
     setEdit(prev=>!prev)
   }
   return (
@@ -45,7 +44,7 @@ export default function DemandeCard({isDemande  ,
           {(new Date(created_at)).toDateString("y%/m%/d%")}
         </div>
         <div
-          className="absolute w-full h-full bg-white rounded-[15px] duration-500 p-5 translate-y-[100%] "
+          className="absolute w-full h-full overflow-y-scroll bg-white rounded-[15px] duration-500 p-5 translate-y-[100%] "
           ref={descriptionVar}
         >
           <span className="block font-semibold mb-2"> Description :</span>
@@ -60,7 +59,7 @@ export default function DemandeCard({isDemande  ,
           <div className="w-[45%]">
             <div>
               <label className="font-semibold">Domain :</label>
-              <span>{domain}</span>
+              <span className="text-xs">{domain}</span>
             </div>
             <div>
               <label className="font-semibold">Experience :</label>

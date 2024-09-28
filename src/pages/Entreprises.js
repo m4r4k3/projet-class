@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import MinEntr from "../components/main/min-entreprise";
 import { Axios } from "../axios";
-import LoadingScreen from "../loading";
+import ProfileSk from "../components/loading/profile-sk"
 import { useState } from "react";
 
 export default function Entreprises() {
@@ -15,11 +15,7 @@ export default function Entreprises() {
       .then((res) => res.data)
       .then((data) => setData(data));
   }, []);
-  console.log(data);
-  if (!data) {
-    return <LoadingScreen />;
-  }
-  return (
+    return (
     <>
       <div className="bg-[url('../image/pattern.png')] w-full  pt-[70px] min-h-screen">
       <form
@@ -40,9 +36,9 @@ export default function Entreprises() {
         <div
           className={`grid grid-cols-1  sm:grid-cols-3  w-full justify-items-center p-[50px] gap-[50px]`}
         >
-          {data.map((e, i) => (
+          { data ? data.map((e, i) => (
             <MinEntr id = {e.id} name={e.name}/>
-          ))}
+          )) :[...Array(6)].map(()=> <ProfileSk />)}
         </div>
       </div>
     </>

@@ -1,33 +1,30 @@
 import { useEffect, useState } from "react";
 import DemandesCard from "../components/demandes/demandeCard";
 import { Axios } from "../axios";
-import LoadingScreen from "../loading";
 import SearchBar from "../components/main/search";
 import AddDemande from "../components/demandes/addDemande";
+import { useLocation } from "react-router";
+import DemandesSk from "../components/loading/demandes-sk";
 
 export default function Demandes() {
   const [data, setData] = useState(false);
   const [edit, setEdit] = useState(false);
   const [isAddDemande, setsAddDemande] = useState(false);
-
-  const searchParams = new URLSearchParams(document.location.search)
-  const q =  searchParams.get("q") ;
-  const salary = searchParams.get("salary")
-  const city = searchParams.get("city")
+  const location = useLocation() ;
   
   useEffect(() => {
+    const searchParams = new URLSearchParams(location.search)
+    const q =  searchParams.get("q") ;
+    const salary = searchParams.get("salary")
+    const city = searchParams.get("city")
     Axios.get(`/api/demandes?city=${city ?city :""}&salary=${salary ? salary :""}&q=${q ? q :""}` )
       .then((res) => res.data)
       .then((data) => setData(data));
   }, [edit]);
-
-  document.body.classList.remove("modal-open");
-  if (!data) {
-    return <LoadingScreen />;
-  }
-  return (
+   return (
     <>
-      <div className="bg-[url('../image/pattern.png')] w-full  pt-[70px] min-h-screen">
+          <div className="bg-[url('../image/pattern.png')] min-h-screen w-full  pt-[70px]">
+
         {isAddDemande && (
           <AddDemande addMethod={setsAddDemande} setEdit={setEdit} setData={setData} />
         )}
@@ -35,7 +32,7 @@ export default function Demandes() {
         <div
           className={`grid grid-cols-1  md:grid-cols-3 w-full justify-items-center p-[50px] gap-[50px]`}
         >
-          {data.map((e) => (
+          {data ? data.map((e) => (
             <DemandesCard
               isDemande={true}
               id={e.id}
@@ -51,9 +48,12 @@ export default function Demandes() {
               created_at={e.created_at}
               user_id={e.user_id}
             />
-          ))}
+          ))
+        :
+       [...Array(6)].map(e=><DemandesSk/>)
+        }
         </div>
-      </div>
+        </div>
     </>
   );
 }

@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 export default function Nav({ setIsMenu, isMenu }) {
   const [scroll, setScroll] = useState(false);
   const isLogged = useSelector((s) => s.store.loggedIn);
-
+  const isLoaded = useSelector((s) => s.store.isLoaded);
+  
   useEffect(() => {
     setIsMenu((prev) => !prev);
     window.addEventListener("scroll", () => {
@@ -41,7 +42,7 @@ export default function Nav({ setIsMenu, isMenu }) {
         ELITE CAREERS
       </Link>
 
-      {isLogged ? (
+      {isLoaded ? (isLogged ? (
         <Link
           to={"/myprofile"}
           className="w-[30px] h-[30px] rounded-full shadow text-[15px] flex justify-center items-center shadow cursor-pointer"
@@ -55,7 +56,7 @@ export default function Nav({ setIsMenu, isMenu }) {
         >
           <i className={`fa-solid fa-right-to-bracket `}></i>
         </Link>
-      )}
+      )) : <div  className="w-[30px] h-[30px]"></div>}
     </div>
   );
 }

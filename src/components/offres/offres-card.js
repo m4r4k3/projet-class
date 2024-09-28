@@ -26,7 +26,6 @@ export default function OffresCard({
     await Axios.get("/sanctum/csrf-cookie");
     Axios.delete(`/api/offres/${id}`)
       .then((res) => res)
-      .then((res) => console.log(res));
     setEdit((prev) => !prev);
   };
   return (
@@ -71,7 +70,7 @@ export default function OffresCard({
         <div className="absolute top-1 right-3 text-[#888888] text-[14px]">
           20/24
         </div>
-        <div className="w-full flex flex-col gap-1 px-2 h-[75%]">
+        <div className="w-full flex flex-col justify-around px-2 h-[75%]">
           <div>
             <label className="labels">Entreprise :</label>
             <span>{name}</span>
@@ -88,14 +87,15 @@ export default function OffresCard({
             <label className="labels">Ville :</label>
             <span>{city}</span>
           </div>
+           <div>
+            <label className="labels">Date debut :</label>
+            <span>{starting}</span>
+          </div>
           <div>
             <label className="labels">Salaire :</label>
             <span>{salary} DH</span>
           </div>
-          <div className="flex ">
-            <label className="labels">Description :</label>
-            <span className="w-[70%] block">{description}</span>
-          </div>
+        
         </div>
         <div className="w-full flex justify-end pr-[20px] mt-[20px]">
           {type == 1 && (

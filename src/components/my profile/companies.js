@@ -4,7 +4,7 @@ export default function Companies({ id, name , starting , ending , description ,
   const deleteExp = async(e)=>{
     resetData()
     await Axios.get("/sanctum/csrf-cookie");
-    await Axios.delete(`/api/experience/${e.target.id}`).then(res=>res).then(data=>console.log(data)).catch((error)=>console.log(error))
+    await Axios.delete(`/api/experience/${e.target.id}`).then(res=>res).catch((error)=>console.log(error))
     setIsSet(prev=>!prev)
 
 }

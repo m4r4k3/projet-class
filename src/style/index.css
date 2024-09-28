@@ -10,6 +10,8 @@
     scrollbar-width: thin; 
 }
 
+  
+  
 body.modal-open{
     overflow: hidden;
 }
