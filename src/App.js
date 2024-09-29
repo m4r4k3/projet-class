@@ -23,11 +23,14 @@ import People from "./pages/people.js";
 import PhoneFooter from "./components/main/phonefooter.js";
 import Privacy from "./components/main/privacy.js";
 import ProfileSk from "./components/loading/profile-sk.js";
+import LoadingScreen from "./loading.js";
+import { EducationSk } from "./components/loading/big-profile-sk.js";
 
 export default function App() {
   const [isMenu, setIsMenu] = useState();
   const isLoggedIn = useSelector((s) => s.store.loggedIn);
   const type = useSelector((s) => s.store.type);
+  const isLoaded = useSelector(s=>s.store.isLoaded)
   const location = useLocation() ;
   const dispatch = useDispatch();
   
@@ -40,7 +43,9 @@ export default function App() {
       document.body.classList.remove("modal-open");
     }
   }, [isMenu  ]);
-
+  if (!isLoaded) {
+    return <LoadingScreen />
+  }
   return (
     <>
       <div className=" h-screen App ">
@@ -56,7 +61,7 @@ export default function App() {
           <Route element={<Demandes />} path="/demandes"></Route>
           <Route element={<Privacy />} path="/privacy"></Route>
           <Route element={<Profile />} path="/profile/:id"></Route>
-          <Route element={<ProfileSk />} path="/test"></Route>
+          <Route element={<EducationSk />} path="/test"></Route>
           <Route element={<Search />} path="/search"></Route>
           <Route element={<People />} path="/people"></Route>
           {!isLoggedIn ? (
@@ -80,7 +85,7 @@ export default function App() {
           )}
           <Route element={<Entreprise />} path="/entreprise/:id"></Route>
           <Route element={<Entreprises />} path="/entreprises"></Route>
-          <Route path="*" element={<NotFound />}></Route>
+        <Route path="*" element={<NotFound />}></Route>
         </Routes>
         
 

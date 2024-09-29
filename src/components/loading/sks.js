@@ -23,7 +23,27 @@ export const AnimatedDiv = ({ w, h }) => {
 
 export const Circle = ({ w, h }) => (
   <div
-    className="bg-gray-200 bg-center bg-contain rounded-full"
+    className=" bg-center bg-contain rounded-full"
     style={{ width: `${w}px`, height: `${h}px` }} 
   ></div>
 );
+
+export const AnimatedDivDark = ({ w, h , c="%"}) => {
+  return (
+    <motion.div
+      animate={{
+        background: [
+          "linear-gradient(90deg,rgb(40, 40, 40 , .2)   0%, #252525 30%)",
+          "linear-gradient(90deg,rgb(40, 40, 40 ,.2) 0%, #252525  100%)",
+        ],
+      }}
+      transition={{
+        duration: 5,
+        repeat: Infinity,
+        repeatType: "reverse",
+      }}
+      className="rounded mx-1"
+      style={{ width: `${w}${c}`, height: `${h}px` }} 
+    ></motion.div>
+  );
+};

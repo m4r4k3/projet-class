@@ -1,9 +1,10 @@
 import React from 'react';
 import { AnimatedDiv, Circle } from './sks.js'; // Adjust import path based on your file structure
+import {motion} from "framer-motion" ;
 
 export default function DemandesSk() {
   return (
-    <div className="w-[350px] h-[350px] bg-white rounded-[15px] relative text-[18px] shadow-inner overflow-hidden">
+    <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{ease:"easeIn" , duration:0.3}} className="w-[350px] h-[350px] bg-white rounded-[15px] relative text-[18px] shadow-inner overflow-hidden">
       <div className="h-[70%] flex flex-col justify-center items-center w-full relative  ">
       <div className='flex justify-end w-full p-2 absolute top-0'>
         <AnimatedDiv w={105} h={20} /> 
@@ -45,6 +46,6 @@ export default function DemandesSk() {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

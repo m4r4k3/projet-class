@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { Axios } from "../../axios";
+import {  motion, useMotionValue, useTransform } from "framer-motion";
 
 export default function Education({
   id,
@@ -7,29 +9,50 @@ export default function Education({
   end,
   start,
   description,
-  setIsSet,
-  resetData,
+
 }) {
-  const deleteExp = async (e) => {
-    resetData();
+  const x = useMotionValue(0);
+  const bgChange = useTransform(x, [0, -100], [1, 0]);
+  const [hidden , setHidden] = useState()
+
+
+  const deleteExp = async () => {
+
+    setHidden(true)
     await Axios.get("/sanctum/csrf-cookie");
-    await Axios.delete(`/api/education/${e.target.id}`)
+    await Axios.delete(`/api/education/${id}`)
       .then((res) => res)
       .catch((error) => console.log(error));
-    setIsSet((prev) => !prev);
+
   };
+
   return (
-    <div className=" my-5 relative  flex justify-end  w-full px-[10%]  sm:px-[10%]">
-             <div className="absolute left-0 flex items-center h-full">
-      <button className="button active:bg-green-500 bg-black border border-[#30363D] ">
-        <i
-          class="fa-solid fa-xmark text-red-500"
-          onClick={deleteExp}
-          id={id}
-        ></i>
-      </button>
+    <motion.div
+    
+      drag="x"
+      dragElastic={0.1}
+      dragConstraints={{
+        right: 10,
+        left: 0,
+      }}
+      style={{ x }}
+      
+      transition={{ duration: 0.5 }}
+      onDragEnd={()=> x.current > 60 && deleteExp()}
+      className={` my-5 flex  w-full relative ${hidden && "hidden"}`}
+    >
+      <div className=" flex items-center left-[-80px] absolute h-full w-[50px] bg-red-500 px-2">
+        <button
+          className="button bg-red-500  border-[#30363D] "
+          style={{ background: bgChange }}
+        >
+          <i
+            class="fa-solid fa-trash text-white"
+            onClick={deleteExp}
+          ></i>
+        </button>
       </div>
-      <div className="w-full pl-[5%] sm:w-[90%]  ">
+      <div className="w-full px-[5%] ">
         <div className="flex justify-between sm:pr-5 text-white">
           <label className="font-semibold text-lg ">{school}</label>
           <div>{certificate}</div>
@@ -45,6 +68,6 @@ export default function Education({
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

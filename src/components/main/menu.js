@@ -2,6 +2,7 @@ import {NavLink , useLocation, useNavigate } from "react-router-dom";
 import "../../style/menu.css";
 import { useSelector } from "react-redux";
 import { Axios } from "../../axios";
+import {motion} from "framer-motion"
 import { actions } from "../../store/index";
 import { useDispatch } from "react-redux";
 
@@ -24,10 +25,13 @@ export default function Menu({ setIsMenu  }) {
       style={{ zIndex: 99 }}
       onClick={(e) => {
         e.stopPropagation();
-        setIsMenu((prev) => !prev);
+        setIsMenu((prev) => {
+           
+          return !prev
+        });
       }}
     >
-      <div className=" w-[50%] sm:w-[20%] lg:w-[15%]  h-screen bg-[#F4F4F4] ">
+      <motion.div    initial={{translateX:-100}} animate={{translateX:0}} transition={{ease:"easeOut" , duration:0.3}} className=" w-[50%] sm:w-[20%] lg:w-[15%]  h-screen bg-[#F4F4F4] ">
         <div className=" w-full  h-full  ">
           <ul className="flex flex-col gap-3   h-[calc(100%-70px)] logo-font">
             <li>
@@ -133,7 +137,7 @@ export default function Menu({ setIsMenu  }) {
 
           </ul>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

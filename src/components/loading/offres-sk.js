@@ -5,7 +5,7 @@ import { AnimatedDiv, Circle } from './sks.js';
 export default function OffresSk() {
   return (
     <motion.div
-      exit={{ opacity: 0 }}
+   initial={{opacity:0}} animate={{opacity:1}} transition={{ease:"easeIn" , duration:0.3}}
       className="bg-white w-[350px] h-[350px] rounded-[15px] relative pt-[45px] shadow-inner"
     >
       <div className="absolute top-2 right-3 text-[#888888]">
