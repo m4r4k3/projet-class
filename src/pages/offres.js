@@ -22,7 +22,8 @@ export default function Offres() {
     const type_contrat =  searchParams.get("type_contrat")
     const salary = searchParams.get("salary")
     const city = searchParams.get("city")
-    Axios.get(`/api/offres?city=${city? city :""}&salary=${salary? salary :""}&type_contrat=${type_contrat? type_contrat :""}&q=${q? q :""}`)
+    const domain = searchParams.get("domain")
+    Axios.get(`/api/offres?city=${city? city :""}&salary=${salary? salary :""}&contrat=${type_contrat? type_contrat :""}&q=${q? q :""}&domain=${domain ?domain :""}`)
       .then((res) => res.data)
       .then((data) => setData(data));
   }, [edit]);
@@ -59,13 +60,13 @@ export default function Offres() {
               characteristic={e.characteristic}
               salary={e.salary}
               starting={e.starting}
-              name={e.name}
-              domain={e.domain}
-              city={e.city}
+              name={e.entreprise.name}
+              domain={e.domain.domain}
+              city={e.city.name}
               created_at={e.created_at}
               description={e.description}
               post={e.post}
-              contrat={e.contrat}
+              contrat={e.contrat.type}
               isApplied= {e.isApplied}
               apply={apply}
             />

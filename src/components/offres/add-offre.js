@@ -32,7 +32,7 @@ export default function AddOffre({ addMethod, setEdit , setData}) {
     setData(false)
     await Axios.get("/sanctum/csrf-cookie");
     await Axios.post("/api/offres", form)
-      .then((res) => res)
+      .then((res) =>console.log( res))
     addMethod(false);
     setEdit((prev) => !prev);
   };
@@ -45,25 +45,26 @@ export default function AddOffre({ addMethod, setEdit , setData}) {
       onClick={() => addMethod(false)}
     >
       <div
-        className="w-[900px] h-[400px] bg-[#0D1117] rounded border-[#30363D]  border flex flex-col items-center"
+        className="md:w-[900px] h-[60%] w-[90%] rounded md:h-[400px] bg-[#0D1117] rounded border-[#30363D]  border flex flex-col items-center"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="w-full mb-5 text-xl font-bold p-5 flex justify-center text-white">
           <p>Add Offer</p>
         </div>
-        <div className="flex w-full">
-          <div className="w-1/2">
-            <div className="text-white w-full flex justify-center mb-5 ">
+        <div className="flex w-full md:flex-row flex-col items-center md:items-start">
+          <div className="w-full md:w-1/2 flex flex-col gap-5 mb-5 ">
+            <div className="text-white w-full flex justify-center  ">
               <label className="w-[100px] inline-block pr-1">Salary</label>
               <input
                 type="number"
                 onChange={(e) => setFormFunc(e)}
                 name="salary"
+                min={1000}
                 className="text-black outline-0 w-[40%] rounded pl-1"
               />
               <span className="w-[10%] pl-2">DH</span>
             </div>
-            <div className="text-white w-full flex justify-center mb-5 ">
+            <div className="text-white w-full flex justify-center ">
               <label className="w-[100px] inline-block pr-1">Post</label>
               <input
                 type="text"
@@ -72,26 +73,27 @@ export default function AddOffre({ addMethod, setEdit , setData}) {
                 className="text-black outline-0 w-[50%] rounded pl-1"
               />
             </div>
-            <div className="text-white w-full flex justify-center mb-5 ">
+            <div className="text-white w-full flex justify-center ">
               <label className="w-[100px] inline-block pr-1">Starting</label>
               <div className="w-[50%]">
                 <input
                   onChange={(e) => setFormFunc(e)}
                   type="date"
                   name="starting"
-                  className="text-black outline-0 w-full rounded pl-1"
+                  className="text-black outline-0 w-full w-[30px] rounded pl-1"
                 />
               </div>
             </div>
-            <div className="text-white w-full flex justify-center mb-5 ">
+            <div className="text-white w-full flex justify-center ">
               <label className="w-[100px] inline-block pr-1">City</label>
               <select
                 className="text-black outline-0 w-[50%] rounded"
                 name="city"
                 onChange={(e) => setFormFunc(e)}
-              >
-                <option key={0} selected="true">
-                  -
+                defaultValue={-1}
+                >
+                  <option key={-1} value={-1} disabled>
+                    -
                 </option>
                 {cities.map((e) => (
                   <option
@@ -104,15 +106,17 @@ export default function AddOffre({ addMethod, setEdit , setData}) {
                 ))}
               </select>
             </div>
-            <div className="text-white w-full flex justify-center mb-5 ">
+            <div className="text-white w-full flex justify-center">
               <label className="w-[100px] inline-block pr-1">Domain</label>
               <select
                 className="text-black outline-0 w-[50%] rounded"
-                name="domain_id"
+                name="domain"
                 onChange={(e) => setFormFunc(e)}
-              >
-                <option key={0} selected="true">
-                  -
+
+                defaultValue={-1}
+                >
+                  <option key={-1} value={-1} disabled>
+                    -
                 </option>
                 {domain.map((e) => (
                   <option
@@ -126,15 +130,16 @@ export default function AddOffre({ addMethod, setEdit , setData}) {
               </select>
             </div>
           </div>
-          <div className="w-1/2">
-            <div className="text-white w-full flex justify-center mb-5 ">
+          <div className="w-full md:w-1/2 flex flex-col gap-5">
+            <div className="text-white w-full flex justify-center ">
               <label className="w-[100px] inline-block pr-1">Contrat</label>
               <select
-                className="text-black outline-0 w-[50%] rounded"
-                name="type_contrat"
+                className="text-black outline-0 w-[70%] rounded"
+                name="contrat"
                 onChange={(e) => setFormFunc(e)}
+                defaultValue={-1}
               >
-                <option key={0} selected="true">
+                <option key={-1} value={-1} disabled>
                   -
                 </option>
                 {contrat.map((e) => (
@@ -156,13 +161,13 @@ export default function AddOffre({ addMethod, setEdit , setData}) {
                 name="characteristic"
                 type="text"
                 onChange={(e) => setFormFunc(e)}
-                className="text-black outline-0 w-[50%] rounded pl-1 h-[80px] resize-none"
+                className="text-black outline-0 w-[70%] rounded pl-1 h-[80px] resize-none"
               ></textarea>
             </div>
         
           </div>
         </div>
-        <div className="mb-5">
+        <div className="md:mb-5">
           <button
             className="text-white rounded border px-8 py-2 border-[#30363D] duration-300 hover:bg-gray-800"
             onClick={submit}

@@ -35,7 +35,7 @@ export default function Companies({ id, name , starting , ending , description ,
           style={{ background: bgChange }}
         >
           <i
-            class="fa-solid fa-trash text-white"
+            className="fa-solid fa-trash text-white"
           ></i>
         </button>
       </div>

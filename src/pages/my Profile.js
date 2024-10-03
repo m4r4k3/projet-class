@@ -32,7 +32,7 @@ export default function MyProfile() {
     resetData();
     await Axios.get("/sanctum/csrf-cookie");
     await Axios.put(`/api/individuel/${id}`, info)
-      .catch(() => console.log("error"));
+      .then((res) =>console.log(res) );
     setIsSet((prev) => !prev);
   };
   const addSkill = async () => {
@@ -55,12 +55,11 @@ export default function MyProfile() {
   };
 
   useEffect(() => {
-    document.body.classList.remove("modal-open");
     Axios.get("api/city")
       .then((res) => res.data)
       .then((res) => setCities(res));
 
-    Axios.get(`/api/individuel/${id}/edit`)
+    Axios.get(`/api/individuel/${id}`)
       .then((res) => res.data)
       .then((data) => setData(data));
   }, [isSet]);
@@ -92,31 +91,31 @@ export default function MyProfile() {
               onClick={editInfo}
               className="button active:bg-green-500 fixed sm:absolute bg-[#1F1F1F] border border-[#30363D] sm:top-2 sm:right-2 top-[80px] right-8"
             >
-              <i class={`fa-solid fa-pen text-white`}></i>
+              <i className={`fa-solid fa-pen text-white`}></i>
             </button>
           )}
           <div className="w-full flex flex-col justify-between items-center gap-3">
             <div className="bg-[url(https://th.bing.com/th/id/OIP.PJB4lxw88QRaADN8UWxV4AHaHa?rs=1&pid=ImgDetMain)] bg-center bg-contain rounded-full w-1/2 sm:h-[calc(35vw/2)] h-[calc(90vw/2)]  "></div>
             <div className="text-xl font-bold text-white mt-5 w-full text-center ">
-              {data ? <>{data.ind[0].nom} {data && data.ind[0].prenom} </>: <NameSk />}
+              {data ? <>{data.nom} { data.prenom} </>: <NameSk />}
             </div>
           </div>
           <ul className="text-white flex  w-full mt-5 flex-col gap-2 items-center">
             <li className="flex gap-3 w-[50%]">
               <span className="button bg-black border border-[#30363D]">
-                <i class={`fa-solid fa-building text-white`}></i>
+                <i className={`fa-solid fa-building text-white`}></i>
               </span>
               <input
                 name="entreprise"
                 onChange={(e) => setFormFunc(e)}
                 onInput={() => setEdit(true)}
-                defaultValue={data && data.ind[0].entreprise}
+                defaultValue={data ? data.entreprise :""}
                 className="bg-transparent outline-0 border-gray-500 border max-w-[200px] w-[70%] rounded pl-1"
               />
             </li>
             <li className="flex gap-3  w-[50%]">
               <span className="button bg-black border border-[#30363D]">
-                <i class={`fa-solid fa-location-dot text-white`}></i>
+                <i className={`fa-solid fa-location-dot text-white`}></i>
               </span>
               <select
                 name="city"
@@ -127,7 +126,7 @@ export default function MyProfile() {
                 <option
                   className="text-white cursor-pointer bg-[#0D1117] border-gray-500 border  "
                   value={null}
-                  selected={data && data.ind[0].city == null}
+                  selected={data && data.city == null}
                 >
                   -
                 </option>
@@ -135,7 +134,7 @@ export default function MyProfile() {
                   <option
                     className="text-white cursor-pointer bg-[#0D1117] border-gray-500 border "
                     value={e.id}
-                    selected={data && data.ind[0].city == e.id}
+                    selected={data && data.city == e.id}
                   >
                     {e.name}
                   </option>
@@ -144,25 +143,25 @@ export default function MyProfile() {
             </li>
             <li className="flex gap-3 w-[50%]">
               <span className="button bg-black border border-[#30363D]">
-                <i class={`fa-solid fa-briefcase text-white`}></i>
+                <i className={`fa-solid fa-briefcase text-white`}></i>
               </span>
               <input
                 name="post"
                 onChange={(e) => setFormFunc(e)}
                 onInput={() => setEdit(true)}
-                defaultValue={data && data.ind[0].post}
+                defaultValue={data? data.post :""}
                 className="bg-transparent outline-0 border-gray-500 border max-w-[200px] w-[70%] rounded pl-1"
               />
             </li>
             <li className="flex gap-3 w-[50%]">
               <span className="button bg-black border border-[#30363D]">
-                <i class={`fa-solid fa-phone text-white`}></i>
+                <i className={`fa-solid fa-phone text-white`}></i>
               </span>
               <input
                 name="phone"
                 onChange={(e) => setFormFunc(e)}
                 onInput={() => setEdit(true)}
-                defaultValue={data && data.ind[0].phone}
+                defaultValue={data? data.phone :""} 
                 className="bg-transparent outline-0 border-gray-500 border max-w-[200px] w-[70%] rounded pl-1"
               />
             </li>
@@ -181,7 +180,7 @@ export default function MyProfile() {
               onChange={(e) => setFormFunc(e)}
               name="description"
               className="text-[15px] text-white w-full outline-none border-0 bg-transparent h-[200px] resize-none"
-              defaultValue={ data.ind[0].description}
+              defaultValue={ data.description}
               >
               </textarea>
                  :
@@ -209,7 +208,7 @@ export default function MyProfile() {
                   ></i>
                 </div>
                 <i
-                  class={`fa-solid fa-plus cursor-pointer duration-500 ${
+                  className={`fa-solid fa-plus cursor-pointer duration-500 ${
                     skill && " text-red-500 "
                   }`}
                   style={{ transform: skill ? "rotate(45deg)" : "" }}
@@ -223,7 +222,7 @@ export default function MyProfile() {
                   <span
                     onClick={(e) => deleteSkill(e)}
                     id={e.id}
-                    class="fa-solid fa-xmark w-[25px] h-[25px] text-red-600 cursor-pointer  mr-3 flex justify-center items-center rounded-full"
+                    className="fa-solid fa-xmark w-[25px] h-[25px] text-red-600 cursor-pointer  mr-3 flex justify-center items-center rounded-full"
                   ></span>
                   <div>{e.title}</div>
                 </li>
@@ -237,7 +236,7 @@ export default function MyProfile() {
             <div className="text-gray-500 border-b border-[#30363D] pb-3  text-gray-500 text-lg font-bold    w-full flex justify-between">
               <div>Experience</div>{" "}
               <div onClick={() => setExperience(true)}>
-                <i class="fa-solid fa-plus cursor-pointer"></i>
+                <i className="fa-solid fa-plus cursor-pointer"></i>
               </div>
             </div>
              {data ? data.experience.map((e) => (
@@ -260,7 +259,7 @@ export default function MyProfile() {
             <div className="text-gray-500 text-lg border-b border-[#30363D] pb-3  font-bold  w-full flex justify-between">
               <div>Education</div>{" "}
               <div onClick={() => setEducation(true)}>
-                <i class="fa-solid fa-plus cursor-pointer"></i>
+                <i className="fa-solid fa-plus cursor-pointer"></i>
               </div>
             </div>
             {data ? data.education.map((e) => (

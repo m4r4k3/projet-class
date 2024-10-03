@@ -14,7 +14,7 @@ export default function AddDemande({ addMethod, setEdit , setData}) {
       .then((res) => res.data)
       .then((res) => setCities(res));
     Axios.get("api/domain")
-      .then((res) => res.data)
+      .then((res) => (res.data))
       .then((res) => setDomain(res));
   }, []);
 
@@ -72,7 +72,27 @@ export default function AddDemande({ addMethod, setEdit , setData}) {
             ))}
           </select>
         </div>
-       
+        <div className="text-white w-full flex justify-center mb-5">
+          <label className="w-[100px] inline-block">Domain</label>
+          <select
+            className="text-black outline-0 w-[50%] rounded"
+            name="domain"
+            defaultValue={0}
+            onChange={(e) => setFormFunc(e)}
+          >
+            <option key={0} value={null}>
+              -
+            </option>
+            {domain.map((e) => (
+              <option
+                className="text-white cursor-pointer bg-[#0D1117] border-gray-500 border "
+                value={e.id}
+              >
+                {e.domain}
+              </option>
+            ))}
+          </select>
+        </div> 
         <div className="text-white w-full flex justify-center mb-5">
           <label className="w-[100px] inline-block">Degree</label>
           <input
@@ -111,9 +131,9 @@ export default function AddDemande({ addMethod, setEdit , setData}) {
             className="text-black outline-0 w-[50%] rounded pl-1 h-[80px]"
           ></textarea>
         </div>
-        <div className="my-5">
+        <div className="w-full flex justify-end px-2">
           <button
-            className="text-white rounded border px-8 py-2 border-[#30363D] duration-300 hover:bg-gray-800"
+            className="text-white rounded border px-12 py-2 border-[#30363D] duration-300 hover:bg-gray-800"
             onClick={submit}
           >
             Ajouter

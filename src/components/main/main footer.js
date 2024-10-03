@@ -34,25 +34,25 @@ export default function MainFooter() {
               <li className="title-footer">Contact</li>
               <li className="info-footer">
                 <div>
-                  <i class="fa-solid fa-house"></i>
+                  <i className="fa-solid fa-house"></i>
                 </div>
                 <div>NewYork,NY 10012,Us</div>
               </li>
               <li className="info-footer">
                 <div>
-                  <i class="fa-solid fa-phone"></i>
+                  <i className="fa-solid fa-phone"></i>
                 </div>
                 <div>+212 652-5039</div>
               </li>
               <li className="info-footer">
                 <div>
-                  <i class="fa-solid fa-fax"></i>
+                  <i className="fa-solid fa-fax"></i>
                 </div>
                 <div> (202) 456-1111</div>
               </li>
               <li className="info-footer">
                 <div>
-                  <i class="fa-solid fa-envelope"></i>
+                  <i className="fa-solid fa-envelope"></i>
                 </div>
                 <div>eliteCarreers@elite.com</div>
               </li>
@@ -69,17 +69,17 @@ export default function MainFooter() {
             <div className="title-footer">Follow Us </div>
             <ul className=" flex flex-col  gap-5 w-[80%] brand-footer w-full [&>li]:flex">
                 <li>
-                  <i class="fa-brands fa-facebook"></i><span className="ml-3 flex items-center ">EliteCareers</span>
+                  <i className="fa-brands fa-facebook"></i><span className="ml-3 flex items-center ">EliteCareers</span>
                 </li>
                 <li>
-                  <i class="fa-brands fa-linkedin"></i><span className="ml-3 flex items-center ">EliteCareers</span>
+                  <i className="fa-brands fa-linkedin"></i><span className="ml-3 flex items-center ">EliteCareers</span>
                 </li>
                 <li>
-                  <i class="fa-brands fa-instagram"></i><span className="ml-3 flex items-center ">@EliteCareers</span>
+                  <i className="fa-brands fa-instagram"></i><span className="ml-3 flex items-center ">@EliteCareers</span>
                 </li>
                
                 <li>
-                  <i class="fa-brands fa-twitter"></i><span className="ml-3 flex items-center ">@EliteCareers</span>
+                  <i className="fa-brands fa-twitter"></i><span className="ml-3 flex items-center ">@EliteCareers</span>
                 </li>
               </ul>
             </motion.li>

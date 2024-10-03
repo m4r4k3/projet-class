@@ -12,7 +12,7 @@ export default function PhoneFooter() {
             <div className="title-footer flex w-full justify-between px-2">
               <div>Know Us</div>
               <div>
-                <i class={`fa-regular fa-chevron-down duration-500 ${exp[0]? "rotate-180":""}`}></i>
+                <i className={`fa-regular fa-chevron-down duration-500 ${exp[0]? "rotate-180":""}`}></i>
               </div>
             </div>
             <p
@@ -30,7 +30,7 @@ export default function PhoneFooter() {
             <div className="title-footer flex w-full justify-between px-2">
               <div>Contact</div>
               <div>
-              <i class={`fa-regular fa-chevron-down duration-500 ${exp[1]? "rotate-180":""}`} ></i>
+              <i className={`fa-regular fa-chevron-down duration-500 ${exp[1]? "rotate-180":""}`} ></i>
               </div>
             </div>
 
@@ -39,25 +39,25 @@ export default function PhoneFooter() {
             >
               <li className="info-footer">
                 <div>
-                  <i class="fa-solid fa-house"></i>
+                  <i className="fa-solid fa-house"></i>
                 </div>
                 <div>NewYork,NY 10012,Us</div>
               </li>
               <li className="info-footer">
                 <div>
-                  <i class="fa-solid fa-phone"></i>
+                  <i className="fa-solid fa-phone"></i>
                 </div>
                 <div>+212 652-5039</div>
               </li>
               <li className="info-footer">
                 <div>
-                  <i class="fa-solid fa-fax"></i>
+                  <i className="fa-solid fa-fax"></i>
                 </div>
                 <div> 1 (929) 207-0142</div>
               </li>
               <li className="info-footer">
                 <div>
-                  <i class="fa-solid fa-envelope"></i>
+                  <i className="fa-solid fa-envelope"></i>
                 </div>
                 <div>eliteCarreers@elite.com</div>
               </li>
@@ -69,7 +69,7 @@ export default function PhoneFooter() {
             <div className="title-footer flex w-full justify-between px-2">
               <div>Follow US</div>
               <div>
-              <i class={`fa-regular fa-chevron-down duration-500 ${exp[2]? "rotate-180":""}`} ></i>
+              <i className={`fa-regular fa-chevron-down duration-500 ${exp[2]? "rotate-180":""}`} ></i>
               </div>
             </div>
             <div
@@ -79,17 +79,17 @@ export default function PhoneFooter() {
             >
               <ul className=" flex flex-col  gap-[20px] w-[80%] brand-footer w-full [&>li]:flex">
                 <li>
-                  <i class="fa-brands fa-facebook"></i><span className="ml-3 flex items-center font-bold">EliteCareers</span>
+                  <i className="fa-brands fa-facebook"></i><span className="ml-3 flex items-center font-bold">EliteCareers</span>
                 </li>
                 <li>
-                  <i class="fa-brands fa-linkedin"></i><span className="ml-3 flex items-center font-bold">EliteCareers</span>
+                  <i className="fa-brands fa-linkedin"></i><span className="ml-3 flex items-center font-bold">EliteCareers</span>
                 </li>
                 <li>
-                  <i class="fa-brands fa-instagram"></i><span className="ml-3 flex items-center font-bold">@EliteCareers</span>
+                  <i className="fa-brands fa-instagram"></i><span className="ml-3 flex items-center font-bold">@EliteCareers</span>
                 </li>
                
                 <li>
-                  <i class="fa-brands fa-twitter"></i><span className="ml-3 flex items-center font-bold">@EliteCareers</span>
+                  <i className="fa-brands fa-twitter"></i><span className="ml-3 flex items-center font-bold">@EliteCareers</span>
                 </li>
               </ul>
             </div>
@@ -100,7 +100,7 @@ export default function PhoneFooter() {
             <div className="title-footer flex w-full justify-between px-2">
               <div>Usefull Links</div>
               <div>
-              <i class={`fa-regular fa-chevron-down duration-500 ${exp[3]? "rotate-180":""}`} ></i>
+              <i className={`fa-regular fa-chevron-down duration-500 ${exp[3]? "rotate-180":""}`} ></i>
               </div>
             </div>
             <ul

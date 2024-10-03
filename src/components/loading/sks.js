@@ -23,7 +23,7 @@ export const AnimatedDiv = ({ w, h }) => {
 
 export const Circle = ({ w, h }) => (
   <div
-    className=" bg-center bg-contain rounded-full"
+    className=" bg-gray-200  rounded-full"
     style={{ width: `${w}px`, height: `${h}px` }} 
   ></div>
 );

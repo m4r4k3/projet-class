@@ -109,11 +109,11 @@ export default function Search() {
           </div>
           <div></div>
         </div>
-        <div class="w-full mx-auto  px-[5%] gap-5 flex flex-col justify-around my-10 ">
-          <div class=" w-full  ">
+        <div className="w-full mx-auto  px-[5%] gap-5 flex flex-col justify-around my-10 ">
+          <div className=" w-full  ">
             <div className="flex w-full justify-between px-[5%]">
-              <h2 class="text-2xl font-bold mb-2 text-white">Demands</h2>
-              <Link to={`/demandes?q=${q ? q : ""}`} class="text-blue-500">
+              <h2 className="text-2xl font-bold mb-2 text-white">Demands</h2>
+              <Link to={`/demandes?q=${q ? q : ""}`} className="text-blue-500">
                 see more
               </Link>
             </div>
@@ -122,7 +122,7 @@ export default function Search() {
                   viewport={{once:true}}
                   whileInView={{opacity:1}}
                   transition={{duration:0.5}}
-              class="border border-[#30363D] rounded-[10px] bg-[#0D1117] p-4 mb-2 flex justify-around [&>*]:hidden sm:[&>*]:block [&>*:first-child]:block "
+              className="border border-[#30363D] rounded-[10px] bg-[#0D1117] p-4 mb-2 flex justify-around [&>*]:hidden sm:[&>*]:block [&>*:first-child]:block "
               ref={demandes}
             >
               {data ? data.demandes.map((e) => (
@@ -147,10 +147,10 @@ export default function Search() {
             }
             </motion.div>
           </div>
-          <div class=" w-full  ">
+          <div className=" w-full  ">
             <div className="flex w-full justify-between px-[5%] ">
-              <h2 class="text-2xl font-bold mb-2  text-white">Offers</h2>
-              <Link to={`/offres?q=${q ? q : ""}`} class="text-blue-500">
+              <h2 className="text-2xl font-bold mb-2  text-white">Offers</h2>
+              <Link to={`/offres?q=${q ? q : ""}`} className="text-blue-500">
                 see more
               </Link>
             </div>
@@ -159,7 +159,7 @@ export default function Search() {
                      viewport={{once:true}}
                      whileInView={{opacity:1}}
                      transition={{duration:0.5}}
-              class="border border-[#30363D] rounded-[10px] bg-[#0D1117] p-4 mb-2 flex justify-around [&>*]:hidden sm:[&>*]:flex [&>*:first-child]:block"
+              className="border border-[#30363D] rounded-[10px] bg-[#0D1117] p-4 mb-2 flex justify-around [&>*]:hidden sm:[&>*]:flex [&>*:first-child]:block"
               ref={offers}
             >
               {data? data.offres.map((e, i) => (
@@ -183,10 +183,10 @@ export default function Search() {
               [...Array(2)].map(e=><OffresSk/>)}
             </motion.div>
           </div>
-          <div class=" w-full  ">
+          <div className=" w-full  ">
             <div className="flex w-full justify-between px-[5%]">
-              <h2 class="text-2xl font-bold mb-2 text-white">People</h2>
-              <Link to={`/people?q=${q ? q : ""}`} class="text-blue-500">
+              <h2 className="text-2xl font-bold mb-2 text-white">People</h2>
+              <Link to={`/people?q=${q ? q : ""}`} className="text-blue-500">
                 see more
               </Link>
             </div>
@@ -195,7 +195,7 @@ export default function Search() {
                         viewport={{once:true}}
                         whileInView={{opacity:1}}
                         transition={{duration:0.5}}
-              class="border border-[#30363D] rounded-[10px] bg-[#0D1117] p-4 mb-2 flex justify-around sm:[&>*]:flex [&>*]:hidden [&>*:first-child]:flex"
+              className="border border-[#30363D] rounded-[10px] bg-[#0D1117] p-4 mb-2 flex justify-around sm:[&>*]:flex [&>*]:hidden [&>*:first-child]:flex"
               ref={people}
             >
               {data?data.individuel.map((e) => (
@@ -204,10 +204,10 @@ export default function Search() {
               [...Array(2)].map(e=><ProfileSk/>)}
             </motion.div>
           </div>
-          <div class=" w-full  ">
+          <div className=" w-full  ">
             <div className="flex w-full justify-between px-[5%]">
-              <h2 class="text-2xl font-bold mb-2  text-white">Companies</h2>
-              <Link to={`/entreprises?q=${q ? q : ""}`} class="text-blue-500">
+              <h2 className="text-2xl font-bold mb-2  text-white">Companies</h2>
+              <Link to={`/entreprises?q=${q ? q : ""}`} className="text-blue-500">
                 see more
               </Link>
             </div>
@@ -217,7 +217,7 @@ export default function Search() {
               whileInView={{opacity:1}}
               transition={{duration:0.5}}
              
-              class="border border-[#30363D] rounded-[10px] bg-[#0D1117] p-4 mb-2 flex justify-around sm:[&>*]:flex [&>*]:hidden [&>*:first-child]:flex"
+              className="border border-[#30363D] rounded-[10px] bg-[#0D1117] p-4 mb-2 flex justify-around sm:[&>*]:flex [&>*]:hidden [&>*:first-child]:flex"
               ref={companies}
             >
               {data ? data.entreprises.map((e) => (

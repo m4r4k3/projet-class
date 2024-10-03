@@ -11,7 +11,6 @@ export default function SearchBar({ type, addMethod }) {
   const [domain, setDomains] = useState();
   const [filter, setFilter] = useState();
 
-
   useEffect(() => {
     document.body.classList.add("modal-open");
 
@@ -22,7 +21,7 @@ export default function SearchBar({ type, addMethod }) {
     Axios.get("api/domain")
       .then((res) => res.data)
       .then((res) => setDomains(res));
-    
+
     Axios.get("api/contrat")
       .then((res) => res.data)
       .then((res) => setContrat(res));
@@ -36,50 +35,54 @@ export default function SearchBar({ type, addMethod }) {
         <div className="pr-10 cursor-pointer">
           <div className="flex flex-col  items-center relative">
             <i
-              class="fa-light fa-bars-filter text-white text-2xl"
+              className="fa-light fa-bars-filter text-white text-2xl"
               onClick={() => setFilter((prev) => !prev)}
             ></i>
             <ul
               className={`w-[100px]  md:w-[125px] h-[150px] bg-[#30363D] flex-col flex justify-around p-1 rounded absolute top-[-150px] duration-500 ${
-                filter ? "translate-y-[200px]" :"hidden"
+                filter ? "translate-y-[200px]" : "hidden"
               } `}
             >
               <li>
                 <select
                   className="text-white outline-0 w-full rounded  bg-[#0D1117] border-gray-500 border  "
                   name="city"
+                  defaultValue={""}
                 >
-                  <option key={0} value="" selected="true">
+                  <option key={-1} value="" disabled>
                     City
                   </option>
-                  {cities && cities.map((e) => (
-                    <option
-                      key={e.id}
-                      className="text-white cursor-pointer bg-[#0D1117] border-gray-500 border"
-                      value={e.id}
-                    >
-                      {e.name}
-                    </option>
-                  ))}
+                  {cities &&
+                    cities.map((e) => (
+                      <option
+                        key={e.id}
+                        className="text-white cursor-pointer bg-[#0D1117] border-gray-500 border"
+                        value={e.id}
+                      >
+                        {e.name}
+                      </option>
+                    ))}
                 </select>
               </li>
               <li>
                 <select
                   className="text-white outline-0 w-full rounded  bg-[#0D1117] border-gray-500 border  "
                   name="domain"
+                  defaultValue={""}
                 >
-                  <option key={0} value="" selected="true">
+                  <option key={-1} value="" disabled>
                     domain
                   </option>
-                  {domain && domain.map((e) => (
-                    <option
-                      key={e.id}
-                      className="text-white cursor-pointer bg-[#0D1117] border-gray-500 border"
-                      value={e.id}
-                    >
-                      {e.domain}
-                    </option>
-                  ))}
+                  {domain &&
+                    domain.map((e) => (
+                      <option
+                        key={e.id}
+                        className="text-white cursor-pointer bg-[#0D1117] border-gray-500 border"
+                        value={e.id}
+                      >
+                        {e.domain}
+                      </option>
+                    ))}
                 </select>
               </li>
               <li>
@@ -95,19 +98,21 @@ export default function SearchBar({ type, addMethod }) {
                   <select
                     className="text-white outline-0 w-full rounded  bg-[#0D1117] border-gray-500 border  "
                     name="type_contrat"
+                    defaultValue={""}
                   >
-                    <option key={0} value="" selected="true">
+                    <option key={-1} value="" disabled>
                       Contrat
                     </option>
-                    {contrat && contrat.map((e) => (
-                      <option
-                        key={e.id}
-                        className="text-white cursor-pointer bg-[#0D1117] border-gray-500 border "
-                        value={e.id}
-                      >
-                        {e.type}
-                      </option>
-                    ))}
+                    {contrat &&
+                      contrat.map((e) => (
+                        <option
+                          key={e.id}
+                          className="text-white cursor-pointer bg-[#0D1117] border-gray-500 border "
+                          value={e.id}
+                        >
+                          {e.type}
+                        </option>
+                      ))}
                   </select>
                 </li>
               )}

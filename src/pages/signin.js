@@ -165,10 +165,10 @@ export default function SignIn() {
             </div>
 
             <div className="w-full flex px-5 mt-2 items-center lg:hidden">
-              <div class="relative " onClick={ClickFunc}>
-                <input id="switch" type="checkbox" class="sr-only" />
-                <div class={`block w-8 h-5 rounded-full duration-[350ms] border border-xs ${ form.type ==1 ? "bg-[#4f688d] border-black": "bg[#3b82f6] border-white  " }`}></div>
-                <div class={`dot absolute  top-1 bg-white w-3  h-3  outline-black rounded-full duration-300 transition-transform ${ form.type ==1 ? "translate-x-4" : "left-1"}`}></div>
+              <div className="relative " onClick={ClickFunc}>
+                <input id="switch" type="checkbox" className="sr-only" />
+                <div className={`block w-8 h-5 rounded-full duration-[350ms] border border-xs ${ form.type ==1 ? "bg-[#4f688d] border-black": "bg[#3b82f6] border-white  " }`}></div>
+                <div className={`dot absolute  top-1 bg-white w-3  h-3  outline-black rounded-full duration-300 transition-transform ${ form.type ==1 ? "translate-x-4" : "left-1"}`}></div>
               </div>
               <label className={`text-white mx-5`} for={"switch"}>Sign in as job seeker</label>
             </div>

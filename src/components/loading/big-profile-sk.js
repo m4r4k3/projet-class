@@ -23,6 +23,13 @@ export const NameSk = () => (
     ))}
   </div>
 );
+export const NameEntrSk = () => (
+  <div className="w-full flex mt-5 justify-center">
+    {[20].map((e) => (
+      <AnimatedDivDark w={e} h={20} />
+    ))}
+  </div>
+);
 export const EducationSk = () => (
   <div className=" py-5">
     <div className=" border-[#30363D] w-full   py-2 border-t flex px-[5%] ">

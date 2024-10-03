@@ -25,6 +25,7 @@ import Privacy from "./components/main/privacy.js";
 import ProfileSk from "./components/loading/profile-sk.js";
 import LoadingScreen from "./loading.js";
 import { EducationSk } from "./components/loading/big-profile-sk.js";
+import DemandesSk from "./components/loading/demandes-sk.js";
 
 export default function App() {
   const [isMenu, setIsMenu] = useState();
@@ -61,7 +62,7 @@ export default function App() {
           <Route element={<Demandes />} path="/demandes"></Route>
           <Route element={<Privacy />} path="/privacy"></Route>
           <Route element={<Profile />} path="/profile/:id"></Route>
-          <Route element={<EducationSk />} path="/test"></Route>
+          <Route element={<DemandesSk />} path="/test"></Route>
           <Route element={<Search />} path="/search"></Route>
           <Route element={<People />} path="/people"></Route>
           {!isLoggedIn ? (

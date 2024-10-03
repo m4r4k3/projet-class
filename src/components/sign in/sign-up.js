@@ -58,7 +58,7 @@ export default function SignUp({ setSignup }) {
                 setForm({ type: 2 });
               }}
             >
-              <i class="fa-solid fa-house "></i>
+              <i className="fa-solid fa-house "></i>
             </div>
             <div
               className="w-[30px] h-[30px] bg-[#0D1117] rounded-full flex justify-center items-center cursor-pointer "
@@ -69,7 +69,7 @@ export default function SignUp({ setSignup }) {
                 setForm({ type: 1 });
               }}
             >
-              <i class="fa-solid fa-user text-white"></i>
+              <i className="fa-solid fa-user text-white"></i>
             </div>
           </div>
           <div

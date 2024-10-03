@@ -47,7 +47,7 @@ export default function Education({
           style={{ background: bgChange }}
         >
           <i
-            class="fa-solid fa-trash text-white"
+            className="fa-solid fa-trash text-white"
             onClick={deleteExp}
           ></i>
         </button>

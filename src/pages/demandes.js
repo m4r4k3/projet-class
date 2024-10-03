@@ -20,6 +20,7 @@ export default function Demandes() {
     Axios.get(`/api/demandes?city=${city ?city :""}&salary=${salary ? salary :""}&q=${q ? q :""}` )
       .then((res) => res.data)
       .then((data) => setData(data));
+      console.log(data)
   }, [edit]);
    return (
     <>
@@ -37,14 +38,14 @@ export default function Demandes() {
               isDemande={true}
               id={e.id}
               salaire={e.salaire}
-              location={e.location}
+              location={e.city.name}
               role={e.role}
-              nom={e.nom}
-              prenom={e.prenom}
+              nom={e.individuel.nom}
+              prenom={e.individuel.prenom}
               experience={e.experience}
               niveau={e.niveau}
               description={e.description}
-              domain={e.domain}
+              domain={e.domain.domain}
               created_at={e.created_at}
               user_id={e.user_id}
             />

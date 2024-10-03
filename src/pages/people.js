@@ -41,7 +41,7 @@ export default function People() {
           className={`grid grid-cols-1 sm:grid-cols-3 w-full justify-items-center p-[50px] gap-[50px]`}
         >
           {data ? data.map((e, i) => (
-            <Person id = {e.id} nom={e.nom} prenom={e.prenom}/>
+            <Person id = {e.id} nom={e.nom} prenom={e.prenom} city={e.city}  entreprise={e.entreprise}/>
           )) :[...Array(6)].map(()=> <ProfileSk />)}
         </div>
       </div>
