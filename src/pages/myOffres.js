@@ -46,13 +46,13 @@ export default function Offres() {
               characteristic={e.characteristic}
               salary={e.salary}
               starting={e.starting}
-              name={e.name}
-              domain={e.domain}
-              city={e.city}
+              name={e.entreprise.name}
+              domain={e.domain.domain}
+              city={e.city.name}
               created_at={e.created_at}
               description={e.description}
               post={e.post}
-              contrat={e.contrat}
+              contrat={e.contrat.type}
               apply={()=>{}}
               setData={setData}
               setEdit={setEdit}
