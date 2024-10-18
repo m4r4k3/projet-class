@@ -81,7 +81,7 @@ export default function FullScreenOffer({ setOffer, offre, apply }) {
         </div>
         <div className="mt-2 mt-5 sm:px-[5%]">
           <div className="font-bold"> Caractéristiques du poste :</div>
-          <p className="px-5 py-2 w-full overflow-y-scroll h-[100px] mt-2  break-words	">dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</p>
+          <p className="px-5 py-2 w-full overflow-y-scroll h-[100px] mt-2  break-words	h-[150px]">{description}</p>
         </div>
         {type == 1 && (
           <div className=" w-full flex justify-end mt-2 mt-5 ">

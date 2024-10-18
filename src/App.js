@@ -22,37 +22,33 @@ import MyEntreprise from "./pages/my Entreprise";
 import People from "./pages/people.js";
 import PhoneFooter from "./components/main/phonefooter.js";
 import Privacy from "./components/main/privacy.js";
-import ProfileSk from "./components/loading/profile-sk.js";
 import LoadingScreen from "./loading.js";
-import { EducationSk } from "./components/loading/big-profile-sk.js";
 import DemandesSk from "./components/loading/demandes-sk.js";
 
 export default function App() {
-  const [isMenu, setIsMenu] = useState();
+  const [isScroll, setIsScroll] = useState();
   const isLoggedIn = useSelector((s) => s.store.loggedIn);
   const type = useSelector((s) => s.store.type);
   const isLoaded = useSelector(s=>s.store.isLoaded)
   const location = useLocation() ;
   const dispatch = useDispatch();
   
-  useEffect(()=>setIsMenu(false) ,[location])
+  useEffect(()=>setIsScroll(false) ,[location])
+
   useEffect(() => {
     dispatch(fetchLogginDetails());
-    if (isMenu) {
-      document.body.classList.add("modal-open");
-    } else {
-      document.body.classList.remove("modal-open");
-    }
-  }, [isMenu  ]);
+  }, [ ]);
+
   if (!isLoaded) {
     return <LoadingScreen />
   }
+
   return (
     <>
-      <div className=" h-screen App ">
-     <Nav setIsMenu={setIsMenu} isMenu={isMenu} />
+      <div className={`${isScroll?"overflow-hidden" :""} h-screen App  `}>
+     <Nav setIsMenu={setIsScroll} isMenu={isScroll} />
     
-        {isMenu && <Menu setIsMenu={setIsMenu}  />}
+        {isScroll && <Menu setIsMenu={setIsScroll}  />}
       
 
       

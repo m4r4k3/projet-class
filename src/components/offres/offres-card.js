@@ -9,7 +9,7 @@ export default function OffresCard({
   name,
   domain,
   city,
-  created_at ,
+  created_at,
   description,
   characteristic,
   starting,
@@ -32,7 +32,7 @@ export default function OffresCard({
     <div
       key={id}
       className={`${
-        isOffer ? "h-[300px] w-[350px]" : "h-[250px] w-[350px] "
+       "h-[300px] w-[350px]" 
       } flex relative cursor-pointer`}
       onClick={() => {
         setOffer({
@@ -66,41 +66,62 @@ export default function OffresCard({
           </Link>
         </div>
       )}
-      <div className="w-full h-full bg-white rounded-[15px] relative pt-[45px] text-[18px] shadow-inner">
-        <div className="absolute top-1 right-3 text-[#888888] text-[14px]">
-        {new Date(created_at).toDateString("y%/m%/d%")}
+      <div className="w-full h-full bg-white rounded-[15px] relative pt-[25px] text-[18px] shadow-inner">
+        <div className="absolute top-0 w-full px-2 py-2 flex justify-end">
+          <span className=" text-[#888888] text-[14px] flex gap-2 items-center">
+            <i className="fa-solid fa-calendar text-gray-500"></i>
+            {new Date(created_at).toDateString("y%/m%/d%")}
+          </span>
         </div>
-        <div className="w-full flex flex-col justify-between  px-3 h-[75%] text-[0.9em]">
+        <div className={`w-full flex flex-col justify-between  px-3 ${type==1 ?"h-[85%]" : "h-[90%]"} text-[0.9em]`}>
+        <div className="font-bold text-xl my-2">
+          Information d'offre
+
+          </div>
           <div>
-            <label className="font-semibold w-[100px] inline-block ">Entreprise :</label>
+            <label className="font-semibold w-[100px] inline-block ">
+              Entreprise :
+            </label>
             <span>{name}</span>
           </div>
           <div>
-            <label className="font-semibold w-[100px] inline-block ">Domain :</label>
+            <label className="font-semibold w-[100px] inline-block ">
+              Domain :
+            </label>
             <span>{domain}</span>
           </div>
           <div>
-            <label className="font-semibold w-[100px] inline-block ">Post :</label>
+            <label className="font-semibold w-[100px] inline-block ">
+              Post :
+            </label>
             <span>{post}</span>
           </div>
           <div>
-            <label className="font-semibold w-[100px] inline-block ">Ville :</label>
+            <label className="font-semibold w-[100px] inline-block ">
+              Ville :
+            </label>
             <span>{city}</span>
           </div>
           <div>
-            <label className="font-semibold w-[100px] inline-block ">Date debut :</label>
+            <label className="font-semibold w-[100px] inline-block ">
+              Date debut :
+            </label>
             <span>{starting}</span>
           </div>
           <div>
-            <label className="font-semibold w-[100px] inline-block ">Salaire :</label>
+            <label className="font-semibold w-[100px] inline-block ">
+              Salaire :
+            </label>
             <span>{salary} DH</span>
           </div>
           <div>
-            <label className="font-semibold w-[100px] inline-block ">Contrat :</label>
+            <label className="font-semibold w-[100px] inline-block ">
+              Contrat :
+            </label>
             <span>{contrat}</span>
           </div>
         </div>
-        <div className="w-full flex justify-end pr-[20px] mt-[20px]">
+        <div className="w-full flex justify-end pr-[20px] ">
           {type == 1 && (
             <button
               className={`${

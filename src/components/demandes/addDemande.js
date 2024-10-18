@@ -9,7 +9,6 @@ export default function AddDemande({ addMethod, setEdit , setData}) {
   const setFormFunc = (e) =>
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   useEffect(() => {
-    document.body.classList.add("modal-open");
     Axios.get("api/city")
       .then((res) => res.data)
       .then((res) => setCities(res));

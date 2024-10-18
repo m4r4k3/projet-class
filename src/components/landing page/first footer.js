@@ -78,7 +78,7 @@ export function Footer() {
             <div
          
         
-            className="keen-slider__slide select-none relative cursor-pointer  flex flex-col justify-around h-[200px] w-[350px] bg-[#0D1117] border border-[#30363D] shadow rounded-lg p-6 max-w-md  ">
+            className="keen-slider__slide select-none relative cursor-grab active:cursor-grabbing   flex flex-col justify-around h-[200px] w-[350px] bg-[#0D1117] border border-[#30363D] shadow rounded-lg p-6 max-w-md  ">
               <h2 className="text-2xl font-semibold text-gray-200 mb-2 text-center ">
                 {client.name}
               </h2>

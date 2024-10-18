@@ -33,7 +33,7 @@ export default function DemandeCard({
     <Link
       to={isDemande && "/profile/" + user_id}
       className={` shadow shadow-inner shadow-black ${
-        isDemande ? "h-[300px] w-[300px] " : "h-[250px] w-[300px] "
+        isDemande ? "h-[300px] w-[350px] " : "h-[250px] w-[350px] "
       }flex relative `}
     >
       {!isDemande && (
@@ -64,11 +64,14 @@ export default function DemandeCard({
           descriptionVar.current.classList.add("descriptionUP")
         }
       >
-        <div className="absolute top-1 right-3 text-[#888888] text-[14px] z-[1]">
-          {new Date(created_at).toDateString("y%/m%/d%")}
+        <div className="absolute top-1 right-3 gap-2 items-center z-[1] flex ">
+          <i className="fa-solid fa-calendar text-gray-500"></i>
+          <span className="text-[#888888] text-[14px]">
+            {new Date(created_at).toDateString("y%/m%/d%")}
+          </span>
         </div>
         <div
-          className="absolute w-full h-full overflow-y-scroll bg-white rounded-[15px] duration-500 p-5= translate-y-[100%] "
+          className="absolute w-full h-full  overflow-y-scroll bg-white rounded-[15px] duration-500 p-5 translate-y-[100%] "
           ref={descriptionVar}
         >
           <span className="block font-semibold "> Description :</span>

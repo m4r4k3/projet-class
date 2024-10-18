@@ -13,7 +13,6 @@ export default function AddOffre({ addMethod, setEdit , setData}) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
   useEffect(() => {
-    document.body.classList.add("modal-open");
 
     Axios.get("api/city")
       .then((res) => res.data)
@@ -36,9 +35,7 @@ export default function AddOffre({ addMethod, setEdit , setData}) {
     addMethod(false);
     setEdit((prev) => !prev);
   };
-  if (!cities || !contrat || !domain) {
-    return <LoadingScreen />;
-  }
+
   return (
     <div
       className="fixed z-[3] h-screen top-0 w-screen glass menu-glass flex justify-center items-center"
@@ -95,7 +92,7 @@ export default function AddOffre({ addMethod, setEdit , setData}) {
                   <option key={-1} value={-1} disabled>
                     -
                 </option>
-                {cities.map((e) => (
+                {cities && cities.map((e) => (
                   <option
                     key={e.id}
                     className="text-white cursor-pointer bg-[#0D1117] border-gray-500 border "
@@ -118,7 +115,7 @@ export default function AddOffre({ addMethod, setEdit , setData}) {
                   <option key={-1} value={-1} disabled>
                     -
                 </option>
-                {domain.map((e) => (
+                {domain && domain.map((e) => (
                   <option
                     key={e.id}
                     className="text-white cursor-pointer bg-[#0D1117] border-gray-500 border "
@@ -142,7 +139,7 @@ export default function AddOffre({ addMethod, setEdit , setData}) {
                 <option key={-1} value={-1} disabled>
                   -
                 </option>
-                {contrat.map((e) => (
+                {contrat && contrat.map((e) => (
                   <option
                     key={e.id}
                     className="text-white cursor-pointer bg-[#0D1117] border-gray-500 border "

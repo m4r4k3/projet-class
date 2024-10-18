@@ -12,7 +12,6 @@ export default function SearchBar({ type, addMethod }) {
   const [filter, setFilter] = useState();
 
   useEffect(() => {
-    document.body.classList.add("modal-open");
 
     Axios.get("api/city")
       .then((res) => res.data)

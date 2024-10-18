@@ -19,7 +19,6 @@ export default function SignUp({ setSignup }) {
 
   const submitFunc = async (e) => {
     setIsLoading(true);
-    document.body.classList.add("modal-open");
     await Axios.get("/sanctum/csrf-cookie");
     await Axios.post("api/signup", form)
       .then(async (res) => {

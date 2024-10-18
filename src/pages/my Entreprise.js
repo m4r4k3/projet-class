@@ -74,15 +74,15 @@ export default function MyEntreprise() {
                <option
                  className="text-white cursor-pointer bg-[#0D1117] border-gray-500 border  "
                  value={null}
-                 selected={data && data.city.name == null}
+                 selected={ !data.city}
                >
                  -
-               </option>faultValue={cities.name}
-               {cities && cities.map((e) => (
+               </option>
+                              {cities && cities.map((e) => (
                   <option
                     className="text-white cursor-pointer bg-[#0D1117] border-gray-500 border "
                     value={e.id}
-                    selected={data && data.city.name == e.id}
+                    selected={data.city && data.city.name == e.id}
                   >
                     {e.name}
                   </option>
